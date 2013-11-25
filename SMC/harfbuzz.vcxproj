@@ -281,7 +281,7 @@
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -336,7 +336,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -392,7 +392,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -448,7 +448,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -517,7 +517,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -586,7 +586,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -654,7 +654,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -722,7 +722,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <Command>mkdir $(OutputPath)\include
 mkdir $(OutputPath)\include\harfbuzz
 copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\hb-version.h $(OutputPath)\include\harfbuzz
+copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
 mkdir $(OutputPath)\licenses
 copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
