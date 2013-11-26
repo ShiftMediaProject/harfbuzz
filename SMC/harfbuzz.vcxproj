@@ -265,7 +265,7 @@
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -320,7 +320,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -375,7 +375,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -431,7 +431,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -497,7 +497,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -566,7 +566,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -635,7 +635,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -703,7 +703,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutputPath)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
-      <DisableSpecificWarnings>4996;4800;4244</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
