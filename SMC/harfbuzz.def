@@ -242,4 +242,3 @@ hb_unicode_script
 hb_version
 hb_version_check
 hb_version_string
-LIBRARY libharfbuzz-0.dll
