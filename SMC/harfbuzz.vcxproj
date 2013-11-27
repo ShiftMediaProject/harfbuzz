@@ -262,7 +262,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;HAVE_CONFIG_H;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
@@ -273,20 +273,20 @@
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -320,7 +320,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <PreprocessorDefinitions>WIN32;_WINDOWS;HAVE_CONFIG_H;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
@@ -331,20 +331,20 @@ del ..\src\hb-buffer-deserialize-text.hh
     <Lib>
       <TargetMachine>MachineX64</TargetMachine>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir)\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -378,7 +378,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <PreprocessorDefinitions>WIN32;_WINDOWS;HAVE_CONFIG_H;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
@@ -386,24 +386,24 @@ del ..\src\hb-buffer-deserialize-text.hh
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
-      <AdditionalLibraryDirectories>$(OutDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -437,7 +437,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <PreprocessorDefinitions>WIN32;_WINDOWS;HAVE_CONFIG_H;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
@@ -445,24 +445,24 @@ del ..\src\hb-buffer-deserialize-text.hh
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\x64\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\x64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\x64\$(TargetName).pgd</ProfileGuidedDatabase>
-      <AdditionalLibraryDirectories>$(OutDir)\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -507,7 +507,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
@@ -521,20 +521,20 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Lib>
     <Lib>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -579,7 +579,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
@@ -593,20 +593,20 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Lib>
     <Lib>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir)\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -651,7 +651,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
@@ -660,24 +660,24 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
-      <AdditionalLibraryDirectories>$(OutDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
@@ -722,7 +722,7 @@ del ..\src\hb-buffer-deserialize-text.hh
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;.\;.\src;..\src\hb-ucdn;$(OutDir)\include\msvc\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
@@ -731,24 +731,24 @@ del ..\src\hb-buffer-deserialize-text.hh
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\x64\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\x64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\x64\$(TargetName).pgd</ProfileGuidedDatabase>
-      <AdditionalLibraryDirectories>$(OutDir)\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <AdditionalLibraryDirectories>$(OutDir)\lib\msvc64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutputPath)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+      <Command>mkdir $(OutDir)\include\msvc
+if exist $(OutDir)\include\msvc\harfbuzz (
+rd /s /q $(OutDir)\include\msvc\harfbuzz
 )
-mkdir $(OutputPath)\include\harfbuzz
-copy ..\src\*.h $(OutputPath)\include\harfbuzz
-copy .\src\hb-version.h $(OutputPath)\include\harfbuzz
-mkdir $(OutputPath)\licenses
-copy ..\COPYING $(OutputPath)\licenses\harfbuzz.txt</Command>
+mkdir $(OutDir)\include\msvc\harfbuzz
+copy ..\src\*.h $(OutDir)\include\msvc\harfbuzz
+copy .\src\hb-version.h $(OutDir)\include\msvc\harfbuzz
+mkdir $(OutDir)\licenses
+copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>if exist ..\config.h (
