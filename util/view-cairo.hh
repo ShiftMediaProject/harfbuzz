@@ -36,6 +36,7 @@ struct view_cairo_t
   view_cairo_t (option_parser_t *parser)
 	       : output_options (parser, helper_cairo_supported_formats),
 		 view_options (parser),
+		 direction (HB_DIRECTION_INVALID),
 		 lines (0), scale (1.0) {}
   ~view_cairo_t (void) {
     if (debug)
