@@ -384,7 +384,6 @@ del ..\src\hb-buffer-deserialize-text.hh
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
@@ -443,7 +442,6 @@ del ..\src\hb-buffer-deserialize-text.hh
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
@@ -656,7 +654,6 @@ del ..\src\hb-buffer-deserialize-text.hh
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
@@ -727,7 +724,6 @@ del ..\src\hb-buffer-deserialize-text.hh
       <DisableSpecificWarnings>4996;4800;4244;4018;4146</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
