@@ -8,6 +8,8 @@
 /.deps
 /.dirstamp
 /.gitignore
+/AUTHORS
+/COPYING
 /ChangeLog
 /GPATH
 /GRTAGS
@@ -16,8 +18,13 @@
 /ID
 /INSTALL
 /Makefile
+/Makefile.am
 /Makefile.in
+/NEWS
+/README
 /TAGS
+/THANKS
+/TODO
 /aclocal.m4
 /ar-lib
 /autom4te.cache
@@ -33,6 +40,7 @@
 /config.status.lineno
 /config.sub
 /configure
+/configure.ac
 /configure.lineno
 /configure.scan
 /depcomp
@@ -41,11 +49,14 @@
 /install-sh
 /libtool
 /ltmain.sh
+/m4/ax_pthread.m4
+/m4/gtk-doc.m4
 /m4/libtool.m4
 /m4/ltoptions.m4
 /m4/ltsugar.m4
 /m4/ltversion.m4
 /m4/lt~obsolete.m4
+/m4/pkg.m4
 /missing
 /mkinstalldirs
 /so_locations
@@ -57,7 +68,7 @@
 /test/Makefile.in
 /test/api/Makefile.in
 /test/shaping/Makefile.in
-/util/Makefile.in
+/util/Makefile.in /util/Makefile.in
 
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -221,3 +232,4 @@ $RECYCLE.BIN/
 gtk-doc.make
 gtk-doc.m4
 docs/Makefile
+
