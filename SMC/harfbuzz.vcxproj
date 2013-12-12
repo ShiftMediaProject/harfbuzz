@@ -279,9 +279,6 @@
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -309,6 +306,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -337,9 +339,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -367,6 +366,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -395,9 +399,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -425,6 +426,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -453,9 +459,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -483,6 +486,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -525,9 +533,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -555,6 +560,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -597,9 +607,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -627,6 +634,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -667,9 +679,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -697,6 +706,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -737,9 +751,6 @@ del ..\src\hb-buffer-deserialize-text.hh
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
-)
 mkdir $(OutDir)\include\harfbuzz
 copy ..\src\*.h $(OutDir)\include\harfbuzz
 copy .\src\hb-version.h $(OutDir)\include\harfbuzz
@@ -767,6 +778,11 @@ del ..\src\hb-buffer-deserialize-json.hh
 )
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
+)
+if exist $(OutDir)\include\harfbuzz (
+rd /s /q $(OutDir)\include\harfbuzz
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
