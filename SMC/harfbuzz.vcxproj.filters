@@ -93,6 +93,9 @@
     <ClInclude Include="src\hb-version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -187,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="..\src\hb-ucdn\ucdn.c">
       <Filter>Source Files\src\hb-ucdn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-hebrew.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-tibetan.cc">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
