@@ -68,7 +68,7 @@
 /test/Makefile.in
 /test/api/Makefile.in
 /test/shaping/Makefile.in
-/util/Makefile.in /util/Makefile.in
+/util/Makefile.in
 
 
 ## Ignore Visual Studio temporary files, build results, and
