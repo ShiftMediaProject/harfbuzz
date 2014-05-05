@@ -173,9 +173,6 @@
     <ClCompile Include="..\src\hb-shaper.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-tt-font.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-ucdn.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>

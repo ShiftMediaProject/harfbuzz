@@ -105,7 +105,6 @@
     <ClCompile Include="..\src\hb-shape-plan.cc" />
     <ClCompile Include="..\src\hb-shape.cc" />
     <ClCompile Include="..\src\hb-shaper.cc" />
-    <ClCompile Include="..\src\hb-tt-font.cc" />
     <ClCompile Include="..\src\hb-ucdn.cc" />
     <ClCompile Include="..\src\hb-ucdn\ucdn.c" />
     <ClCompile Include="..\src\hb-unicode.cc" />
