@@ -201,7 +201,8 @@ set_indic_properties (hb_glyph_info_t &info)
   if (unlikely (u == 0x17D1))
     cat = OT_X;
   if (cat == OT_X &&
-      unlikely (hb_in_range<hb_codepoint_t> (u, 0x17CB, 0x17D3))) /* Khmer Various signs */
+      unlikely (hb_in_range<hb_codepoint_t> (u, 0x17CB, 0x17D3) ||
+		u == 0x17DD)) /* Khmer Various signs */
   {
     /* These are like Top Matras. */
     cat = OT_M;
@@ -556,8 +557,8 @@ data_create_indic (const hb_ot_shape_plan_t *plan)
   indic_plan->virama_glyph = (hb_codepoint_t) -1;
 
   /* Use zero-context would_substitute() matching for new-spec of the main
-   * Indic scripts, but not for old-spec or scripts with one spec only. */
-  bool zero_context = indic_plan->config->has_old_spec || !indic_plan->is_old_spec;
+   * Indic scripts, and scripts with one spec only, but not for old-specs. */
+  bool zero_context = !indic_plan->is_old_spec;
   indic_plan->rphf.init (&plan->map, HB_TAG('r','p','h','f'), zero_context);
   indic_plan->pref.init (&plan->map, HB_TAG('p','r','e','f'), zero_context);
   indic_plan->blwf.init (&plan->map, HB_TAG('b','l','w','f'), zero_context);
@@ -801,7 +802,7 @@ initial_reordering_consonant_syllable (const hb_ot_shape_plan_t *plan,
       case BASE_POS_LAST_SINHALA:
       {
         /* Sinhala base positioning is slightly different from main Indic, in that:
-	 * 1. It's ZWJ behavior is different,
+	 * 1. Its ZWJ behavior is different,
 	 * 2. We don't need to look into the font for consonant positions.
 	 */
 

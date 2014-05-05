@@ -24,6 +24,7 @@ if which gtkdocize ; then
 	gtkdocize --copy || exit 1
 else
 	echo "*** No gtkdocize found, skipping documentation ***"
+	echo "EXTRA_DIST = " > gtk-doc.make
 fi
 
 echo -n "checking for autoreconf... "

@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([HarfBuzz],
-        [0.9.27],
+        [0.9.28],
         [http://bugs.freedesktop.org/enter_bug.cgi?product=harfbuzz],
         [harfbuzz],
         [http://harfbuzz.org/])
@@ -181,7 +181,7 @@ dnl ===========================================================================
 have_introspection=false
 m4_ifdef([GOBJECT_INTROSPECTION_CHECK], [
 	if $have_gobject; then
-		GOBJECT_INTROSPECTION_CHECK([1.32.0])
+		GOBJECT_INTROSPECTION_CHECK([1.34.0])
 		if test "x$found_introspection" = xyes; then
 			have_introspection=true
 		fi
@@ -342,15 +342,30 @@ AC_ARG_WITH(coretext,
 have_coretext=false
 if test "x$with_coretext" = "xyes" -o "x$with_coretext" = "xauto"; then
 	AC_CHECK_TYPE(CTFontRef, have_coretext=true,, [#include <ApplicationServices/ApplicationServices.h>])
+
+	if $have_coretext; then
+		CORETEXT_CFLAGS=
+		CORETEXT_LIBS="-framework ApplicationServices"
+		AC_SUBST(CORETEXT_CFLAGS)
+		AC_SUBST(CORETEXT_LIBS)
+	else
+		# On iOS CoreText and CoreGraphics are stand-alone frameworks
+		if test "x$have_coretext" != "xtrue"; then
+			AC_CHECK_TYPE(CTFontRef, have_coretext=true,, [#include <CoreText/CoreText.h>])
+		fi
+
+		if $have_coretext; then
+			CORETEXT_CFLAGS=
+			CORETEXT_LIBS="-framework CoreText -framework CoreGraphics"
+			AC_SUBST(CORETEXT_CFLAGS)
+			AC_SUBST(CORETEXT_LIBS)
+		fi
+	fi
 fi
 if test "x$with_coretext" = "xyes" -a "x$have_coretext" != "xtrue"; then
 	AC_MSG_ERROR([CoreText support requested but libcoretext not found])
 fi
 if $have_coretext; then
-	CORETEXT_CFLAGS=
-	CORETEXT_LIBS="-framework ApplicationServices"
-	AC_SUBST(CORETEXT_CFLAGS)
-	AC_SUBST(CORETEXT_LIBS)
 	AC_DEFINE(HAVE_CORETEXT, 1, [Have Core Text backend])
 fi
 AM_CONDITIONAL(HAVE_CORETEXT, $have_coretext)

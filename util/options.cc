@@ -28,6 +28,8 @@
 
 #ifdef HAVE_FREETYPE
 #include <hb-ft.h>
+#else
+#include <hb-ot-font.h>
 #endif
 
 
@@ -374,7 +376,11 @@ output_options_t::add_options (option_parser_t *parser)
   if (NULL == supported_formats)
     text = "Set output format";
   else
-    text = text_free = g_strdup_printf ("Set output format\n\n    Supported formats are: %s", supported_formats);
+  {
+    char *items = g_strjoinv ("/", const_cast<char **> (supported_formats));
+    text = text_free = g_strdup_printf ("Set output format\n\n    Supported formats are: %s", items);
+    g_free (items);
+  }
 
   GOptionEntry entries[] =
   {
@@ -482,6 +488,8 @@ font_options_t::get_font (void) const
 
 #ifdef HAVE_FREETYPE
   hb_ft_font_set_funcs (font);
+#else
+  hb_ot_font_set_funcs (font);
 #endif
 
   return font;

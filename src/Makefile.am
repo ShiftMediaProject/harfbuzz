@@ -51,7 +51,6 @@ HBSOURCES =  \
 	hb-shaper-impl-private.hh \
 	hb-shaper-private.hh \
 	hb-shaper.cc \
-	hb-tt-font.cc \
 	hb-unicode-private.hh \
 	hb-unicode.cc \
 	hb-utf-private.hh \
@@ -76,6 +75,7 @@ HBNODISTHEADERS = \
 
 if HAVE_OT
 HBSOURCES += \
+	hb-ot-font.cc \
 	hb-ot-layout.cc \
 	hb-ot-layout-common-private.hh \
 	hb-ot-layout-gdef-table.hh \
@@ -112,6 +112,7 @@ HBSOURCES += \
 	$(NULL)
 HBHEADERS += \
 	hb-ot.h \
+	hb-ot-font.h \
 	hb-ot-layout.h \
 	hb-ot-shape.h \
 	hb-ot-tag.h \
@@ -284,8 +285,9 @@ arabic-table: gen-arabic-table.py ArabicShaping.txt UnicodeData.txt
 	mv hb-ot-shape-complex-arabic-table.hh.tmp $(srcdir)/hb-ot-shape-complex-arabic-table.hh || \
 	($(RM) hb-ot-shape-complex-arabic-table.hh.tmp; false)
 
+built-sources: $(BUILT_SOURCES)
 
-.PHONY: unicode-tables arabic-table indic-table
+.PHONY: unicode-tables arabic-table indic-table built-sources
 
 BUILT_SOURCES += \
 	hb-buffer-deserialize-json.hh \
