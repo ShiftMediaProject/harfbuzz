@@ -232,4 +232,5 @@ $RECYCLE.BIN/
 gtk-doc.make
 gtk-doc.m4
 docs/Makefile
+Ragel.exe
 

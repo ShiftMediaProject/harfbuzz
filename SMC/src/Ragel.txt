@@ -1,7 +1,0 @@
-The harfbuxx .hh files are built using ragel in Makefile.am in src dir
-
-.rl.hh:
-	$(AM_V_GEN)$(top_srcdir)/missing --run ragel -e -F1 -o "$@.tmp" "$<" && \
-	mv "$@.tmp" "$@" || ( $(RM) "$@.tmp" && false )
-	
-A complete VS Build requires ragel installed
