@@ -29,12 +29,17 @@ Currently only up to VS2010 is supported on the web page so just download that.
 5) Profit
 
 
-*** Generating ASM files ***
+*** Generating HH files ***
 
-The build system requires several of the asm files to be built automatically. This should have already been done and the resulting
+The build system requires several of the .hh files to be built automatically. This should have already been done and the resulting
 source files will be found in the SMC\ directory. If these files are missing then the project will try and automatically
 generate new ones. If the files need to be forced to update then they can be simply deleted which will result in new files
 being generated the next time the project is built.
 
-In order for new files to be generated the project needs access to 'perl'. Ensure that perl has been correctly installed and is accessible
-by Visual Studio. 
+In order for new files to be generated the project needs access to 'Ragel'. Ensure that Ragel is accessible by Visual Studio.
+
+Ragel can be downloaded from here:
+http://www.complang.org/ragel/
+
+Pre-built windows binaries can also be found in the above link. To enable generation of new files Ragel.exe should be extracted 
+and added somewhere accessible to the Visual Studio path (e.g. extract it into the Visual Studio) project folder.
