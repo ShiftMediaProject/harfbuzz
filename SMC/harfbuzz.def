@@ -240,5 +240,5 @@ hb_unicode_general_category
 hb_unicode_mirroring
 hb_unicode_script
 hb_version
-hb_version_check
+hb_version_atleast
 hb_version_string
