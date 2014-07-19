@@ -20,6 +20,7 @@ EXTRA_DIST += \
 	hb-unicode-decode \
 	hb-unicode-encode \
 	hb-unicode-prettyname \
+	record-test.sh \
 	run-tests.sh \
 	texts/in-tree \
 	fonts/sha1sum \
@@ -34,7 +35,12 @@ CLEANFILES += \
 	hb_test_tools.py[co] \
 	$(NULL)
 
-TESTS = tests/context-matching.tests
+TESTS = \
+	tests/arabic-feature-order.tests \
+	tests/context-matching.tests \
+	tests/indic-pref-blocking.tests \
+	tests/mongolian-variation-selector.tests \
+	$(NULL)
 
 TEST_EXTENSIONS = \
 	.tests \

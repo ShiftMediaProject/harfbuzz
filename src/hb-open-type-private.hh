@@ -266,6 +266,15 @@ struct hb_sanitize_context_t
     return TRACE_RETURN (this->writable);
   }
 
+  template <typename Type, typename ValueType>
+  inline bool try_set (Type *obj, const ValueType &v) {
+    if (this->may_edit (obj, obj->static_size)) {
+      obj->set (v);
+      return true;
+    }
+    return false;
+  }
+
   mutable unsigned int debug_depth;
   const char *start, *end;
   bool writable;
@@ -617,24 +626,17 @@ typedef USHORT GlyphID;
 
 /* Script/language-system/feature index */
 struct Index : USHORT {
-  static const unsigned int NOT_FOUND_INDEX = 0xFFFF;
+  static const unsigned int NOT_FOUND_INDEX = 0xFFFFu;
 };
 DEFINE_NULL_DATA (Index, "\xff\xff");
 
-/* Offset to a table, same as uint16 (length = 16 bits), Null offset = 0x0000 */
-struct Offset : USHORT
+/* Offset, Null offset = 0 */
+template <typename Type=USHORT>
+struct Offset : Type
 {
   inline bool is_null (void) const { return 0 == *this; }
   public:
-  DEFINE_SIZE_STATIC (2);
-};
-
-/* LongOffset to a table, same as uint32 (length = 32 bits), Null offset = 0x00000000 */
-struct LongOffset : ULONG
-{
-  inline bool is_null (void) const { return 0 == *this; }
-  public:
-  DEFINE_SIZE_STATIC (4);
+  DEFINE_SIZE_STATIC (sizeof(Type));
 };
 
 
@@ -683,12 +685,12 @@ struct FixedVersion
 
 
 /*
- * Template subclasses of Offset and LongOffset that do the dereferencing.
+ * Template subclasses of Offset that do the dereferencing.
  * Use: (base+offset)
  */
 
-template <typename OffsetType, typename Type>
-struct GenericOffsetTo : OffsetType
+template <typename Type, typename OffsetType=USHORT>
+struct OffsetTo : Offset<OffsetType>
 {
   inline const Type& operator () (const void *base) const
   {
@@ -722,40 +724,25 @@ struct GenericOffsetTo : OffsetType
     return TRACE_RETURN (likely (obj.sanitize (c, user_data)) || neuter (c));
   }
 
-  inline bool try_set (hb_sanitize_context_t *c, const OffsetType &v) {
-    if (c->may_edit (this, this->static_size)) {
-      this->set (v);
-      return true;
-    }
-    return false;
-  }
   /* Set the offset to Null */
   inline bool neuter (hb_sanitize_context_t *c) {
-    if (c->may_edit (this, this->static_size)) {
-      this->set (0); /* 0 is Null offset */
-      return true;
-    }
-    return false;
+    return c->try_set (this, 0);
   }
+  DEFINE_SIZE_STATIC (sizeof(OffsetType));
 };
 template <typename Base, typename OffsetType, typename Type>
-static inline const Type& operator + (const Base &base, const GenericOffsetTo<OffsetType, Type> &offset) { return offset (base); }
+static inline const Type& operator + (const Base &base, const OffsetTo<Type, OffsetType> &offset) { return offset (base); }
 template <typename Base, typename OffsetType, typename Type>
-static inline Type& operator + (Base &base, GenericOffsetTo<OffsetType, Type> &offset) { return offset (base); }
-
-template <typename Type>
-struct OffsetTo : GenericOffsetTo<Offset, Type> {};
-
-template <typename Type>
-struct LongOffsetTo : GenericOffsetTo<LongOffset, Type> {};
+static inline Type& operator + (Base &base, OffsetTo<Type, OffsetType> &offset) { return offset (base); }
 
 
 /*
  * Array Types
  */
 
-template <typename LenType, typename Type>
-struct GenericArrayOf
+/* An array with a number of elements. */
+template <typename Type, typename LenType=USHORT>
+struct ArrayOf
 {
   const Type *sub_array (unsigned int start_offset, unsigned int *pcount /* IN/OUT */) const
   {
@@ -839,7 +826,7 @@ struct GenericArrayOf
   }
 
   template <typename SearchType>
-  inline int search (const SearchType &x) const
+  inline int lsearch (const SearchType &x) const
   {
     unsigned int count = len;
     for (unsigned int i = 0; i < count; i++)
@@ -861,25 +848,9 @@ struct GenericArrayOf
   DEFINE_SIZE_ARRAY (sizeof (LenType), array);
 };
 
-/* An array with a USHORT number of elements. */
-template <typename Type>
-struct ArrayOf : GenericArrayOf<USHORT, Type> {};
-
-/* An array with a ULONG number of elements. */
-template <typename Type>
-struct LongArrayOf : GenericArrayOf<ULONG, Type> {};
-
 /* Array of Offset's */
 template <typename Type>
 struct OffsetArrayOf : ArrayOf<OffsetTo<Type> > {};
-
-/* Array of LongOffset's */
-template <typename Type>
-struct LongOffsetArrayOf : ArrayOf<LongOffsetTo<Type> > {};
-
-/* LongArray of LongOffset's */
-template <typename Type>
-struct LongOffsetLongArrayOf : LongArrayOf<LongOffsetTo<Type> > {};
 
 /* Array of offsets relative to the beginning of the array itself. */
 template <typename Type>
@@ -903,9 +874,8 @@ struct OffsetListOf : OffsetArrayOf<Type>
 };
 
 
-/* An array with a USHORT number of elements,
- * starting at second element. */
-template <typename Type>
+/* An array starting at second element. */
+template <typename Type, typename LenType=USHORT>
 struct HeadlessArrayOf
 {
   inline const Type& operator [] (unsigned int i) const
@@ -952,19 +922,19 @@ struct HeadlessArrayOf
     return TRACE_RETURN (true);
   }
 
-  USHORT len;
+  LenType len;
   Type array[VAR];
   public:
-  DEFINE_SIZE_ARRAY (sizeof (USHORT), array);
+  DEFINE_SIZE_ARRAY (sizeof (LenType), array);
 };
 
 
 /* An array with sorted elements.  Supports binary searching. */
-template <typename LenType, typename Type>
-struct GenericSortedArrayOf : GenericArrayOf<LenType, Type>
+template <typename Type, typename LenType=USHORT>
+struct SortedArrayOf : ArrayOf<Type, LenType>
 {
   template <typename SearchType>
-  inline int search (const SearchType &x) const
+  inline int bsearch (const SearchType &x) const
   {
     /* Hand-coded bsearch here since this is in the hot inner loop. */
     int min = 0, max = (int) this->len - 1;
@@ -982,10 +952,6 @@ struct GenericSortedArrayOf : GenericArrayOf<LenType, Type>
     return -1;
   }
 };
-
-/* A sorted array with a USHORT number of elements. */
-template <typename Type>
-struct SortedArrayOf : GenericSortedArrayOf<USHORT, Type> {};
 
 
 } /* namespace OT */

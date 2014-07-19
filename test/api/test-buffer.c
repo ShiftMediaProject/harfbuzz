@@ -374,6 +374,7 @@ test_buffer_utf8_conversion (void)
   unsigned int bytes, chars, i, j, len;
 
   b = hb_buffer_create ();
+  hb_buffer_set_replacement_codepoint (b, (hb_codepoint_t) -1);
 
   for (i = 0; i < G_N_ELEMENTS (utf8_conversion_tests); i++)
   {
@@ -388,7 +389,7 @@ test_buffer_utf8_conversion (void)
     for (chars = 0; test->codepoints[chars]; chars++)
       ;
 
-    hb_buffer_reset (b);
+    hb_buffer_clear_contents (b);
     hb_buffer_add_utf8 (b, test->utf8, bytes,  1, bytes - 2);
 
     glyphs = hb_buffer_get_glyph_infos (b, &len);
@@ -449,11 +450,15 @@ static const utf8_validity_test_t utf8_validity_tests[] = {
   { "\x7f", -1, 1, TRUE },
   { "\xdf\xbf", -1, 2, TRUE },
   { "\xef\xbf\xbf", -1, 0, TRUE },
-  { "\xf7\xbf\xbf\xbf", -1, 0, TRUE },
+  { "\xf4\x8f\xbf\xbf", -1, 0, TRUE },
+  { "\xf4\x90\xbf\xbf", -1, 0, FALSE },
+  { "\xf7\xbf\xbf\xbf", -1, 0, FALSE },
   { "\xfb\xbf\xbf\xbf\xbf", -1, 0, FALSE },
   { "\xfd\xbf\xbf\xbf\xbf\xbf", -1, 0, FALSE },
   /* other boundary conditions */
   { "\xed\x9f\xbf", -1, 3, TRUE },
+  { "\xed\xa0\x80", -1, 0, FALSE },
+  { "\xed\xbf\xbf", -1, 0, FALSE },
   { "\xee\x80\x80", -1, 3, TRUE },
   { "\xef\xbf\xbd", -1, 3, TRUE },
   { "\xf4\x8f\xbf\xbf", -1, 0, TRUE },
@@ -610,8 +615,6 @@ static const utf8_validity_test_t utf8_validity_tests[] = {
   /* impossible bytes */
   { "\x20\xfe\x20", -1, 1, FALSE },
   { "\x20\xff\x20", -1, 1, FALSE },
-#if 0
-  /* XXX fix these, or document that we don't detect them? */
   /* overlong sequences */
   { "\x20\xc0\xaf\x20", -1, 1, FALSE },
   { "\x20\xe0\x80\xaf\x20", -1, 1, FALSE },
@@ -644,6 +647,7 @@ static const utf8_validity_test_t utf8_validity_tests[] = {
   { "\x20\xed\xae\x80\xed\xbf\xbf\x20", -1, 1, FALSE },
   { "\x20\xed\xaf\xbf\xed\xb0\x80\x20", -1, 1, FALSE },
   { "\x20\xed\xaf\xbf\xed\xbf\xbf\x20", -1, 1, FALSE },
+#if 0 /* We don't consider U+FFFE / U+FFFF and similar invalid. */
   { "\x20\xef\xbf\xbe\x20", -1, 1, FALSE },
   { "\x20\xef\xbf\xbf\x20", -1, 1, FALSE },
 #endif
@@ -657,6 +661,7 @@ test_buffer_utf8_validity (void)
   unsigned int i;
 
   b = hb_buffer_create ();
+  hb_buffer_set_replacement_codepoint (b, (hb_codepoint_t) -1);
 
   for (i = 0; i < G_N_ELEMENTS (utf8_validity_tests); i++)
   {
@@ -675,7 +680,7 @@ test_buffer_utf8_validity (void)
     else
       segment_bytes = test->max_len;
 
-    hb_buffer_reset (b);
+    hb_buffer_clear_contents (b);
     hb_buffer_add_utf8 (b, test->utf8, text_bytes,  0, segment_bytes);
 
     glyphs = hb_buffer_get_glyph_infos (b, &len);
@@ -704,6 +709,7 @@ static const utf16_conversion_test_t utf16_conversion_tests[] = {
   {{0x41, 0xD800, 0xDF02}, {-1}},
   {{0x41, 0x61, 0xD800, 0xDF02}, {0x61, -1}},
   {{0x41, 0xD800, 0x61, 0xDF02}, {-1, 0x61}},
+  {{0x41, 0xDF00, 0x61}, {-1}},
   {{0x41, 0x61}, {0}}
 };
 
@@ -714,6 +720,7 @@ test_buffer_utf16_conversion (void)
   unsigned int i;
 
   b = hb_buffer_create ();
+  hb_buffer_set_replacement_codepoint (b, (hb_codepoint_t) -1);
 
   for (i = 0; i < G_N_ELEMENTS (utf16_conversion_tests); i++)
   {
@@ -728,7 +735,7 @@ test_buffer_utf16_conversion (void)
     for (chars = 0; test->codepoints[chars]; chars++)
       ;
 
-    hb_buffer_reset (b);
+    hb_buffer_clear_contents (b);
     hb_buffer_add_utf16 (b, test->utf16, u_len,  1, u_len - 2);
 
     glyphs = hb_buffer_get_glyph_infos (b, &len);
@@ -739,6 +746,61 @@ test_buffer_utf16_conversion (void)
 
   hb_buffer_destroy (b);
 }
+
+
+typedef struct {
+  const uint32_t utf32[8];
+  const uint32_t codepoints[8];
+} utf32_conversion_test_t;
+
+/* note: we skip the first and last item from utf32 when adding to buffer */
+static const utf32_conversion_test_t utf32_conversion_tests[] = {
+  {{0x41, 0x004D, 0x0430, 0x4E8C, 0xD800, 0xDF02, 0x61} , {0x004D, 0x0430, 0x4E8C, -3, -3}},
+  {{0x41, 0x004D, 0x0430, 0x4E8C, 0x10302, 0x61} , {0x004D, 0x0430, 0x4E8C, 0x10302}},
+  {{0x41, 0xD800, 0xDF02, 0x61}, {-3, -3}},
+  {{0x41, 0xD800, 0xDF02}, {-3}},
+  {{0x41, 0x61, 0xD800, 0xDF02}, {0x61, -3}},
+  {{0x41, 0xD800, 0x61, 0xDF02}, {-3, 0x61}},
+  {{0x41, 0xDF00, 0x61}, {-3}},
+  {{0x41, 0x10FFFF, 0x61}, {0x10FFFF}},
+  {{0x41, 0x110000, 0x61}, {-3}},
+  {{0x41, 0x61}, {0}}
+};
+
+static void
+test_buffer_utf32_conversion (void)
+{
+  hb_buffer_t *b;
+  unsigned int i;
+
+  b = hb_buffer_create ();
+  hb_buffer_set_replacement_codepoint (b, (hb_codepoint_t) -3);
+
+  for (i = 0; i < G_N_ELEMENTS (utf32_conversion_tests); i++)
+  {
+    const utf32_conversion_test_t *test = &utf32_conversion_tests[i];
+    unsigned int u_len, chars, j, len;
+    hb_glyph_info_t *glyphs;
+
+    g_test_message ("UTF-32 test #%d", i);
+
+    for (u_len = 0; test->utf32[u_len]; u_len++)
+      ;
+    for (chars = 0; test->codepoints[chars]; chars++)
+      ;
+
+    hb_buffer_clear_contents (b);
+    hb_buffer_add_utf32 (b, test->utf32, u_len,  1, u_len - 2);
+
+    glyphs = hb_buffer_get_glyph_infos (b, &len);
+    g_assert_cmpint (len, ==, chars);
+    for (j = 0; j < chars; j++)
+      g_assert_cmphex (glyphs[j].codepoint, ==, test->codepoints[j]);
+  }
+
+  hb_buffer_destroy (b);
+}
+
 
 static void
 test_empty (hb_buffer_t *b)
@@ -806,6 +868,7 @@ main (int argc, char **argv)
   hb_test_add (test_buffer_utf8_conversion);
   hb_test_add (test_buffer_utf8_validity);
   hb_test_add (test_buffer_utf16_conversion);
+  hb_test_add (test_buffer_utf32_conversion);
   hb_test_add (test_buffer_empty);
 
   return hb_test_run();
