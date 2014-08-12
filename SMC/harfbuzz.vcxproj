@@ -69,6 +69,7 @@
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-icu.h" />
     <ClInclude Include="..\src\hb-ot-layout.h" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh" />
     <ClInclude Include="..\src\hb-ot-shape.h" />
     <ClInclude Include="..\src\hb-ot-tag.h" />
     <ClInclude Include="..\src\hb-ot.h" />
