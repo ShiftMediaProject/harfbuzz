@@ -24,9 +24,6 @@
  * Google Author(s): Behdad Esfahbod
  */
 
-#define _WIN32_WINNT 0x0600
-#define WIN32_LEAN_AND_MEAN
-
 #define HB_SHAPER uniscribe
 #include "hb-shaper-impl-private.hh"
 
@@ -313,6 +310,7 @@ _hb_generate_unique_face_name (wchar_t *face_name, unsigned int *plen)
   const char *enc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-";
   UUID id;
   UuidCreate ((UUID*) &id);
+  ASSERT_STATIC (2 + 3 * (16/2) < LF_FACESIZE);
   unsigned int name_str_len = 0;
   face_name[name_str_len++] = 'F';
   face_name[name_str_len++] = '_';
