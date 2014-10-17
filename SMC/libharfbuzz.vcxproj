@@ -163,14 +163,14 @@
     <None Include="..\src\hb-shaper-private.hh" />
     <None Include="..\src\hb-unicode-private.hh" />
     <None Include="..\src\hb-utf-private.hh" />
-    <None Include="harfbuzz.def" />
+    <None Include="libharfbuzz.def" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9DB795B7-E8BD-4846-82A5-C6D2577B1AAF}</ProjectGuid>
-    <RootNamespace>harfbuzz</RootNamespace>
+    <RootNamespace>libharfbuzz</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -547,7 +547,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -623,7 +623,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -699,7 +699,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -774,7 +774,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1221,7 +1221,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1309,7 +1309,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1397,7 +1397,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1484,7 +1484,7 @@ Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\bin\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
-      <ModuleDefinitionFile>.\harfbuzz.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\libharfbuzz.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalLibraryDirectories>$(OutDir)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>

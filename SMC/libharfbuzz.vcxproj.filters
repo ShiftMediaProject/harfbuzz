@@ -328,7 +328,7 @@
     <None Include="..\src\hb-ot-shape-complex-sea-machine.hh">
       <Filter>Header Files\src</Filter>
     </None>
-    <None Include="harfbuzz.def">
+    <None Include="libharfbuzz.def">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
