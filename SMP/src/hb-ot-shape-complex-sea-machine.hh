@@ -32,7 +32,7 @@
 #include "hb-private.hh"
 
 
-#line 33 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 33 "./src/hb-ot-shape-complex-sea-machine.hh"
 static const unsigned char _sea_syllable_machine_trans_keys[] = {
 	1u, 1u, 1u, 1u, 1u, 29u, 3u, 29u, 3u, 29u, 1u, 1u, 0
 };
@@ -113,7 +113,7 @@ find_syllables (hb_buffer_t *buffer)
   int cs;
   hb_glyph_info_t *info = buffer->info;
   
-#line 108 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 108 "./src/hb-ot-shape-complex-sea-machine.hh"
 	{
 	cs = sea_syllable_machine_start;
 	ts = 0;
@@ -130,7 +130,7 @@ find_syllables (hb_buffer_t *buffer)
   unsigned int last = 0;
   unsigned int syllable_serial = 1;
   
-#line 121 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 121 "./src/hb-ot-shape-complex-sea-machine.hh"
 	{
 	int _slen;
 	int _trans;
@@ -144,7 +144,7 @@ _resume:
 #line 1 "NONE"
 	{ts = p;}
 	break;
-#line 133 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 133 "./src/hb-ot-shape-complex-sea-machine.hh"
 	}
 
 	_keys = _sea_syllable_machine_trans_keys + (cs<<1);
@@ -190,7 +190,7 @@ _eof_trans:
 #line 62 "../src/hb-ot-shape-complex-sea-machine.rl"
 	{{p = ((te))-1;}{ found_syllable (broken_cluster); }}
 	break;
-#line 171 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 171 "./src/hb-ot-shape-complex-sea-machine.hh"
 	}
 
 _again:
@@ -199,7 +199,7 @@ _again:
 #line 1 "NONE"
 	{ts = 0;}
 	break;
-#line 178 ".\\src\\hb-ot-shape-complex-sea-machine.hh"
+#line 178 "./src/hb-ot-shape-complex-sea-machine.hh"
 	}
 
 	if ( ++p != pe )
