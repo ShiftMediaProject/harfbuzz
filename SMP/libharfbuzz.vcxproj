@@ -438,19 +438,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -512,19 +512,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -589,19 +589,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -666,19 +666,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -741,19 +741,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -817,19 +817,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -907,19 +907,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -997,19 +997,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1086,19 +1086,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1175,19 +1175,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1263,19 +1263,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1351,19 +1351,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1437,19 +1437,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1524,19 +1524,19 @@ cd ../
 cd $(ProjectDir)
 )
 if not exist .\src\hb-buffer-deserialize-json.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-json.hh ..\src\hb-buffer-deserialize-json.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-json.hh ../src/hb-buffer-deserialize-json.rl
 )
 if not exist .\src\hb-buffer-deserialize-text.hh (
-Ragel.exe -e -F1 -o .\src\hb-buffer-deserialize-text.hh ..\src\hb-buffer-deserialize-text.rl
+Ragel.exe -e -F1 -o ./src/hb-buffer-deserialize-text.hh ../src/hb-buffer-deserialize-text.rl
 )
 if not exist .\src\hb-ot-shape-complex-indic-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-indic-machine.hh ..\src\hb-ot-shape-complex-indic-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shape-complex-indic-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-myanmar-machine.hh ..\src\hb-ot-shape-complex-myanmar-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
 if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o .\src\hb-ot-shape-complex-sea-machine.hh ..\src\hb-ot-shape-complex-sea-machine.rl
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
