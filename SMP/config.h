@@ -1,3 +1,4 @@
+
 /* Define to 1 if you have the `atexit' function. */
 #define HAVE_ATEXIT 1
 
@@ -108,24 +109,6 @@
 
 /* Define to 1 if you have the <windows.h> header file. */
 #define HAVE_WINDOWS_H 1
-
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
-#define LT_OBJDIR ".libs/"
-
-/* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "http://bugs.freedesktop.org/enter_bug.cgi?product=harfbuzz"
-
-/* Define to the full name of this package. */
-#define PACKAGE_NAME "HarfBuzz"
-
-/* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "harfbuzz"
-
-/* Define to the home page for this package. */
-#define PACKAGE_URL "http://harfbuzz.org/"
-
-#include "version.h"
 
 /* Define to necessary symbol if this constant
  uses a non-standard name on
