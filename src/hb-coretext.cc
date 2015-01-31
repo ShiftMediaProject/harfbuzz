@@ -140,6 +140,7 @@ hb_coretext_face_get_cg_font (hb_face_t *face)
 
 struct hb_coretext_shaper_font_data_t {
   CTFontRef ct_font;
+  CGFloat x_mult, y_mult; /* From CT space to HB space. */
 };
 
 hb_coretext_shaper_font_data_t *
@@ -154,7 +155,17 @@ _hb_coretext_shaper_font_data_create (hb_font_t *font)
   hb_face_t *face = font->face;
   hb_coretext_shaper_face_data_t *face_data = HB_SHAPER_DATA_GET (face);
 
-  data->ct_font = CTFontCreateWithGraphicsFont (face_data, font->y_scale, NULL, NULL);
+  /* Choose a CoreText font size and calculate multipliers to convert to HarfBuzz space. */
+  CGFloat font_size = 36.; /* Default... */
+  /* No idea if the following is even a good idea. */
+  if (font->y_ppem)
+    font_size = font->y_ppem;
+
+  if (font_size < 0)
+    font_size = -font_size;
+  data->x_mult = (CGFloat) font->x_scale / font_size;
+  data->y_mult = (CGFloat) font->y_scale / font_size;
+  data->ct_font = CTFontCreateWithGraphicsFont (face_data, font_size, NULL, NULL);
   if (unlikely (!data->ct_font)) {
     DEBUG_MSG (CORETEXT, font, "Font CTFontCreateWithGraphicsFont() failed");
     free (data);
@@ -860,8 +871,14 @@ retry:
 	    goto resize_and_retry;
 	  hb_glyph_info_t *info = buffer->info + buffer->len;
 
-	  CGGlyph notdef = 0;
-	  double advance = CTFontGetAdvancesForGlyphs (font_data->ct_font, kCTFontHorizontalOrientation, &notdef, NULL, 1);
+	  hb_codepoint_t notdef = 0;
+	  hb_direction_t dir = buffer->props.direction;
+	  hb_position_t x_advance, y_advance, x_offset, y_offset;
+	  hb_font_get_glyph_advance_for_direction (font, notdef, dir, &x_advance, &y_advance);
+	  hb_font_get_glyph_origin_for_direction (font, notdef, dir, &x_offset, &y_offset);
+	  hb_position_t advance = x_advance + y_advance;
+	  x_offset = -x_offset;
+	  y_offset = -y_offset;
 
 	  unsigned int old_len = buffer->len;
 	  for (CFIndex j = range.location; j < range.location + range.length; j++)
@@ -880,8 +897,8 @@ retry:
 	      info->cluster = log_clusters[j];
 
 	      info->mask = advance;
-	      info->var1.u32 = 0;
-	      info->var2.u32 = 0;
+	      info->var1.u32 = x_offset;
+	      info->var2.u32 = y_offset;
 
 	      info++;
 	      buffer->len++;
@@ -951,14 +968,15 @@ retry:
 	double run_advance = CTRunGetTypographicBounds (run, range_all, NULL, NULL, NULL);
 	DEBUG_MSG (CORETEXT, run, "Run advance: %g", run_advance);
 	hb_glyph_info_t *info = run_info;
+	CGFloat x_mult = font_data->x_mult, y_mult = font_data->y_mult;
 	if (HB_DIRECTION_IS_HORIZONTAL (buffer->props.direction))
 	{
 	  for (unsigned int j = 0; j < num_glyphs; j++)
 	  {
 	    double advance = (j + 1 < num_glyphs ? positions[j + 1].x : positions[0].x + run_advance) - positions[j].x;
-	    info->mask = advance;
-	    info->var1.u32 = positions[0].x; /* Yes, zero. */
-	    info->var2.u32 = positions[j].y;
+	    info->mask = advance * x_mult;
+	    info->var1.u32 = positions[0].x * x_mult; /* Yes, zero. */
+	    info->var2.u32 = positions[j].y * y_mult;
 	    info++;
 	  }
 	}
@@ -968,9 +986,9 @@ retry:
 	  for (unsigned int j = 0; j < num_glyphs; j++)
 	  {
 	    double advance = (j + 1 < num_glyphs ? positions[j + 1].y : positions[0].y + run_advance) - positions[j].y;
-	    info->mask = advance;
-	    info->var1.u32 = positions[j].x;
-	    info->var2.u32 = positions[0].y; /* Yes, zero. */
+	    info->mask = advance * y_mult;
+	    info->var1.u32 = positions[j].x * x_mult;
+	    info->var2.u32 = positions[0].y * y_mult; /* Yes, zero. */
 	    info++;
 	  }
 	}
