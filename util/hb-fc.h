@@ -1,6 +1,5 @@
 /*
- * Copyright © 2009  Red Hat, Inc.
- * Copyright © 2012  Google, Inc.
+ * Copyright © 2014  Google, Inc.
  *
  *  This is part of HarfBuzz, a text shaping library.
  *
@@ -22,57 +21,26 @@
  * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
  * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
  *
- * Red Hat Author(s): Behdad Esfahbod
  * Google Author(s): Behdad Esfahbod
  */
 
-#ifndef HB_H_IN
-#error "Include <hb.h> instead."
-#endif
+#ifndef HB_FC_H
+#define HB_FC_H
 
-#ifndef HB_SHAPE_H
-#define HB_SHAPE_H
+#include "hb.h"
 
-#include "hb-common.h"
-#include "hb-buffer.h"
-#include "hb-font.h"
+#include <fontconfig/fontconfig.h>
 
 HB_BEGIN_DECLS
 
 
-typedef struct hb_feature_t {
-  hb_tag_t      tag;
-  uint32_t      value;
-  unsigned int  start;
-  unsigned int  end;
-} hb_feature_t;
+hb_font_t *
+hb_fc_font_create (FcPattern *font);
 
 hb_bool_t
-hb_feature_from_string (const char *str, int len,
-			hb_feature_t *feature);
-
-void
-hb_feature_to_string (hb_feature_t *feature,
-		      char *buf, unsigned int size);
-
-
-void
-hb_shape (hb_font_t           *font,
-	  hb_buffer_t         *buffer,
-	  const hb_feature_t  *features,
-	  unsigned int         num_features);
-
-hb_bool_t
-hb_shape_full (hb_font_t          *font,
-	       hb_buffer_t        *buffer,
-	       const hb_feature_t *features,
-	       unsigned int        num_features,
-	       const char * const *shaper_list);
-
-const char **
-hb_shape_list_shapers (void);
+hb_fc_can_render (hb_font_t *font, const char *text);
 
 
 HB_END_DECLS
 
-#endif /* HB_SHAPE_H */
+#endif /* HB_FC_H */

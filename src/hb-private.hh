@@ -121,16 +121,17 @@
 
 #  if defined(_WIN32_WCE)
      /* Some things not defined on Windows CE. */
+#    define strdup _strdup
 #    define getenv(Name) NULL
-#    define setlocale(Category, Locale) "C"
+#    if _WIN32_WCE < 0x800
+#      define setlocale(Category, Locale) "C"
 static int errno = 0; /* Use something better? */
+#    endif
 #  elif defined(WINAPI_FAMILY) && (WINAPI_FAMILY==WINAPI_FAMILY_PC_APP || WINAPI_FAMILY==WINAPI_FAMILY_PHONE_APP)
 #    define getenv(Name) NULL
 #  endif
-#  if (defined(__WIN32__) && !defined(__WINE__)) || defined(_MSC_VER)
+#  if defined(_MSC_VER) && _MSC_VER < 1900
 #    define snprintf _snprintf
-     /* Windows CE only has _strdup, while rest of Windows has both. */
-#    define strdup _strdup
 #  endif
 #endif
 
@@ -246,8 +247,8 @@ ASSERT_STATIC (sizeof (hb_var_int_t) == 4);
 
 /* Void! */
 struct _hb_void_t {};
-typedef const _hb_void_t &hb_void_t;
-#define HB_VOID (* (const _hb_void_t *) NULL)
+typedef const _hb_void_t *hb_void_t;
+#define HB_VOID ((const _hb_void_t *) NULL)
 
 /* Return the number of 1 bits in mask. */
 static inline HB_CONST_FUNC unsigned int
