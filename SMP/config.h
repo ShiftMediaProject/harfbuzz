@@ -1,3 +1,5 @@
+/* The normal alignment of `struct{char;}', in bytes. */
+#define ALIGNOF_STRUCT_CHAR__ 4
 
 /* Define to 1 if you have the `atexit' function. */
 #define HAVE_ATEXIT 1
@@ -14,11 +16,11 @@
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
 
+/* Have simple TrueType Layout backend */
+#define HAVE_FALLBACK 1
+
 /* Have FreeType 2 library */
 #define HAVE_FREETYPE 1
-
-/* Define to 1 if you have the `FT_Face_GetCharVariantIndex' function. */
-#define HAVE_FT_FACE_GETCHARVARIANTINDEX 1
 
 /* Define to 1 if you have the `getpagesize' function. */
 #define HAVE_GETPAGESIZE 1
