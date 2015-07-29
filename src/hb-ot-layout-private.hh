@@ -36,6 +36,15 @@
 #include "hb-set-private.hh"
 
 
+/* Private API corresponding to hb-ot-layout.h: */
+
+HB_INTERNAL hb_bool_t
+hb_ot_layout_table_find_feature (hb_face_t    *face,
+				 hb_tag_t      table_tag,
+				 hb_tag_t      feature_tag,
+				 unsigned int *feature_index);
+
+
 /*
  * GDEF
  */
@@ -225,10 +234,12 @@ _hb_glyph_info_get_modified_combining_class (const hb_glyph_info_t *info)
   return info->unicode_props1();
 }
 
+static inline bool _hb_glyph_info_ligated (const hb_glyph_info_t *info);
+
 static inline hb_bool_t
 _hb_glyph_info_is_default_ignorable (const hb_glyph_info_t *info)
 {
-  return !!(info->unicode_props0() & MASK0_IGNORABLE);
+  return (info->unicode_props0() & MASK0_IGNORABLE) && !_hb_glyph_info_ligated (info);
 }
 
 static inline hb_bool_t
