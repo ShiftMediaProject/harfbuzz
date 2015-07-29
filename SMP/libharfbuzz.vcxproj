@@ -69,7 +69,9 @@
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-icu.h" />
     <ClInclude Include="..\src\hb-ot-layout.h" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape.h" />
     <ClInclude Include="..\src\hb-ot-tag.h" />
     <ClInclude Include="..\src\hb-ot.h" />
@@ -82,6 +84,7 @@
     <ClInclude Include="..\src\hb-uniscribe.h" />
     <ClInclude Include="..\src\hb.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="src\hb-ot-shape-complex-use-machine.hh" />
     <ClInclude Include="src\hb-version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +105,10 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-indic-table.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-indic.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-myanmar.cc" />
-    <ClCompile Include="..\src\hb-ot-shape-complex-sea.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-thai.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-tibetan.cc" />
+    <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc" />
+    <ClCompile Include="..\src\hb-ot-shape-complex-use.cc" />
     <ClCompile Include="..\src\hb-ot-shape-fallback.cc" />
     <ClCompile Include="..\src\hb-ot-shape-normalize.cc" />
     <ClCompile Include="..\src\hb-ot-shape.cc" />
@@ -150,7 +154,6 @@
     <None Include="..\src\hb-ot-shape-complex-indic-private.hh" />
     <None Include="..\src\hb-ot-shape-complex-myanmar-machine.hh" />
     <None Include="..\src\hb-ot-shape-complex-private.hh" />
-    <None Include="..\src\hb-ot-shape-complex-sea-machine.hh" />
     <None Include="..\src\hb-ot-shape-fallback-private.hh" />
     <None Include="..\src\hb-ot-shape-normalize-private.hh" />
     <None Include="..\src\hb-ot-shape-private.hh" />
@@ -416,8 +419,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -448,8 +451,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -490,8 +493,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -522,8 +525,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -567,8 +570,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -599,8 +602,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -644,8 +647,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -676,8 +679,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -719,8 +722,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -751,8 +754,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -795,8 +798,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -827,8 +830,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -885,8 +888,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -917,8 +920,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -975,8 +978,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1007,8 +1010,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1064,8 +1067,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1096,8 +1099,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1153,8 +1156,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1185,8 +1188,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1241,8 +1244,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1273,8 +1276,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1329,8 +1332,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1361,8 +1364,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1415,8 +1418,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1447,8 +1450,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1502,8 +1505,8 @@ del ..\config.h
 if exist ..\src\hb-version.h (
 del ..\src\hb-version.h
 )
-if exist ..\src\hb-ot-shape-complex-sea-machine.hh (
-del ..\src\hb-ot-shape-complex-sea-machine.hh
+if exist ..\src\hb-ot-shape-complex-use-machine.hh (
+del ..\src\hb-ot-shape-complex-use-machine.hh
 )
 if exist ..\src\hb-ot-shape-complex-indic-machine.hh (
 del ..\src\hb-ot-shape-complex-indic-machine.hh
@@ -1534,8 +1537,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-indic-machine.hh ../src/hb-ot-shap
 if not exist .\src\hb-ot-shape-complex-myanmar-machine.hh (
 Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-myanmar-machine.hh ../src/hb-ot-shape-complex-myanmar-machine.rl
 )
-if not exist .\src\hb-ot-shape-complex-sea-machine.hh (
-Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-sea-machine.hh ../src/hb-ot-shape-complex-sea-machine.rl
+if not exist .\src\hb-ot-shape-complex-use-machine.hh (
+Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-complex-use-machine.rl
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>

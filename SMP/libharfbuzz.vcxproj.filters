@@ -96,6 +96,15 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-ot-shape-complex-use-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -141,9 +150,6 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-myanmar.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-sea.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-thai.cc">
@@ -195,6 +201,12 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-tibetan.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-use.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -320,9 +332,6 @@
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-ot-shape-complex-private.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="..\src\hb-ot-shape-complex-sea-machine.hh">
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="libharfbuzz.def">
