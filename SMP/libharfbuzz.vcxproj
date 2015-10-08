@@ -415,7 +415,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x86\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -490,7 +490,7 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
       <TargetMachine>MachineX64</TargetMachine>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -888,7 +888,7 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     <Lib>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x86\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -978,7 +978,7 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     <Lib>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x86\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -1068,7 +1068,7 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     <Lib>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
@@ -1158,7 +1158,7 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     <Lib>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\lib\x64\$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;Rpcrt4.lib;libfreetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
