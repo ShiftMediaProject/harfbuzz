@@ -154,6 +154,20 @@ ASSERT_STATIC (Type::min_size + 1 <= sizeof (_Null##Type))
 #define Null(Type) Null<Type>()
 
 
+/*
+ * Dispatch
+ */
+
+template <typename Context, typename Return, unsigned int MaxDebugDepth>
+struct hb_dispatch_context_t
+{
+  static const unsigned int max_debug_depth = MaxDebugDepth;
+  typedef Return return_t;
+  template <typename T, typename F>
+  inline bool may_dispatch (const T *obj, const F *format) { return true; }
+  static return_t no_dispatch_return_value (void) { return Context::default_return_value (); }
+};
+
 
 /*
  * Sanitize
@@ -174,17 +188,23 @@ ASSERT_STATIC (Type::min_size + 1 <= sizeof (_Null##Type))
 #define HB_SANITIZE_MAX_EDITS 100
 #endif
 
-struct hb_sanitize_context_t
+struct hb_sanitize_context_t :
+       hb_dispatch_context_t<hb_sanitize_context_t, bool, HB_DEBUG_SANITIZE>
 {
+  inline hb_sanitize_context_t (void) :
+	debug_depth (0),
+	start (NULL), end (NULL),
+	writable (false), edit_count (0),
+	blob (NULL) {}
+
   inline const char *get_name (void) { return "SANITIZE"; }
-  static const unsigned int max_debug_depth = HB_DEBUG_SANITIZE;
-  typedef bool return_t;
   template <typename T, typename F>
   inline bool may_dispatch (const T *obj, const F *format)
   { return format->sanitize (this); }
   template <typename T>
   inline return_t dispatch (const T &obj) { return obj.sanitize (this); }
   static return_t default_return_value (void) { return true; }
+  static return_t no_dispatch_return_value (void) { return false; }
   bool stop_sublookup_iteration (const return_t r) const { return !r; }
 
   inline void init (hb_blob_t *b)
@@ -295,7 +315,7 @@ template <typename Type>
 struct Sanitizer
 {
   static hb_blob_t *sanitize (hb_blob_t *blob) {
-    hb_sanitize_context_t c[1] = {{0, NULL, NULL, false, 0, NULL}};
+    hb_sanitize_context_t c[1];
     bool sane;
 
     /* TODO is_sane() stuff */
@@ -900,7 +920,7 @@ struct ArrayOf
   inline bool sanitize_shallow (hb_sanitize_context_t *c) const
   {
     TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) && c->check_array (this, Type::static_size, len));
+    return_trace (c->check_struct (this) && c->check_array (array, Type::static_size, len));
   }
 
   public:

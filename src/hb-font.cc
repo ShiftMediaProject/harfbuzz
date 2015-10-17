@@ -861,6 +861,8 @@ hb_font_create (hb_face_t *face)
   font->face = hb_face_reference (face);
   font->klass = hb_font_funcs_get_empty ();
 
+  font->x_scale = font->y_scale = hb_face_get_upem (face);
+
   return font;
 }
 
@@ -885,7 +887,6 @@ hb_font_create_sub_font (hb_font_t *parent)
   if (unlikely (hb_object_is_inert (font)))
     return font;
 
-  hb_font_make_immutable (parent);
   font->parent = hb_font_reference (parent);
 
   font->x_scale = parent->x_scale;
@@ -1035,6 +1036,9 @@ hb_font_make_immutable (hb_font_t *font)
   if (unlikely (hb_object_is_inert (font)))
     return;
 
+  if (font->parent)
+    hb_font_make_immutable (font->parent);
+
   font->immutable = true;
 }
 
@@ -1052,6 +1056,32 @@ hb_bool_t
 hb_font_is_immutable (hb_font_t *font)
 {
   return font->immutable;
+}
+
+/**
+ * hb_font_set_parent:
+ * @font: a font.
+ * @parent: new parent.
+ *
+ * Sets parent font of @font.
+ *
+ * Since: 1.0.5
+ **/
+void
+hb_font_set_parent (hb_font_t *font,
+		    hb_font_t *parent)
+{
+  if (font->immutable)
+    return;
+
+  if (!parent)
+    parent = hb_font_get_empty ();
+
+  hb_font_t *old = font->parent;
+
+  font->parent = hb_font_reference (parent);
+
+  hb_font_destroy (old);
 }
 
 /**
