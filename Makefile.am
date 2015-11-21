@@ -11,6 +11,7 @@ EXTRA_DIST = \
 	harfbuzz.doap \
 	Android.mk \
 	README.python \
+	BUILD.md \
 	$(NULL)
 
 MAINTAINERCLEANFILES = \
