@@ -130,6 +130,8 @@ hb_ot_layout_has_glyph_classes (hb_face_t *face)
 }
 
 /**
+ * hb_ot_layout_get_glyph_class:
+ *
  * Since: 0.9.7
  **/
 hb_ot_layout_glyph_class_t
@@ -140,6 +142,8 @@ hb_ot_layout_get_glyph_class (hb_face_t      *face,
 }
 
 /**
+ * hb_ot_layout_get_glyphs_in_class:
+ *
  * Since: 0.9.7
  **/
 void
@@ -365,6 +369,8 @@ hb_ot_layout_language_get_required_feature_index (hb_face_t    *face,
 }
 
 /**
+ * hb_ot_layout_language_get_required_feature:
+ *
  * Since: 0.9.30
  **/
 hb_bool_t
@@ -742,7 +748,7 @@ hb_ot_layout_lookup_would_substitute_fast (hb_face_t            *face,
 					   hb_bool_t             zero_context)
 {
   if (unlikely (lookup_index >= hb_ot_layout_from_face (face)->gsub_lookup_count)) return false;
-  OT::hb_would_apply_context_t c (face, glyphs, glyphs_length, zero_context);
+  OT::hb_would_apply_context_t c (face, glyphs, glyphs_length, (bool) zero_context);
 
   const OT::SubstLookup& l = hb_ot_layout_from_face (face)->gsub->get_lookup (lookup_index);
 
