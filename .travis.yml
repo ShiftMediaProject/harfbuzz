@@ -1,8 +1,9 @@
 # Build Configuration for Travis
-sudo: false # Use Travis docker infrastructure
+sudo: required # For Trusty beta
 os:
   - linux
   - osx
+dist: trusty
 language: cpp
 compiler:
   - clang
@@ -11,7 +12,7 @@ env:
   global:
     - CPPFLAGS=""
     - CFLAGS="-Werror --coverage"
-    - CXXFLAGS="-Werror --coverage"
+    - CXXFLAGS="-Werror -Wno-deprecated-register --coverage" # glib uses register and clang raises a warning
     - LDFLAGS="--coverage"
 install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then pip install --user nose; fi
@@ -23,11 +24,14 @@ install:
 script:
   - NOCONFIGURE=1 ./autogen.sh
   - export CONFIGURE_OPTS="--with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2"
+  - if [ "$TRAVIS_OS_NAME" == "linux" -a "$CC" == "gcc" ]; then export CONFIGURE_OPTS="$CONFIGURE_OPTS  --enable-gtk-doc"; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export CONFIGURE_OPTS="$CONFIGURE_OPTS --with-coretext"; fi
   - ./configure $CONFIGURE_OPTS
   - make
   - make check
-  - if [ "$TRAVIS_OS_NAME" == "linux" -a "$CC" == "gcc" ]; then rm -f src/.libs/NONE.gcov; touch src/NONE; coveralls; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" -a "$CC" == "gcc" -a "$TRAVIS_SLUG" == "behdad/harfbuzz" ]; then rm -f src/.libs/NONE.gcov; touch src/NONE; coveralls -e docs; fi
+after_success:
+  - if [ "$TRAVIS_OS_NAME" == "linux" -a "$CC" == "gcc" -a "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then bash .ci/deploy-docs.sh; fi
 notifications:
   irc: "irc.freenode.org#harfbuzz"
   email: harfbuzz@lists.freedesktop.org
