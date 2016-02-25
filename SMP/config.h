@@ -1,5 +1,5 @@
 /* The normal alignment of `struct{char;}', in bytes. */
-#define ALIGNOF_STRUCT_CHAR__ 4
+#define ALIGNOF_STRUCT_CHAR__ 1
 
 /* Define to 1 if you have the `atexit' function. */
 #define HAVE_ATEXIT 1
@@ -15,6 +15,9 @@
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
+
+/* Have DirectWrite Library */
+#define HAVE_DIRECTWRITE 1
 
 /* Have simple TrueType Layout backend */
 #define HAVE_FALLBACK 1
@@ -107,7 +110,7 @@
 #define HAVE_UNISTD_H 1
 
 /* Define to 1 if you have the <usp10.h> header file. */
-/* #undef HAVE_USP10_H */
+#define HAVE_USP10_H 1
 
 /* Define to 1 if you have the <windows.h> header file. */
 #define HAVE_WINDOWS_H 1
