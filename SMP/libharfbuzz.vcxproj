@@ -72,6 +72,7 @@
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
     <ClInclude Include="..\src\hb-ot-layout.h" />
     <ClInclude Include="..\src\hb-ot-os2-table.hh" />
+    <ClInclude Include="..\src\hb-ot-post-table.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh" />
