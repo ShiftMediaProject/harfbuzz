@@ -7,9 +7,6 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{9dcb9da6-1c85-40b9-b875-9bdf9575be2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{e05e69ea-955c-4c2c-83f8-ff30c0007387}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\src">
       <UniqueIdentifier>{637fcf9f-ecc3-4eb2-b67f-0fe03a49956d}</UniqueIdentifier>
     </Filter>
@@ -117,6 +114,12 @@
     <ClInclude Include="..\src\hb-ot-post-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-layout-math-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-math.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -197,9 +200,6 @@
     <ClCompile Include="..\src\hb-unicode.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-uniscribe.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-warning.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -219,9 +219,6 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-directwrite.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -348,9 +345,6 @@
     </None>
     <None Include="..\src\hb-ot-shape-complex-private.hh">
       <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="libharfbuzz.def">
-      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
