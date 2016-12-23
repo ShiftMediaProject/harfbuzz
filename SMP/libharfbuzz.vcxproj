@@ -69,6 +69,7 @@
     <ClInclude Include="..\src\hb-ft.h" />
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-icu.h" />
+    <ClInclude Include="..\src\hb-ot-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
     <ClInclude Include="..\src\hb-ot-layout-math-table.hh" />
     <ClInclude Include="..\src\hb-ot-layout.h" />

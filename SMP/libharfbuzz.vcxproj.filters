@@ -120,6 +120,9 @@
     <ClInclude Include="..\src\hb-ot-math.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-cbdt-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
