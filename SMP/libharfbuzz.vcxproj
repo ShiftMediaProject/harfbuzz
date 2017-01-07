@@ -105,6 +105,7 @@
     <ClCompile Include="..\src\hb-ft.cc" />
     <ClCompile Include="..\src\hb-ot-layout.cc" />
     <ClCompile Include="..\src\hb-ot-map.cc" />
+    <ClCompile Include="..\src\hb-ot-math.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-arabic.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-default.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc" />

@@ -224,6 +224,9 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hb-ot-math.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\hb-ot-shape-fallback-private.hh">
