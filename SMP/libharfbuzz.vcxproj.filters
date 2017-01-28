@@ -114,13 +114,25 @@
     <ClInclude Include="..\src\hb-ot-post-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-layout-math-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-math.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-cbdt-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-math-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-avar-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-fvar-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-hvar-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -225,6 +237,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-math.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-var.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

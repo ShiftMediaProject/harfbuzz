@@ -71,8 +71,8 @@
     <ClInclude Include="..\src\hb-icu.h" />
     <ClInclude Include="..\src\hb-ot-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
-    <ClInclude Include="..\src\hb-ot-layout-math-table.hh" />
     <ClInclude Include="..\src\hb-ot-layout.h" />
+    <ClInclude Include="..\src\hb-ot-math-table.hh" />
     <ClInclude Include="..\src\hb-ot-math.h" />
     <ClInclude Include="..\src\hb-ot-os2-table.hh" />
     <ClInclude Include="..\src\hb-ot-post-table.hh" />
@@ -81,6 +81,10 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape.h" />
     <ClInclude Include="..\src\hb-ot-tag.h" />
+    <ClInclude Include="..\src\hb-ot-var-avar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-var-fvar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-var-hvar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-var.h" />
     <ClInclude Include="..\src\hb-ot.h" />
     <ClInclude Include="..\src\hb-set.h" />
     <ClInclude Include="..\src\hb-shape-plan.h" />
@@ -121,6 +125,7 @@
     <ClCompile Include="..\src\hb-ot-shape-normalize.cc" />
     <ClCompile Include="..\src\hb-ot-shape.cc" />
     <ClCompile Include="..\src\hb-ot-tag.cc" />
+    <ClCompile Include="..\src\hb-ot-var.cc" />
     <ClCompile Include="..\src\hb-set.cc" />
     <ClCompile Include="..\src\hb-shape-plan.cc" />
     <ClCompile Include="..\src\hb-shape.cc" />
