@@ -70,14 +70,18 @@ openFont(const char* fontFile)
   if ((ft_error = FT_Set_Char_Size (ft_face, 2000, 1000, 0, 0)))
     abort();
   hb_font = hb_ft_font_create (ft_face, NULL);
-  hb_face = hb_ft_face_create_cached(ft_face);
+  hb_face = hb_face_reference (hb_font_get_face (hb_font));
 }
 
 static inline void
 closeFont (void)
 {
+  hb_face_destroy (hb_face);
   hb_font_destroy (hb_font);
   FT_Done_Face (ft_face);
+  hb_face = NULL;
+  hb_font = NULL;
+  ft_face = NULL;
 }
 
 static void
@@ -92,6 +96,14 @@ test_has_data (void)
   openFont("fonts/MathTestFontEmpty.otf");
   g_assert(hb_ot_math_has_data (hb_face)); // MATH table available
   closeFont();
+
+  hb_face = hb_face_get_empty ();
+  hb_font = hb_font_create (hb_face);
+  g_assert(!hb_ot_math_has_data (hb_face)); // MATH table not available
+
+  hb_font = hb_font_get_empty ();
+  hb_face = hb_font_get_face (hb_font);
+  g_assert(!hb_ot_math_has_data (hb_face)); // MATH table not available
 
   cleanupFreeType();
 }
@@ -400,6 +412,11 @@ static void
 test_get_glyph_variants (void)
 {
   hb_codepoint_t glyph;
+  hb_ot_math_glyph_variant_t variants[20];
+  unsigned variantsSize = sizeof (variants) / sizeof (variants[0]);
+  unsigned int count;
+  unsigned int offset = 0;
+
   initFreeType();
 
   openFont("fonts/MathTestFontEmpty.otf");
@@ -463,10 +480,6 @@ test_get_glyph_variants (void)
                                                  NULL), ==, 0);
 
   g_assert(hb_font_get_glyph_from_name (hb_font, "arrowleft", -1, &glyph));
-  hb_ot_math_glyph_variant_t variants[20];
-  unsigned variantsSize = sizeof (variants) / sizeof (variants[0]);
-  unsigned int count;
-  unsigned int offset = 0;
   do {
     count = variantsSize;
     hb_ot_math_get_glyph_variants (hb_font,
@@ -523,6 +536,11 @@ static void
 test_get_glyph_assembly (void)
 {
   hb_codepoint_t glyph;
+  hb_ot_math_glyph_part_t parts[20];
+  unsigned partsSize = sizeof (parts) / sizeof (parts[0]);
+  unsigned int count;
+  unsigned int offset = 0;
+
   initFreeType();
 
   openFont("fonts/MathTestFontEmpty.otf");
@@ -590,10 +608,6 @@ test_get_glyph_assembly (void)
                                                  NULL), ==, 0);
 
   g_assert(hb_font_get_glyph_from_name (hb_font, "arrowright", -1, &glyph));
-  hb_ot_math_glyph_part_t parts[20];
-  unsigned partsSize = sizeof (parts) / sizeof (parts[0]);
-  unsigned int count;
-  unsigned int offset = 0;
   do {
     count = partsSize;
     hb_ot_math_get_glyph_assembly (hb_font,
