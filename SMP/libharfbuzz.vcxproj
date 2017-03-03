@@ -84,6 +84,7 @@
     <ClInclude Include="..\src\hb-ot-var-avar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-fvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-hvar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-var-mvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var.h" />
     <ClInclude Include="..\src\hb-ot.h" />
     <ClInclude Include="..\src\hb-set.h" />
