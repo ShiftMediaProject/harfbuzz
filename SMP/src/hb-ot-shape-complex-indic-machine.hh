@@ -32,7 +32,7 @@
 #include "hb-private.hh"
 
 
-#line 33 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 36 "./src/hb-ot-shape-complex-indic-machine.hh"
 static const unsigned char _indic_syllable_machine_trans_keys[] = {
 	8u, 8u, 1u, 16u, 8u, 13u, 5u, 8u, 5u, 7u, 7u, 7u, 5u, 8u, 5u, 7u, 
 	7u, 7u, 5u, 8u, 5u, 7u, 7u, 7u, 5u, 8u, 5u, 7u, 7u, 7u, 4u, 8u, 
@@ -1378,7 +1378,7 @@ find_syllables (hb_buffer_t *buffer)
   int cs;
   hb_glyph_info_t *info = buffer->info;
   
-#line 1373 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 1382 "./src/hb-ot-shape-complex-indic-machine.hh"
 	{
 	cs = indic_syllable_machine_start;
 	ts = 0;
@@ -1395,7 +1395,7 @@ find_syllables (hb_buffer_t *buffer)
   unsigned int last = 0;
   unsigned int syllable_serial = 1;
   
-#line 1386 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 1399 "./src/hb-ot-shape-complex-indic-machine.hh"
 	{
 	int _slen;
 	int _trans;
@@ -1409,7 +1409,7 @@ _resume:
 #line 1 "NONE"
 	{ts = p;}
 	break;
-#line 1398 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 1413 "./src/hb-ot-shape-complex-indic-machine.hh"
 	}
 
 	_keys = _indic_syllable_machine_trans_keys + (cs<<1);
@@ -1532,7 +1532,7 @@ _eof_trans:
 #line 92 "../src/hb-ot-shape-complex-indic-machine.rl"
 	{act = 6;}
 	break;
-#line 1495 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 1536 "./src/hb-ot-shape-complex-indic-machine.hh"
 	}
 
 _again:
@@ -1541,7 +1541,7 @@ _again:
 #line 1 "NONE"
 	{ts = 0;}
 	break;
-#line 1502 "./src/hb-ot-shape-complex-indic-machine.hh"
+#line 1545 "./src/hb-ot-shape-complex-indic-machine.hh"
 	}
 
 	if ( ++p != pe )

@@ -34,7 +34,7 @@
 #include "hb-private.hh"
 
 
-#line 35 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 38 "./src/hb-ot-shape-complex-use-machine.hh"
 static const unsigned char _use_syllable_machine_trans_keys[] = {
 	1u, 1u, 0u, 39u, 21u, 21u, 8u, 39u, 8u, 39u, 1u, 1u, 8u, 39u, 8u, 39u, 
 	8u, 39u, 8u, 26u, 8u, 26u, 8u, 26u, 8u, 39u, 8u, 39u, 8u, 39u, 8u, 39u, 
@@ -311,7 +311,7 @@ find_syllables (hb_buffer_t *buffer)
   int cs;
   hb_glyph_info_t *info = buffer->info;
   
-#line 306 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 315 "./src/hb-ot-shape-complex-use-machine.hh"
 	{
 	cs = use_syllable_machine_start;
 	ts = 0;
@@ -328,7 +328,7 @@ find_syllables (hb_buffer_t *buffer)
   unsigned int last = 0;
   unsigned int syllable_serial = 1;
   
-#line 319 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 332 "./src/hb-ot-shape-complex-use-machine.hh"
 	{
 	int _slen;
 	int _trans;
@@ -342,7 +342,7 @@ _resume:
 #line 1 "NONE"
 	{ts = p;}
 	break;
-#line 331 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 346 "./src/hb-ot-shape-complex-use-machine.hh"
 	}
 
 	_keys = _use_syllable_machine_trans_keys + (cs<<1);
@@ -416,7 +416,7 @@ _eof_trans:
 #line 133 "../src/hb-ot-shape-complex-use-machine.rl"
 	{{p = ((te))-1;}{ found_syllable (broken_cluster); }}
 	break;
-#line 390 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 420 "./src/hb-ot-shape-complex-use-machine.hh"
 	}
 
 _again:
@@ -425,7 +425,7 @@ _again:
 #line 1 "NONE"
 	{ts = 0;}
 	break;
-#line 397 "./src/hb-ot-shape-complex-use-machine.hh"
+#line 429 "./src/hb-ot-shape-complex-use-machine.hh"
 	}
 
 	if ( ++p != pe )
