@@ -28,7 +28,7 @@
 /* #undef HAVE_FONTCONFIG */
 
 /* Have FreeType 2 library */
-/* #undef HAVE_FREETYPE */
+#define HAVE_FREETYPE 1
 
 /* Define to 1 if you have the `getpagesize' function. */
 /* #undef HAVE_GETPAGESIZE */
@@ -139,16 +139,16 @@
 #define PACKAGE_NAME "harfbuzz"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "harfbuzz 1.4.5"
+#define PACKAGE_STRING "harfbuzz 1.4.6"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "libharfbuzz_1.4.5"
+#define PACKAGE_TARNAME "libharfbuzz_1.4.6"
 
 /* Define to the home page for this package. */
 #define PACKAGE_URL "https://github.com/ShiftMediaProject/harfbuzz/releases"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.4.5"
+#define PACKAGE_VERSION "1.4.6"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
