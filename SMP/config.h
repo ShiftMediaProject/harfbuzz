@@ -139,16 +139,16 @@
 #define PACKAGE_NAME "harfbuzz"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "harfbuzz 1.4.6"
+#define PACKAGE_STRING "harfbuzz 1.4.7"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "libharfbuzz_1.4.6"
+#define PACKAGE_TARNAME "libharfbuzz_1.4.7"
 
 /* Define to the home page for this package. */
 #define PACKAGE_URL "https://github.com/ShiftMediaProject/harfbuzz/releases"
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.4.6"
+#define PACKAGE_VERSION "1.4.7"
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */
