@@ -36,6 +36,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
 #include <math.h>
 #include <locale.h>
 #include <errno.h>
@@ -187,6 +188,7 @@ struct shape_options_t : option_group_t
     utf8_clusters = false;
     cluster_level = HB_BUFFER_CLUSTER_LEVEL_DEFAULT;
     normalize_glyphs = false;
+    verify = false;
     num_iterations = 1;
 
     add_options (parser);
@@ -213,6 +215,15 @@ struct shape_options_t : option_group_t
 			 (preserve_default_ignorables ? HB_BUFFER_FLAG_PRESERVE_DEFAULT_IGNORABLES : 0)));
     hb_buffer_set_cluster_level (buffer, cluster_level);
     hb_buffer_guess_segment_properties (buffer);
+  }
+
+  static void copy_buffer_properties (hb_buffer_t *dst, hb_buffer_t *src)
+  {
+    hb_segment_properties_t props;
+    hb_buffer_get_segment_properties (src, &props);
+    hb_buffer_set_segment_properties (dst, &props);
+    hb_buffer_set_flags (dst, hb_buffer_get_flags (src));
+    hb_buffer_set_cluster_level (dst, hb_buffer_get_cluster_level (src));
   }
 
   void populate_buffer (hb_buffer_t *buffer, const char *text, int text_len,
@@ -243,12 +254,179 @@ struct shape_options_t : option_group_t
     setup_buffer (buffer);
   }
 
-  hb_bool_t shape (hb_font_t *font, hb_buffer_t *buffer)
+  hb_bool_t shape (hb_font_t *font, hb_buffer_t *buffer, const char **error=NULL)
   {
-    hb_bool_t res = hb_shape_full (font, buffer, features, num_features, shapers);
+    hb_buffer_t *text_buffer = NULL;
+    if (verify)
+    {
+      text_buffer = hb_buffer_create ();
+      hb_buffer_append (text_buffer, buffer, 0, -1);
+    }
+
+    if (!hb_shape_full (font, buffer, features, num_features, shapers))
+    {
+      if (error)
+        *error = "all shapers failed.";
+      return false;
+    }
+
     if (normalize_glyphs)
       hb_buffer_normalize_glyphs (buffer);
-    return res;
+
+    if (verify && !verify_buffer (buffer, text_buffer, font, error))
+      return false;
+
+    if (text_buffer)
+      hb_buffer_destroy (text_buffer);
+
+    return true;
+  }
+
+  bool verify_buffer (hb_buffer_t  *buffer,
+		      hb_buffer_t  *text_buffer,
+		      hb_font_t    *font,
+		      const char  **error=NULL)
+  {
+    if (!verify_buffer_monotone (buffer, error))
+      return false;
+    if (!verify_buffer_safe_to_break (buffer, text_buffer, font, error))
+      return false;
+    return true;
+  }
+
+  bool verify_buffer_monotone (hb_buffer_t *buffer, const char **error=NULL)
+  {
+    /* Check that clusters are monotone. */
+    if (cluster_level == HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES ||
+	cluster_level == HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS)
+    {
+      bool is_forward = HB_DIRECTION_IS_FORWARD (hb_buffer_get_direction (buffer));
+
+      unsigned int num_glyphs;
+      hb_glyph_info_t *info = hb_buffer_get_glyph_infos (buffer, &num_glyphs);
+
+      for (unsigned int i = 1; i < num_glyphs; i++)
+	if (info[i-1].cluster != info[i].cluster &&
+	    (info[i-1].cluster < info[i].cluster) != is_forward)
+	{
+	  if (error)
+	    *error = "clusters are not monotone.";
+	  return false;
+	}
+    }
+
+    return true;
+  }
+
+  bool verify_buffer_safe_to_break (hb_buffer_t  *buffer,
+				    hb_buffer_t  *text_buffer,
+				    hb_font_t    *font,
+				    const char  **error=NULL)
+  {
+    if (cluster_level != HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES &&
+	cluster_level != HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS)
+    {
+      /* Cannot perform this check without monotone clusters.
+       * Then again, unsafe-to-break flag is much harder to use without
+       * monotone clusters. */
+      return true;
+    }
+
+    /* Check that breaking up shaping at safe-to-break is indeed safe. */
+
+    hb_buffer_t *fragment = hb_buffer_create ();
+    hb_buffer_t *reconstruction = hb_buffer_create ();
+    copy_buffer_properties (reconstruction, buffer);
+
+    unsigned int num_glyphs;
+    hb_glyph_info_t *info = hb_buffer_get_glyph_infos (buffer, &num_glyphs);
+
+    unsigned int num_chars;
+    hb_glyph_info_t *text = hb_buffer_get_glyph_infos (text_buffer, &num_chars);
+
+    /* Chop text and shape fragments. */
+    bool forward = HB_DIRECTION_IS_FORWARD (hb_buffer_get_direction (buffer));
+    unsigned int start = 0;
+    unsigned int text_start = forward ? 0 : num_chars;
+    unsigned int text_end = text_start;
+    for (unsigned int end = 1; end < num_glyphs + 1; end++)
+    {
+      if (end < num_glyphs &&
+	  (info[end].cluster == info[end-1].cluster ||
+	   info[end-(forward?0:1)].mask & HB_GLYPH_FLAG_UNSAFE_TO_BREAK))
+	  continue;
+
+      /* Shape segment corresponding to glyphs start..end. */
+      if (end == num_glyphs)
+      {
+        if (forward)
+	  text_end = num_chars;
+	else
+	  text_start = 0;
+      }
+      else
+      {
+	unsigned int cluster = info[end].cluster;
+	if (forward)
+	  while (text_end < num_chars && text[text_end].cluster != cluster)
+	    text_end++;
+	else
+	  while (text_start && text[text_start - 1].cluster != cluster)
+	    text_start--;
+      }
+      assert (text_start < text_end);
+
+      if (0)
+	printf("start %d end %d text start %d end %d\n", start, end, text_start, text_end);
+
+      hb_buffer_clear_contents (fragment);
+      copy_buffer_properties (fragment, buffer);
+
+      /* TODO: Add pre/post context text. */
+      hb_buffer_flags_t flags = hb_buffer_get_flags (fragment);
+      if (0 < text_start)
+        flags = (hb_buffer_flags_t) (flags & ~HB_BUFFER_FLAG_BOT);
+      if (text_end < num_chars)
+        flags = (hb_buffer_flags_t) (flags & ~HB_BUFFER_FLAG_EOT);
+      hb_buffer_set_flags (fragment, flags);
+
+      hb_buffer_append (fragment, text_buffer, text_start, text_end);
+      if (!hb_shape_full (font, fragment, features, num_features, shapers))
+      {
+	if (error)
+	  *error = "all shapers failed while shaping fragment.";
+	hb_buffer_destroy (reconstruction);
+	hb_buffer_destroy (fragment);
+	return false;
+      }
+      hb_buffer_append (reconstruction, fragment, 0, -1);
+
+      start = end;
+      if (forward)
+	text_start = text_end;
+      else
+	text_end = text_start;
+    }
+
+    bool ret = true;
+    hb_buffer_diff_flags_t diff = hb_buffer_diff (buffer, reconstruction, 0, 0);
+    if (diff)
+    {
+      if (error)
+	*error = "Safe-to-break test failed.";
+      ret = false;
+
+      if (0)
+      {
+	hb_buffer_set_length (buffer, 0);
+	hb_buffer_append (buffer, reconstruction, 0, -1);
+      }
+    }
+
+    hb_buffer_destroy (reconstruction);
+    hb_buffer_destroy (fragment);
+
+    return ret;
   }
 
   void shape_closure (const char *text, int text_len,
@@ -277,6 +455,7 @@ struct shape_options_t : option_group_t
   hb_bool_t utf8_clusters;
   hb_buffer_cluster_level_t cluster_level;
   hb_bool_t normalize_glyphs;
+  hb_bool_t verify;
   unsigned int num_iterations;
 };
 
@@ -437,6 +616,7 @@ struct format_options_t : option_group_t
     show_unicode = false;
     show_line_num = false;
     show_extents = false;
+    show_flags = false;
     trace = false;
 
     add_options (parser);
@@ -460,6 +640,7 @@ struct format_options_t : option_group_t
 				 hb_font_t    *font,
 				 GString      *gs);
   void serialize_message (unsigned int  line_no,
+			  const char   *type,
 			  const char   *msg,
 			  GString      *gs);
   void serialize_buffer_of_glyphs (hb_buffer_t  *buffer,
@@ -479,6 +660,7 @@ struct format_options_t : option_group_t
   hb_bool_t show_unicode;
   hb_bool_t show_line_num;
   hb_bool_t show_extents;
+  hb_bool_t show_flags;
   hb_bool_t trace;
 };
 
