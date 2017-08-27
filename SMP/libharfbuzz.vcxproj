@@ -454,10 +454,10 @@
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -483,8 +483,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -509,8 +509,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -540,10 +540,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -569,8 +569,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -595,8 +595,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -628,10 +628,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>5.1</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -657,8 +657,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -683,8 +683,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -716,10 +716,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>5.1</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -745,8 +745,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -771,8 +771,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -803,10 +803,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>6.0</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -832,8 +832,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -858,8 +858,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -890,10 +890,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>6.0</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -919,8 +919,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -945,8 +945,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -987,10 +987,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1016,8 +1016,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1042,8 +1042,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1084,10 +1084,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1113,8 +1113,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1139,8 +1139,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1181,10 +1181,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1210,8 +1210,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1236,8 +1236,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1278,10 +1278,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <AdditionalOptions>/IGNORE:4006,4221 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1307,8 +1307,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1333,8 +1333,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1374,10 +1374,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>5.1</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1403,8 +1403,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1429,8 +1429,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1470,10 +1470,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>5.1</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1499,8 +1499,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1525,8 +1525,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1565,10 +1565,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>6.0</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1594,8 +1594,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1620,8 +1620,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
@@ -1660,10 +1660,10 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <MinimumRequiredVersion>6.0</MinimumRequiredVersion>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include
-mkdir $(OutDir)\include\harfbuzz
-copy ..\src\*.h $(OutDir)\include\harfbuzz
-copy .\src\hb-version.h $(OutDir)\include\harfbuzz
+      <Command>mkdir "$(OutDir)"\include
+mkdir "$(OutDir)"\include\harfbuzz
+copy ..\src\*.h "$(OutDir)"\include\harfbuzz
+copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -1689,8 +1689,8 @@ del ..\src\hb-buffer-deserialize-json.hh
 if exist ..\src\hb-buffer-deserialize-text.hh (
 del ..\src\hb-buffer-deserialize-text.hh
 )
-if exist $(OutDir)\include\harfbuzz (
-rd /s /q $(OutDir)\include\harfbuzz
+if exist "$(OutDir)"\include\harfbuzz (
+rd /s /q "$(OutDir)"\include\harfbuzz
 cd ../
 cd $(ProjectDir)
 )
@@ -1715,8 +1715,8 @@ Ragel.exe -e -F1 -o ./src/hb-ot-shape-complex-use-machine.hh ../src/hb-ot-shape-
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>force_clean</Outputs>
-      <Command>if exist $(OutDir)\include\harfbuzz (
-rmdir /s /q $(OutDir)\include\harfbuzz
+      <Command>if exist "$(OutDir)"\include\harfbuzz (
+rmdir /s /q "$(OutDir)"\include\harfbuzz
 )
 if exist $(OutDir)\licenses\harfbuzz.txt (
 del /f /q $(OutDir)\licenses\harfbuzz.txt
