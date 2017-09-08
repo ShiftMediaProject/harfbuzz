@@ -4,8 +4,8 @@ test "x$srcdir" = x && srcdir=.
 test "x$builddir" = x && builddir=.
 test "x$top_builddir" = x && top_builddir=../..
 
-#hb_shape="$top_builddir/util/hb-shape$EXEEXT --verify"
-hb_shape="$top_builddir/util/hb-shape$EXEEXT"
+hb_shape="$top_builddir/util/hb-shape$EXEEXT --verify"
+#hb_shape="$top_builddir/util/hb-shape$EXEEXT"
 
 fails=0
 
@@ -23,15 +23,15 @@ for f in "$@"; do
 	$reference || echo "Running tests in $f"
 	while IFS=: read fontfile options unicodes glyphs_expected; do
 		if echo "$fontfile" | grep -q '^#'; then
-			$reference || echo "Skipping $fontfile:$unicodes"
+			$reference || echo "# hb-shape $fontfile --unicodes $unicodes"
 			continue
 		fi
-		$reference || echo "Testing $fontfile:$unicodes"
-		glyphs=`$srcdir/hb-unicode-encode "$unicodes" | $hb_shape $options "$srcdir/$fontfile"`
+		$reference || echo "hb-shape $fontfile $options --unicodes $unicodes"
+		glyphs=`$hb_shape "$srcdir/$fontfile" $options --unicodes "$unicodes"`
 		if test $? != 0; then
 			echo "hb-shape failed." >&2
 			fails=$((fails+1))
-			continue
+			#continue
 		fi
 		if $reference; then
 			echo "$fontfile:$options:$unicodes:$glyphs"

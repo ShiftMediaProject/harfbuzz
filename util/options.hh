@@ -366,13 +366,18 @@ struct shape_options_t : option_group_t
       }
       else
       {
-	unsigned int cluster = info[end].cluster;
 	if (forward)
-	  while (text_end < num_chars && text[text_end].cluster != cluster)
+	{
+	  unsigned int cluster = info[end].cluster;
+	  while (text_end < num_chars && text[text_end].cluster < cluster)
 	    text_end++;
+	}
 	else
-	  while (text_start && text[text_start - 1].cluster != cluster)
+	{
+	  unsigned int cluster = info[end - 1].cluster;
+	  while (text_start && text[text_start - 1].cluster >= cluster)
 	    text_start--;
+	}
       }
       assert (text_start < text_end);
 
@@ -409,18 +414,16 @@ struct shape_options_t : option_group_t
     }
 
     bool ret = true;
-    hb_buffer_diff_flags_t diff = hb_buffer_diff (buffer, reconstruction, 0, 0);
+    hb_buffer_diff_flags_t diff = hb_buffer_diff (reconstruction, buffer, (hb_codepoint_t) -1, 0);
     if (diff)
     {
       if (error)
 	*error = "Safe-to-break test failed.";
       ret = false;
 
-      if (0)
-      {
-	hb_buffer_set_length (buffer, 0);
-	hb_buffer_append (buffer, reconstruction, 0, -1);
-      }
+      /* Return the reconstructed result instead so it can be inspected. */
+      hb_buffer_set_length (buffer, 0);
+      hb_buffer_append (buffer, reconstruction, 0, -1);
     }
 
     hb_buffer_destroy (reconstruction);
