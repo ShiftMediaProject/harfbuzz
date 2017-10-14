@@ -81,9 +81,6 @@
     <ClInclude Include="..\src\hb-ucdn\ucdn.h">
       <Filter>Header Files\src\hb-ucdn</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ucdn\unicodedata_db.h">
-      <Filter>Header Files\src\hb-ucdn</Filter>
-    </ClInclude>
     <ClInclude Include="src\hb-version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -137,6 +134,9 @@
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-var-mvar-table.hh">
       <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ucdn\ucdn_db.h">
+      <Filter>Header Files\src\hb-ucdn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

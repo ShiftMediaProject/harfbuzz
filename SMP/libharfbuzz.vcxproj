@@ -91,7 +91,7 @@
     <ClInclude Include="..\src\hb-shape-plan.h" />
     <ClInclude Include="..\src\hb-shape.h" />
     <ClInclude Include="..\src\hb-ucdn\ucdn.h" />
-    <ClInclude Include="..\src\hb-ucdn\unicodedata_db.h" />
+    <ClInclude Include="..\src\hb-ucdn\ucdn_db.h" />
     <ClInclude Include="..\src\hb-unicode.h" />
     <ClInclude Include="..\src\hb-uniscribe.h" />
     <ClInclude Include="..\src\hb.h" />
