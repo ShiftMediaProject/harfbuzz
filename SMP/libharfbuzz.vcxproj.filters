@@ -138,6 +138,9 @@
     <ClInclude Include="..\src\hb-ucdn\ucdn_db.h">
       <Filter>Header Files\src\hb-ucdn</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-set-digest-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -290,9 +293,6 @@
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-buffer-private.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="..\src\hb-cache-private.hh">
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-face-private.hh">
