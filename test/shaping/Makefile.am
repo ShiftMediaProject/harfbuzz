@@ -45,6 +45,7 @@ TESTS = \
 	tests/arabic-feature-order.tests \
 	tests/arabic-like-joining.tests \
 	tests/arabic-mark-order.tests \
+	tests/arabic-stch.tests \
 	tests/automatic-fractions.tests \
 	tests/cluster.tests \
 	tests/color-fonts.tests \
@@ -57,6 +58,7 @@ TESTS = \
 	tests/hangul-jamo.tests \
 	tests/hyphens.tests \
 	tests/indic-consonant-with-stacker.tests \
+	tests/indic-init.tests \
 	tests/indic-joiner-candrabindu.tests \
 	tests/indic-joiners.tests \
 	tests/indic-old-spec.tests \
