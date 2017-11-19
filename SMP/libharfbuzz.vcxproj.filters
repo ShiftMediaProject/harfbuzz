@@ -141,6 +141,21 @@
     <ClInclude Include="..\src\hb-set-digest-private.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-debug.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-dsalgs.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-kern-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-post-macroman.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-string-array.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">

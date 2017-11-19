@@ -62,8 +62,10 @@
     <ClInclude Include="..\src\hb-blob.h" />
     <ClInclude Include="..\src\hb-buffer.h" />
     <ClInclude Include="..\src\hb-common.h" />
+    <ClInclude Include="..\src\hb-debug.hh" />
     <ClInclude Include="..\src\hb-deprecated.h" />
     <ClInclude Include="..\src\hb-directwrite.h" />
+    <ClInclude Include="..\src\hb-dsalgs.hh" />
     <ClInclude Include="..\src\hb-face.h" />
     <ClInclude Include="..\src\hb-font.h" />
     <ClInclude Include="..\src\hb-ft.h" />
@@ -71,10 +73,12 @@
     <ClInclude Include="..\src\hb-icu.h" />
     <ClInclude Include="..\src\hb-ot-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
+    <ClInclude Include="..\src\hb-ot-kern-table.hh" />
     <ClInclude Include="..\src\hb-ot-layout.h" />
     <ClInclude Include="..\src\hb-ot-math-table.hh" />
     <ClInclude Include="..\src\hb-ot-math.h" />
     <ClInclude Include="..\src\hb-ot-os2-table.hh" />
+    <ClInclude Include="..\src\hb-ot-post-macroman.hh" />
     <ClInclude Include="..\src\hb-ot-post-table.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh" />
@@ -91,6 +95,7 @@
     <ClInclude Include="..\src\hb-set.h" />
     <ClInclude Include="..\src\hb-shape-plan.h" />
     <ClInclude Include="..\src\hb-shape.h" />
+    <ClInclude Include="..\src\hb-string-array.hh" />
     <ClInclude Include="..\src\hb-ucdn\ucdn.h" />
     <ClInclude Include="..\src\hb-ucdn\ucdn_db.h" />
     <ClInclude Include="..\src\hb-unicode.h" />
