@@ -156,6 +156,30 @@
     <ClInclude Include="..\src\hb-string-array.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-common-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-morx-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-buffer-deserialize-json.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-buffer-deserialize-text.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-ot-shape-complex-indic-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-ot-shape-complex-khmer-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-ot-shape-complex-myanmar-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -263,6 +287,12 @@
     <ClCompile Include="..\src\hb-ot-var.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hb-aat-layout.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-khmer.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\hb-ot-shape-fallback-private.hh">
@@ -299,12 +329,6 @@
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-atomic-private.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="..\src\hb-buffer-deserialize-json.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="..\src\hb-buffer-deserialize-text.hh">
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-buffer-private.hh">
@@ -373,13 +397,7 @@
     <None Include="..\src\hb-ot-shape-complex-arabic-table.hh">
       <Filter>Header Files\src</Filter>
     </None>
-    <None Include="..\src\hb-ot-shape-complex-indic-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
     <None Include="..\src\hb-ot-shape-complex-indic-private.hh">
-      <Filter>Header Files\src</Filter>
-    </None>
-    <None Include="..\src\hb-ot-shape-complex-myanmar-machine.hh">
       <Filter>Header Files\src</Filter>
     </None>
     <None Include="..\src\hb-ot-shape-complex-private.hh">

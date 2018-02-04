@@ -59,6 +59,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\hb-aat-layout-common-private.hh" />
+    <ClInclude Include="..\src\hb-aat-layout-morx-table.hh" />
+    <ClInclude Include="..\src\hb-aat-layout-private.hh" />
     <ClInclude Include="..\src\hb-blob.h" />
     <ClInclude Include="..\src\hb-buffer.h" />
     <ClInclude Include="..\src\hb-common.h" />
@@ -102,10 +105,16 @@
     <ClInclude Include="..\src\hb-uniscribe.h" />
     <ClInclude Include="..\src\hb.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="src\hb-buffer-deserialize-json.hh" />
+    <ClInclude Include="src\hb-buffer-deserialize-text.hh" />
+    <ClInclude Include="src\hb-ot-shape-complex-indic-machine.hh" />
+    <ClInclude Include="src\hb-ot-shape-complex-khmer-machine.hh" />
+    <ClInclude Include="src\hb-ot-shape-complex-myanmar-machine.hh" />
     <ClInclude Include="src\hb-ot-shape-complex-use-machine.hh" />
     <ClInclude Include="src\hb-version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\hb-aat-layout.cc" />
     <ClCompile Include="..\src\hb-blob.cc" />
     <ClCompile Include="..\src\hb-buffer-serialize.cc" />
     <ClCompile Include="..\src\hb-buffer.cc" />
@@ -123,6 +132,7 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-hebrew.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-indic-table.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-indic.cc" />
+    <ClCompile Include="..\src\hb-ot-shape-complex-khmer.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-myanmar.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-thai.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-tibetan.cc" />
@@ -144,8 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\hb-atomic-private.hh" />
-    <None Include="..\src\hb-buffer-deserialize-json.hh" />
-    <None Include="..\src\hb-buffer-deserialize-text.hh" />
     <None Include="..\src\hb-buffer-private.hh" />
     <None Include="..\src\hb-face-private.hh" />
     <None Include="..\src\hb-font-private.hh" />
@@ -168,9 +176,7 @@
     <None Include="..\src\hb-ot-name-table.hh" />
     <None Include="..\src\hb-ot-shape-complex-arabic-fallback.hh" />
     <None Include="..\src\hb-ot-shape-complex-arabic-table.hh" />
-    <None Include="..\src\hb-ot-shape-complex-indic-machine.hh" />
     <None Include="..\src\hb-ot-shape-complex-indic-private.hh" />
-    <None Include="..\src\hb-ot-shape-complex-myanmar-machine.hh" />
     <None Include="..\src\hb-ot-shape-complex-private.hh" />
     <None Include="..\src\hb-ot-shape-fallback-private.hh" />
     <None Include="..\src\hb-ot-shape-normalize-private.hh" />
