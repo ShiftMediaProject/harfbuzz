@@ -151,7 +151,7 @@ struct shape_options_t : option_group_t
   shape_options_t (option_parser_t *parser)
   {
     direction = language = script = nullptr;
-    bot = eot = preserve_default_ignorables = false;
+    bot = eot = preserve_default_ignorables = remove_default_ignorables = false;
     features = nullptr;
     num_features = 0;
     shapers = nullptr;
@@ -179,10 +179,13 @@ struct shape_options_t : option_group_t
     hb_buffer_set_direction (buffer, hb_direction_from_string (direction, -1));
     hb_buffer_set_script (buffer, hb_script_from_string (script, -1));
     hb_buffer_set_language (buffer, hb_language_from_string (language, -1));
-    hb_buffer_set_flags (buffer, (hb_buffer_flags_t) (HB_BUFFER_FLAG_DEFAULT |
-			 (bot ? HB_BUFFER_FLAG_BOT : 0) |
-			 (eot ? HB_BUFFER_FLAG_EOT : 0) |
-			 (preserve_default_ignorables ? HB_BUFFER_FLAG_PRESERVE_DEFAULT_IGNORABLES : 0)));
+    hb_buffer_set_flags (buffer, (hb_buffer_flags_t)
+				 (HB_BUFFER_FLAG_DEFAULT |
+				  (bot ? HB_BUFFER_FLAG_BOT : 0) |
+				  (eot ? HB_BUFFER_FLAG_EOT : 0) |
+				  (preserve_default_ignorables ? HB_BUFFER_FLAG_PRESERVE_DEFAULT_IGNORABLES : 0) |
+				  (remove_default_ignorables ? HB_BUFFER_FLAG_REMOVE_DEFAULT_IGNORABLES : 0) |
+				  0));
     hb_buffer_set_cluster_level (buffer, cluster_level);
     hb_buffer_guess_segment_properties (buffer);
   }
@@ -421,6 +424,7 @@ struct shape_options_t : option_group_t
   hb_bool_t bot;
   hb_bool_t eot;
   hb_bool_t preserve_default_ignorables;
+  hb_bool_t remove_default_ignorables;
 
   hb_feature_t *features;
   unsigned int num_features;
@@ -584,6 +588,7 @@ struct format_options_t : option_group_t
   format_options_t (option_parser_t *parser) {
     show_glyph_names = true;
     show_positions = true;
+    show_advances = true;
     show_clusters = true;
     show_text = false;
     show_unicode = false;
@@ -628,6 +633,7 @@ struct format_options_t : option_group_t
 
   hb_bool_t show_glyph_names;
   hb_bool_t show_positions;
+  hb_bool_t show_advances;
   hb_bool_t show_clusters;
   hb_bool_t show_text;
   hb_bool_t show_unicode;
