@@ -6,11 +6,12 @@ language: cpp
 env:
   global:
     - CPPFLAGS=""
-    - CFLAGS="-Werror --coverage"
-    - CXXFLAGS="-Werror -Wno-deprecated-register --coverage" # glib uses register and clang raises a warning
-    - LDFLAGS="--coverage"
+    - CFLAGS="-Werror -Werror=unused -Werror=unused-function"
+    - CXXFLAGS="-Werror -Werror=unused -Werror=unused-function -Wno-deprecated-register" # glib uses register and clang raises a warning
     - CONFIGURE_OPTS="--with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2"
     - NOCONFIGURE=1
+    # COVERITY_SCAN_TOKEN
+    - secure: "MRJtVu/fQoWNwMAamvIJBCX/1SMvEuEUk/ljAif/y2/3syyWgxFGp17UGnDILdoZYyCqTM+jQciY2P0nVqbjjOAUlML4QOAalqw8kPp8iTsnHUe+KOMVrOVP6p6qAQxk1im1O41cCMkmVKvk+NXe/on5euz6LGF2laHZaOAMoes="
 
 matrix:
   include:
@@ -22,12 +23,14 @@ matrix:
         - export LD_LIBRARY_PATH="$PWD/freetype-2.9/objs/.libs"
 
         - ./autogen.sh
-        - ./configure $CONFIGURE_OPTS --enable-gtk-doc
+        - ./configure $CONFIGURE_OPTS --enable-gtk-doc --enable-code-coverage
         - make
-        - make check || (cat `find -name '*.log'` && false)
+        - make check || .ci/fail.sh
+        - rm -rf freetype-2.9
       after_success:
         - bash .ci/run-coveralls.sh # for coveralls.io code coverage tracking
         - bash .ci/deploy-docs.sh
+        - bash .ci/trigger-coverity.sh
 
     - os: linux
       compiler: clang
@@ -39,7 +42,7 @@ matrix:
         - ./autogen.sh
         - ./configure $CONFIGURE_OPTS
         - make
-        - make check || (cat `find -name '*.log'` && false)
+        - make check || .ci/fail.sh
 
     - os: osx
       compiler: clang
@@ -55,17 +58,18 @@ matrix:
         - ./autogen.sh
         - ./configure $CONFIGURE_OPTS --with-coretext
         - make
-        - make check || (cat `find . -name '*.log'` && false)
+        - make check || .ci/fail.sh
 
 notifications:
   irc: "irc.freenode.org#harfbuzz"
-  email: harfbuzz@lists.freedesktop.org
+  email: harfbuzz-bots-chatter@googlegroups.com
 
 addons:
   apt:
     packages:
       - pkg-config # for autogen.sh
       - ragel
+      - lcov
       - gtk-doc-tools
       - libfreetype6-dev # for font function
       - libglib2.0-dev # for font functions / tests / utils
@@ -73,3 +77,13 @@ addons:
       - libicu-dev # for extra unicode functions
       - libgraphite2-dev # for extra shapers
       #- libgirepository1.0-dev # for gobject-introspection
+
+  coverity_scan:
+    project:
+      name: behdad/harfbuzz
+      version: 1.0
+      description: HarfBuzz OpenType text shaping engine
+    notification_email: harfbuzz-bots-chatter@googlegroups.com
+    build_command_prepend: ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
+    build_command: make
+    branch_pattern: coverity_scan

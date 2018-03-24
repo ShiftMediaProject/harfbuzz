@@ -37,7 +37,7 @@ static void
 test_simple_tags (const char *s, hb_script_t script)
 {
   hb_script_t tag;
-  hb_script_t t1, t2;
+  hb_tag_t t1, t2;
 
   g_test_message ("Testing script %c%c%c%c: tag %s", HB_UNTAG (hb_script_to_iso15924_tag (script)), s);
   tag = hb_tag_from_string (s, -1);
@@ -72,7 +72,7 @@ test_indic_tags (const char *s1, const char *s2, hb_script_t script)
 static void
 test_ot_tag_script_degenerate (void)
 {
-  hb_script_t t1, t2;
+  hb_tag_t t1, t2;
 
   g_assert_cmphex (HB_TAG_CHAR4 ("DFLT"), ==, HB_OT_TAG_DEFAULT_SCRIPT);
 

@@ -12,11 +12,13 @@ lib:
 
 EXTRA_DIST += CMakeLists.txt
 
+EXTRA_DIST += fonts
+
 if HAVE_GLIB
 AM_CPPFLAGS = -DSRCDIR="\"$(srcdir)\"" -I$(top_srcdir)/src/ -I$(top_builddir)/src/ $(GLIB_CFLAGS)
 LDADD = $(top_builddir)/src/libharfbuzz.la $(GLIB_LIBS)
 
-EXTRA_DIST += hb-test.h
+EXTRA_DIST += hb-test.h hb-subset-test.h
 
 check_PROGRAMS = $(TEST_PROGS)
 noinst_PROGRAMS = $(TEST_PROGS)
@@ -29,9 +31,21 @@ TEST_PROGS = \
 	test-object \
 	test-set \
 	test-shape \
+	test-subset-cmap \
+	test-subset-glyf \
+	test-subset-hdmx \
+	test-subset-hmtx \
+	test-subset-os2 \
 	test-unicode \
 	test-version \
 	$(NULL)
+
+test_subset_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
+test_subset_cmap_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
+test_subset_glyf_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
+test_subset_hdmx_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
+test_subset_hmtx_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
+test_subset_os2_LDADD = $(LDADD) $(top_builddir)/src/libharfbuzz-subset.la
 
 test_unicode_CPPFLAGS = \
 	$(AM_CPPFLAGS) \
@@ -47,6 +61,7 @@ endif
 if HAVE_OT
 
 TEST_PROGS += \
+	test-ot-color \
 	test-ot-tag \
 	$(NULL)
 
@@ -56,15 +71,6 @@ TEST_PROGS += \
 	$(NULL)
 test_ot_math_LDADD = $(LDADD) $(FREETYPE_LIBS)
 test_ot_math_CPPFLAGS = $(AM_CPPFLAGS) $(FREETYPE_CFLAGS)
-EXTRA_DIST += \
-	fonts/MathTestFontEmpty.otf \
-	fonts/MathTestFontFull.otf \
-	fonts/MathTestFontNone.otf \
-	fonts/MathTestFontPartial1.otf \
-	fonts/MathTestFontPartial2.otf \
-	fonts/MathTestFontPartial3.otf \
-	fonts/MathTestFontPartial4.otf \
-	$(NULL)
 endif # HAVE_FREETYPE
 
 endif # HAVE_OT

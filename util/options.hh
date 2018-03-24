@@ -240,19 +240,25 @@ struct shape_options_t : option_group_t
     {
       if (error)
         *error = "all shapers failed.";
-      return false;
+      goto fail;
     }
 
     if (normalize_glyphs)
       hb_buffer_normalize_glyphs (buffer);
 
     if (verify && !verify_buffer (buffer, text_buffer, font, error))
-      return false;
+      goto fail;
 
     if (text_buffer)
       hb_buffer_destroy (text_buffer);
 
     return true;
+
+  fail:
+    if (text_buffer)
+      hb_buffer_destroy (text_buffer);
+
+    return false;
   }
 
   bool verify_buffer (hb_buffer_t  *buffer,
@@ -446,6 +452,9 @@ struct font_options_t : option_group_t
     variations = nullptr;
     num_variations = 0;
     default_font_size = default_font_size_;
+    x_ppem = 0;
+    y_ppem = 0;
+    ptem = 0.;
     subpixel_bits = subpixel_bits_;
     font_file = nullptr;
     face_index = 0;
@@ -472,6 +481,9 @@ struct font_options_t : option_group_t
   hb_variation_t *variations;
   unsigned int num_variations;
   int default_font_size;
+  int x_ppem;
+  int y_ppem;
+  double ptem;
   unsigned int subpixel_bits;
   mutable double font_size_x;
   mutable double font_size_y;
@@ -641,6 +653,20 @@ struct format_options_t : option_group_t
   hb_bool_t show_extents;
   hb_bool_t show_flags;
   hb_bool_t trace;
+};
+
+struct subset_options_t : option_group_t
+{
+  subset_options_t (option_parser_t *parser)
+  {
+    drop_hints = false;
+
+    add_options (parser);
+  }
+
+  void add_options (option_parser_t *parser);
+
+  hb_bool_t drop_hints;
 };
 
 /* fallback implementation for scalbn()/scalbnf() for pre-2013 MSVC */

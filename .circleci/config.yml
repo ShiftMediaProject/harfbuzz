@@ -7,27 +7,50 @@ jobs:
       - image: ubuntu:17.10
     steps:
       - checkout
-      - run: apt update && apt install -y ninja-build binutils libtool autoconf automake make cmake gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev
-      - run: ./autogen.sh && make distcheck && rm -rf harfbuzz-*
+      - run: apt update && apt install -y ninja-build binutils libtool autoconf automake make cmake gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python python-pip
+      - run: pip install fonttools
+      - run: ./autogen.sh
+      - run: make
+      - run: make distcheck || .ci/fail.sh
+      - run: rm -rf harfbuzz-*
       - run: make distdir && cd harfbuzz-* && cmake -DHB_CHECK=ON -Bbuild -H. -GNinja && ninja -Cbuild && CTEST_OUTPUT_ON_FAILURE=1 ninja -Cbuild test && ninja -Cbuild install
 
-  alpine:
+  alpine-O3:
     docker:
       - image: alpine
     steps:
       - checkout
       - run: apk update && apk add ragel make pkgconfig libtool autoconf automake gettext gcc g++ glib-dev freetype-dev cairo-dev
-      - run: ./autogen.sh
-      - run: make && (make check || (cat `find -name '*.log'` && false))
+      # C??FLAGS are not needed for a regular build
+      - run: CFLAGS="-O3" CXXFLAGS="-O3" ./autogen.sh
+      - run: make
+      - run: make check || .ci/fail.sh
 
-  archlinux:
+  archlinux-debug-O0:
     docker:
       - image: base/devel
     steps:
       - checkout
       - run: pacman --noconfirm -Syu freetype2 cairo icu gettext gobject-introspection gcc gcc-libs glib2 graphite pkg-config ragel python
-      - run: ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
-      - run: make && (make check || (cat `find -name '*.log'` && false))
+      # C??FLAGS are not needed for a regular build
+      - run: CFLAGS="-O0" CXXFLAGS="-O0" CPPFLAGS="-DHB_DEBUG" ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
+      - run: make
+      - run: make check || .ci/fail.sh
+
+  clang-O3-O0:
+    docker:
+      - image: multiarch/crossbuild
+    steps:
+      - checkout
+      - run: apt update && apt install -y ragel libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python python-pip
+      - run: pip install fonttools
+      - run: wget http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2 && tar xf freetype-2.9.tar.bz2 && cd freetype-2.9 && ./autogen.sh && ./configure && make -j4 && cd ..
+      - run: CFLAGS="-O3" CXXFLAGS="-O3" CC=clang CXX=clang++ ./autogen.sh --with-freetype --with-glib --with-cairo --with-icu --with-graphite2
+      - run: make
+      - run: LD_LIBRARY_PATH="$PWD/freetype-2.9/objs/.libs" make check || .ci/fail.sh
+      - run: CFLAGS="-O0" CXXFLAGS="-O0" CC=clang CXX=clang++ ./autogen.sh --with-freetype --with-glib --with-cairo --with-icu --with-graphite2
+      - run: make
+      - run: LD_LIBRARY_PATH="$PWD/freetype-2.9/objs/.libs" make check || .ci/fail.sh
 
   fedora-outoftreebuild:
     docker:
@@ -36,14 +59,15 @@ jobs:
       - checkout
       - run: dnf install -y pkg-config ragel gcc gcc-c++ automake autoconf libtool make which glib2-devel freetype-devel cairo-devel libicu-devel gobject-introspection-devel graphite2-devel redhat-rpm-config python || true
       - run: NOCONFIGURE=1 ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
-      - run: mkdir build && cd build && ../configure && make && (make check || (cat `find -name '*.log'` && false))
+      - run: mkdir build && cd build && ../configure && make && (make check || ../.ci/fail.sh)
 
   cmake-gcc:
     docker:
       - image: ubuntu:17.10
     steps:
       - checkout
-      - run: apt update && apt install -y ninja-build binutils cmake gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev
+      - run: apt update && apt install -y ninja-build binutils cmake gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python python-pip
+      - run: pip install fonttools
       - run: cmake -DHB_CHECK=ON -Bbuild -H. -GNinja
       - run: ninja -Cbuild
       - run: CTEST_OUTPUT_ON_FAILURE=1 ninja -Cbuild test
@@ -142,8 +166,9 @@ workflows:
       - distcheck
 
       # autotools based builds
-      - alpine
-      - archlinux
+      - alpine-O3
+      - archlinux-debug-O0
+      - clang-O3-O0
       - fedora-outoftreebuild
 
       # cmake based builds
