@@ -114,9 +114,6 @@
     <ClInclude Include="..\src\hb-ot-math.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-cbdt-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-math-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -178,6 +175,39 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="src\hb-ot-shape-complex-myanmar-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-hdmx-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-os2-unicode-ranges.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-ankr-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-kerx-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-trak-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-color-colr-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-color-cpal-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-layout-base-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-khmer-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-private.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -291,6 +321,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-khmer.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-color.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
