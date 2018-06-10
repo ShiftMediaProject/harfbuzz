@@ -2,6 +2,31 @@ version: 2
 
 jobs:
 
+  macos-llvm-gcc-4.2:
+    macos:
+      xcode: "8.3.3"
+    steps:
+      - checkout
+      - run: brew update-reset
+      - run: brew install wget pkg-config libtool ragel freetype glib cairo
+      - run: wget https://packages.macports.org/llvm-gcc42/llvm-gcc42-2336.11_3+universal.darwin_15.i386-x86_64.tbz2 && tar zxvf llvm-gcc42-2336.11_3+universal.darwin_15.i386-x86_64.tbz2
+      - run: CC=$PWD/opt/local/bin/llvm-gcc-4.2 CXX=$PWD/opt/local/bin/llvm-g++-4.2 ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo
+      # Ignoring assembler complains, https://stackoverflow.com/a/39867021
+      - run: make 2>&1 | grep -v -e '^/var/folders/*' -e '^[[:space:]]*\.section' -e '^[[:space:]]*\^[[:space:]]*~*'
+      - run: make check || .ci/fail.sh
+
+  macos-notest-apple-gcc-i686-4.2:
+    macos:
+      xcode: "8.3.3"
+    steps:
+      - checkout
+      - run: brew update-reset
+      - run: brew install wget pkg-config libtool ragel
+      - run: wget https://packages.macports.org/apple-gcc42/apple-gcc42-5666.3_15+universal.darwin_15.i386-x86_64.tbz2 && tar zxvf apple-gcc42-5666.3_15+universal.darwin_15.i386-x86_64.tbz2
+      - run: CPP=$PWD/opt/local/bin/i686-apple-darwin15-cpp-apple-4.2.1 CC=$PWD/opt/local/bin/i686-apple-darwin15-gcc-apple-4.2.1 CXX=$PWD/opt/local/bin/i686-apple-darwin15-g++-apple-4.2.1 ./autogen.sh
+      # Ignoring assembler complains, https://stackoverflow.com/a/39867021
+      - run: make 2>&1 | grep -v -e '^/var/folders/*' -e '^[[:space:]]*\.section' -e '^[[:space:]]*\^[[:space:]]*~*'
+
   distcheck:
     docker:
       - image: ubuntu:17.10
@@ -26,12 +51,13 @@ jobs:
       - run: make
       - run: make check || .ci/fail.sh
 
-  archlinux-debug-O0:
+  archlinux-debug-O0-py3:
     docker:
       - image: base/devel
     steps:
       - checkout
-      - run: pacman --noconfirm -Syu freetype2 cairo icu gettext gobject-introspection gcc gcc-libs glib2 graphite pkg-config ragel python
+      - run: pacman --noconfirm -Syu freetype2 cairo icu gettext gobject-introspection gcc gcc-libs glib2 graphite pkg-config ragel python python-pip
+      - run: pip install fonttools
       # C??FLAGS are not needed for a regular build
       - run: CFLAGS="-O0" CXXFLAGS="-O0" CPPFLAGS="-DHB_DEBUG" ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
       - run: make
@@ -78,9 +104,9 @@ jobs:
       - image: fedora
     steps:
       - checkout
-      - run: dnf install -y gcc ragel cmake make which glib2-devel freetype-devel cairo-devel libicu-devel graphite2-devel wget tar bzip2 python || true
+      - run: dnf install -y gcc ragel cmake make which glib2-devel freetype-devel cairo-devel libicu-devel graphite2-devel wget tar bzip2 python libnsl || true
       - run: wget http://$ODSUSER:$ODSPASS@behdad.org/harfbuzz-private/OracleDeveloperStudio12.6-linux-x86-bin.tar.bz2 && tar xf OracleDeveloperStudio12.6-linux-x86-bin.tar.bz2 --owner root --group root --no-same-owner
-      - run: CC=/root/project/OracleDeveloperStudio12.6-linux-x86-bin/developerstudio12.6/bin/suncc CXX=/root/project/OracleDeveloperStudio12.6-linux-x86-bin/developerstudio12.6/bin/sunCC cmake -DHB_HAVE_GRAPHITE2=ON -DHB_BUILTIN_UCDN=ON -DHB_HAVE_GLIB=ON -DHB_HAVE_ICU=ON -DHB_HAVE_FREETYPE=ON -Bbuild -H.
+      - run: CC=/root/project/OracleDeveloperStudio12.6-linux-x86-bin/developerstudio12.6/bin/suncc CXX=/root/project/OracleDeveloperStudio12.6-linux-x86-bin/developerstudio12.6/bin/sunCC cmake -DHB_HAVE_GRAPHITE2=ON -DHB_BUILTIN_UCDN=ON -DHB_HAVE_GLIB=ON -DHB_HAVE_FREETYPE=ON -Bbuild -H.
       - run: make -Cbuild
       - run: CTEST_OUTPUT_ON_FAILURE=1 make -Cbuild test
       - run: make -Cbuild install
@@ -162,12 +188,16 @@ workflows:
   version: 2
   build:
     jobs:
+      # macOS
+      - macos-llvm-gcc-4.2
+      - macos-notest-apple-gcc-i686-4.2
+
       # both autotools and cmake
       - distcheck
 
       # autotools based builds
       - alpine-O3
-      - archlinux-debug-O0
+      - archlinux-debug-O0-py3
       - clang-O3-O0
       - fedora-outoftreebuild
 

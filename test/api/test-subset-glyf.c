@@ -24,8 +24,6 @@
  * Google Author(s): Garret Rieger
  */
 
-#include <stdbool.h>
-
 #include "hb-test.h"
 #include "hb-subset-test.h"
 
@@ -66,9 +64,10 @@ test_subset_glyf (void)
   hb_face_t *face_ac = hb_subset_test_open_font ("fonts/Roboto-Regular.ac.ttf");
 
   hb_set_t *codepoints = hb_set_create();
+  hb_face_t *face_abc_subset;
   hb_set_add (codepoints, 97);
   hb_set_add (codepoints, 99);
-  hb_face_t *face_abc_subset = hb_subset_test_create_subset (face_abc, hb_subset_test_create_input (codepoints));
+  face_abc_subset = hb_subset_test_create_subset (face_abc, hb_subset_test_create_input (codepoints));
   hb_set_destroy (codepoints);
 
   hb_subset_test_check (face_ac, face_abc_subset, HB_TAG ('g','l','y','f'));
@@ -87,8 +86,9 @@ test_subset_glyf_with_components (void)
   hb_face_t *face_subset = hb_subset_test_open_font ("fonts/Roboto-Regular.components.subset.ttf");
 
   hb_set_t *codepoints = hb_set_create();
+  hb_face_t *face_generated_subset;
   hb_set_add (codepoints, 0x1fc);
-  hb_face_t *face_generated_subset = hb_subset_test_create_subset (face_components, hb_subset_test_create_input (codepoints));
+  face_generated_subset = hb_subset_test_create_subset (face_components, hb_subset_test_create_input (codepoints));
   hb_set_destroy (codepoints);
 
   hb_subset_test_check (face_subset, face_generated_subset, HB_TAG ('g','l','y','f'));
@@ -106,10 +106,11 @@ test_subset_glyf_noop (void)
   hb_face_t *face_abc = hb_subset_test_open_font("fonts/Roboto-Regular.abc.ttf");
 
   hb_set_t *codepoints = hb_set_create();
+  hb_face_t *face_abc_subset;
   hb_set_add (codepoints, 97);
   hb_set_add (codepoints, 98);
   hb_set_add (codepoints, 99);
-  hb_face_t *face_abc_subset = hb_subset_test_create_subset (face_abc, hb_subset_test_create_input (codepoints));
+  face_abc_subset = hb_subset_test_create_subset (face_abc, hb_subset_test_create_input (codepoints));
   hb_set_destroy (codepoints);
 
   hb_subset_test_check (face_abc, face_abc_subset, HB_TAG ('g','l','y','f'));
@@ -127,11 +128,13 @@ test_subset_glyf_strip_hints_simple (void)
   hb_face_t *face_ac = hb_subset_test_open_font ("fonts/Roboto-Regular.ac.nohints.ttf");
 
   hb_set_t *codepoints = hb_set_create();
+  hb_subset_input_t *input;
+  hb_face_t *face_abc_subset;
   hb_set_add (codepoints, 'a');
   hb_set_add (codepoints, 'c');
-  hb_subset_input_t *input = hb_subset_test_create_input (codepoints);
+  input = hb_subset_test_create_input (codepoints);
   *hb_subset_input_drop_hints(input) = true;
-  hb_face_t *face_abc_subset = hb_subset_test_create_subset (face_abc, input);
+  face_abc_subset = hb_subset_test_create_subset (face_abc, input);
   hb_set_destroy (codepoints);
 
   hb_subset_test_check (face_ac, face_abc_subset, HB_TAG ('l','o','c', 'a'));
@@ -150,11 +153,13 @@ test_subset_glyf_strip_hints_composite (void)
   hb_face_t *face_subset = hb_subset_test_open_font ("fonts/Roboto-Regular.components.1fc.nohints.ttf");
 
   hb_set_t *codepoints = hb_set_create();
+  hb_subset_input_t *input;
+  hb_face_t *face_generated_subset;
   hb_set_add (codepoints, 0x1fc);
-  hb_subset_input_t *input = hb_subset_test_create_input (codepoints);
+  input = hb_subset_test_create_input (codepoints);
   *hb_subset_input_drop_hints(input) = true;
 
-  hb_face_t *face_generated_subset = hb_subset_test_create_subset (face_components, input);
+  face_generated_subset = hb_subset_test_create_subset (face_components, input);
   hb_set_destroy (codepoints);
 
   hb_subset_test_check (face_subset, face_generated_subset, HB_TAG ('g','l','y','f'));
@@ -164,6 +169,36 @@ test_subset_glyf_strip_hints_composite (void)
   hb_face_destroy (face_generated_subset);
   hb_face_destroy (face_subset);
   hb_face_destroy (face_components);
+}
+
+static void
+test_subset_glyf_strip_hints_invalid (void)
+{
+  hb_face_t *face = hb_subset_test_open_font ("fonts/oom-ccc61c92d589f895174cdef6ff2e3b20e9999a1a");
+
+  hb_set_t *codepoints = hb_set_create();
+  const hb_codepoint_t text[] =
+      {
+        'A', 'B', 'C', 'D', 'E', 'X', 'Y', 'Z', '1', '2',
+        '3', '@', '_', '%', '&', ')', '*', '$', '!'
+      };
+  int i;
+  for (i = 0; i < sizeof (text) / sizeof (hb_codepoint_t); i++)
+  {
+    hb_set_add (codepoints, text[i]);
+    // hb_set_add (codepoints_drop_hints, text[i]);
+  }
+
+  hb_subset_input_t *input = hb_subset_test_create_input (codepoints);
+  *hb_subset_input_drop_hints(input) = true;
+  hb_set_destroy (codepoints);
+
+  hb_face_t *face_subset = hb_subset_test_create_subset (face, input);
+  g_assert (face_subset);
+  g_assert (face_subset == hb_face_get_empty ());
+
+  hb_face_destroy (face_subset);
+  hb_face_destroy (face);
 }
 
 // TODO(grieger): test for long loca generation.
@@ -177,6 +212,7 @@ main (int argc, char **argv)
   hb_test_add (test_subset_glyf);
   hb_test_add (test_subset_glyf_strip_hints_simple);
   hb_test_add (test_subset_glyf_strip_hints_composite);
+  hb_test_add (test_subset_glyf_strip_hints_invalid);
   hb_test_add (test_subset_glyf_with_components);
 
   return hb_test_run();

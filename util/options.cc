@@ -65,8 +65,6 @@ fail (hb_bool_t suggest_help, const char *format, ...)
 }
 
 
-hb_bool_t debug = false;
-
 static gchar *
 shapers_to_string (void)
 {
@@ -107,7 +105,6 @@ option_parser_t::add_main_options (void)
   {
     {"version",		0, G_OPTION_FLAG_NO_ARG,
 			      G_OPTION_ARG_CALLBACK,	(gpointer) &show_version,	"Show version numbers",			nullptr},
-    {"debug",		0, 0, G_OPTION_ARG_NONE,	&debug,				"Free all resources before exit",	nullptr},
     {nullptr}
   };
   g_option_context_add_main_entries (context, entries, nullptr);
@@ -192,11 +189,29 @@ static gboolean
 parse_shapers (const char *name G_GNUC_UNUSED,
 	       const char *arg,
 	       gpointer    data,
-	       GError    **error G_GNUC_UNUSED)
+	       GError    **error)
 {
   shape_options_t *shape_opts = (shape_options_t *) data;
+  char **shapers = g_strsplit (arg, ",", 0);
+
+  for (char **shaper = shapers; *shaper; shaper++) {
+    bool found = false;
+    for (const char **hb_shaper = hb_shape_list_shapers (); *hb_shaper; hb_shaper++) {
+      if (strcmp (*shaper, *hb_shaper) == 0) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+		   "Unknown or unsupported shaper: %s", *shaper);
+      g_strfreev (shapers);
+      return false;
+    }
+  }
+
   g_strfreev (shape_opts->shapers);
-  shape_opts->shapers = g_strsplit (arg, ",", 0);
+  shape_opts->shapers = shapers;
   return true;
 }
 
@@ -340,8 +355,10 @@ parse_unicodes (const char *name G_GNUC_UNUSED,
 
   while (s && *s)
   {
-    while (*s && strchr ("<+>{},;&#\\xXuUnNiI\n\t", *s))
+    while (*s && strchr ("<+>{},;&#\\xXuUnNiI\n\t\v\f\r ", *s))
       s++;
+    if (!*s)
+      break;
 
     errno = 0;
     hb_codepoint_t u = strtoul (s, &p, 16);
@@ -629,74 +646,29 @@ font_options_t::get_font (void) const
   hb_blob_t *blob = nullptr;
 
   /* Create the blob */
-  {
-    char *font_data;
-    unsigned int len = 0;
-    hb_destroy_func_t destroy;
-    void *user_data;
-    hb_memory_mode_t mm;
+  if (!font_file)
+    fail (true, "No font file set");
 
-    /* This is a hell of a lot of code for just reading a file! */
-    if (!font_file)
-      fail (true, "No font file set");
-
-    if (0 == strcmp (font_file, "-")) {
-      /* read it */
-      GString *gs = g_string_new (nullptr);
-      char buf[BUFSIZ];
+  if (0 == strcmp (font_file, "-")) {
+    /* read it */
+    GString *gs = g_string_new (nullptr);
+    char buf[BUFSIZ];
 #if defined(_WIN32) || defined(__CYGWIN__)
-      setmode (fileno (stdin), O_BINARY);
+    setmode (fileno (stdin), O_BINARY);
 #endif
-      while (!feof (stdin)) {
-	size_t ret = fread (buf, 1, sizeof (buf), stdin);
-	if (ferror (stdin))
-	  fail (false, "Failed reading font from standard input: %s",
-		strerror (errno));
-	g_string_append_len (gs, buf, ret);
-      }
-      len = gs->len;
-      font_data = g_string_free (gs, false);
-      user_data = font_data;
-      destroy = (hb_destroy_func_t) g_free;
-      mm = HB_MEMORY_MODE_WRITABLE;
-    } else {
-      GError *error = nullptr;
-      GMappedFile *mf = g_mapped_file_new (font_file, false, &error);
-      if (mf) {
-	font_data = g_mapped_file_get_contents (mf);
-	len = g_mapped_file_get_length (mf);
-	if (len) {
-	  destroy = (hb_destroy_func_t) g_mapped_file_unref;
-	  user_data = (void *) mf;
-	  mm = HB_MEMORY_MODE_READONLY_MAY_MAKE_WRITABLE;
-	} else
-	  g_mapped_file_unref (mf);
-      } else {
-	fail (false, "%s", error->message);
-	//g_error_free (error);
-      }
-      if (!len) {
-	/* GMappedFile is buggy, it doesn't fail if file isn't regular.
-	 * Try reading.
-	 * https://bugzilla.gnome.org/show_bug.cgi?id=659212 */
-        GError *error = nullptr;
-	gsize l;
-	if (g_file_get_contents (font_file, &font_data, &l, &error)) {
-	  len = l;
-	  destroy = (hb_destroy_func_t) g_free;
-	  user_data = (void *) font_data;
-	  mm = HB_MEMORY_MODE_WRITABLE;
-	} else {
-	  fail (false, "%s", error->message);
-	  //g_error_free (error);
-	}
-      }
+    while (!feof (stdin)) {
+      size_t ret = fread (buf, 1, sizeof (buf), stdin);
+      if (ferror (stdin))
+	fail (false, "Failed reading font from standard input: %s",
+	      strerror (errno));
+      g_string_append_len (gs, buf, ret);
     }
-
-    if (debug)
-      mm = HB_MEMORY_MODE_DUPLICATE;
-
-    blob = hb_blob_create (font_data, len, mm, user_data, destroy);
+    char *font_data = g_string_free (gs, false);
+    blob = hb_blob_create (font_data, gs->len,
+			   HB_MEMORY_MODE_WRITABLE, font_data,
+			   (hb_destroy_func_t) g_free);
+  } else {
+    blob = hb_blob_create_from_file (font_file);
   }
 
   /* Create the face */
@@ -803,12 +775,6 @@ text_options_t::get_line (unsigned int *len)
     gs = g_string_new (nullptr);
   }
 
-#ifdef HAVE_SETLINEBUF
-  setlinebuf (fp);
-#else
-  setvbuf(fp, NULL, _IOLBF, BUFSIZ);
-#endif
-
   g_string_set_size (gs, 0);
   char buf[BUFSIZ];
   while (fgets (buf, sizeof (buf), fp)) {
@@ -845,12 +811,6 @@ output_options_t::get_file_handle (void)
   if (!fp)
     fail (false, "Cannot open output file `%s': %s",
 	  g_filename_display_name (output_file), strerror (errno));
-
-#ifdef HAVE_SETLINEBUF
-  setlinebuf (fp);
-#else
-  setvbuf(fp, NULL, _IOLBF, BUFSIZ);
-#endif
 
   return fp;
 }

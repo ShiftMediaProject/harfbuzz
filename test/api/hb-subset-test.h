@@ -32,67 +32,31 @@
 #include "hb-test.h"
 #include "hb-subset.h"
 
+#ifdef HAVE_STDBOOL_H
+# include <stdbool.h>
+#else
+typedef short bool;
+# ifndef true
+#  define true 1
+# endif
+# ifndef false
+#  define false 0
+# endif
+#endif
+
 
 HB_BEGIN_DECLS
-
-static inline char *
-hb_subset_test_read_file (const char *path,
-                          size_t     *length /* OUT */)
-{
-  FILE *fp = fopen (path, "rb");
-
-  long file_length = 0;
-  char *buffer = NULL;
-  if (fp && fseek (fp, 0, SEEK_END) == 0)
-  {
-    file_length = ftell(fp);
-    rewind (fp);
-  }
-
-  if (file_length > 0)
-  {
-    buffer = (char *) calloc (file_length + 1, sizeof (char));
-    if (buffer && fread (buffer, 1, file_length, fp) == (size_t) file_length)
-    {
-      *length = file_length;
-    }
-    else
-    {
-      free (buffer);
-      buffer = NULL;
-    }
-  }
-
-  if (fp)
-    fclose(fp);
-
-  return buffer;
-}
 
 static inline hb_face_t *
 hb_subset_test_open_font (const char *font_path)
 {
 #if GLIB_CHECK_VERSION(2,37,2)
-  gchar* path = g_test_build_filename(G_TEST_DIST, font_path, NULL);
+  char* path = g_test_build_filename(G_TEST_DIST, font_path, NULL);
 #else
-  gchar* path = g_strdup(fontFile);
+  char* path = g_strdup(font_path);
 #endif
 
-  size_t length;
-  char *font_data = hb_subset_test_read_file(path, &length);
-
-  if (font_data != NULL) {
-    hb_blob_t *blob = hb_blob_create (font_data,
-                                      length,
-                                      HB_MEMORY_MODE_READONLY,
-                                      font_data,
-                                      free);
-    hb_face_t *face = hb_face_create (blob, 0);
-    hb_blob_destroy (blob);
-    return face;
-  }
-  g_assert (false);
-  return NULL; /* Shut up, compiler! */
+  return hb_face_create (hb_blob_create_from_file (path), 0);
 }
 
 static inline hb_subset_input_t *
@@ -122,9 +86,10 @@ hb_subset_test_check (hb_face_t *expected,
                       hb_face_t *actual,
                       hb_tag_t   table)
 {
+  hb_blob_t *expected_blob, *actual_blob;
   fprintf(stderr, "compare %c%c%c%c\n", HB_UNTAG(table));
-  hb_blob_t *expected_blob = hb_face_reference_table (expected, table);
-  hb_blob_t *actual_blob = hb_face_reference_table (actual, table);
+  expected_blob = hb_face_reference_table (expected, table);
+  actual_blob = hb_face_reference_table (actual, table);
   hb_test_assert_blobs_equal (expected_blob, actual_blob);
   hb_blob_destroy (expected_blob);
   hb_blob_destroy (actual_blob);
