@@ -59,13 +59,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\hb-aat-fmtx-table.hh" />
+    <ClInclude Include="..\src\hb-aat-gcid-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-ankr-table.hh" />
+    <ClInclude Include="..\src\hb-aat-layout-bsln-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-common-private.hh" />
+    <ClInclude Include="..\src\hb-aat-layout-feat-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-kerx-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-morx-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-private.hh" />
     <ClInclude Include="..\src\hb-aat-layout-trak-table.hh" />
+    <ClInclude Include="..\src\hb-aat-ltag-table.hh" />
+    <ClInclude Include="..\src\hb-blob-private.hh" />
     <ClInclude Include="..\src\hb-blob.h" />
+    <ClInclude Include="..\src\hb-buffer-deserialize-json.hh" />
+    <ClInclude Include="..\src\hb-buffer-deserialize-text.hh" />
     <ClInclude Include="..\src\hb-buffer.h" />
     <ClInclude Include="..\src\hb-common.h" />
     <ClInclude Include="..\src\hb-debug.hh" />
@@ -77,9 +85,13 @@
     <ClInclude Include="..\src\hb-ft.h" />
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-icu.h" />
+    <ClInclude Include="..\src\hb-map-private.hh" />
+    <ClInclude Include="..\src\hb-map.h" />
     <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-colr-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-cpal-table.hh" />
+    <ClInclude Include="..\src\hb-ot-color-sbix-table.hh" />
+    <ClInclude Include="..\src\hb-ot-color-svg-table.hh" />
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
     <ClInclude Include="..\src\hb-ot-hdmx-table.hh" />
     <ClInclude Include="..\src\hb-ot-kern-table.hh" />
@@ -93,8 +105,12 @@
     <ClInclude Include="..\src\hb-ot-post-table.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-indic-machine.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-khmer-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-khmer-private.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-private.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh" />
     <ClInclude Include="..\src\hb-ot-shape.h" />
     <ClInclude Include="..\src\hb-ot-tag.h" />
@@ -113,15 +129,9 @@
     <ClInclude Include="..\src\hb-ucdn\ucdn_db.h" />
     <ClInclude Include="..\src\hb-unicode.h" />
     <ClInclude Include="..\src\hb-uniscribe.h" />
+    <ClInclude Include="..\src\hb-version.h" />
     <ClInclude Include="..\src\hb.h" />
     <ClInclude Include="config.h" />
-    <ClInclude Include="src\hb-buffer-deserialize-json.hh" />
-    <ClInclude Include="src\hb-buffer-deserialize-text.hh" />
-    <ClInclude Include="src\hb-ot-shape-complex-indic-machine.hh" />
-    <ClInclude Include="src\hb-ot-shape-complex-khmer-machine.hh" />
-    <ClInclude Include="src\hb-ot-shape-complex-myanmar-machine.hh" />
-    <ClInclude Include="src\hb-ot-shape-complex-use-machine.hh" />
-    <ClInclude Include="src\hb-version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-aat-layout.cc" />
@@ -133,6 +143,7 @@
     <ClCompile Include="..\src\hb-fallback-shape.cc" />
     <ClCompile Include="..\src\hb-font.cc" />
     <ClCompile Include="..\src\hb-ft.cc" />
+    <ClCompile Include="..\src\hb-map.cc" />
     <ClCompile Include="..\src\hb-ot-color.cc" />
     <ClCompile Include="..\src\hb-ot-layout.cc" />
     <ClCompile Include="..\src\hb-ot-map.cc" />
@@ -158,6 +169,7 @@
     <ClCompile Include="..\src\hb-shape-plan.cc" />
     <ClCompile Include="..\src\hb-shape.cc" />
     <ClCompile Include="..\src\hb-shaper.cc" />
+    <ClCompile Include="..\src\hb-static.cc" />
     <ClCompile Include="..\src\hb-ucdn.cc" />
     <ClCompile Include="..\src\hb-ucdn\ucdn.c" />
     <ClCompile Include="..\src\hb-unicode.cc" />

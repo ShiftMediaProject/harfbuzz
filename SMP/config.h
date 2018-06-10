@@ -83,6 +83,11 @@
 /* Have Solaris __machine_*_barrier and atomic_* operations */
 /* #undef HAVE_SOLARIS_ATOMIC_OPS */
 
+/* Define to 1 if you have the <stdbool.h> header file. */
+#if !defined (_MSC_VER) || (_MSC_VER >= 1800)
+#define HAVE_STDBOOL_H 1
+#endif
+
 /* Define to 1 if you have the <stdint.h> header file. */
 #if !defined (_MSC_VER) || (_MSC_VER >= 1600)
 #define HAVE_STDINT_H 1

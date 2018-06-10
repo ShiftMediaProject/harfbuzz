@@ -81,9 +81,6 @@
     <ClInclude Include="..\src\hb-ucdn\ucdn.h">
       <Filter>Header Files\src\hb-ucdn</Filter>
     </ClInclude>
-    <ClInclude Include="src\hb-version.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-shape.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -94,9 +91,6 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-shape-complex-use-private.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hb-ot-shape-complex-use-machine.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-glyf-table.hh">
@@ -162,21 +156,6 @@
     <ClInclude Include="..\src\hb-aat-layout-private.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\hb-buffer-deserialize-json.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hb-buffer-deserialize-text.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hb-ot-shape-complex-indic-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hb-ot-shape-complex-khmer-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hb-ot-shape-complex-myanmar-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -208,6 +187,57 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-buffer-deserialize-json.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-buffer-deserialize-text.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-indic-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-khmer-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-version.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-fmtx-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-gcid-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-bsln-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-feat-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-ltag-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-blob-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-map-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-color-sbix-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-color-svg-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-map.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -324,6 +354,12 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-color.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-map.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-static.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
