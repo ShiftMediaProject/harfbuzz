@@ -560,10 +560,14 @@ hb_blob_create_from_file (const char *file_name)
   if (unlikely (file->contents == MAP_FAILED)) goto fail;
 
 #elif defined(_WIN32) || defined(__CYGWIN__)
-  HANDLE fd = CreateFile (file_name,
-			  writable ? GENERIC_READ|GENERIC_WRITE : GENERIC_READ,
-			  FILE_SHARE_READ, nullptr, OPEN_EXISTING,
-			  FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, nullptr);
+  WCHAR wfile_name[MAX_PATH];
+  if (MultiByteToWideChar(CP_UTF8, 0, file_name, -1, wfile_name, MAX_PATH) == 0) {
+    goto fail_without_close;
+  }
+  HANDLE fd = CreateFileW (wfile_name,
+			   writable ? GENERIC_READ|GENERIC_WRITE : GENERIC_READ,
+			   FILE_SHARE_READ, nullptr, OPEN_EXISTING,
+			   FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, nullptr);
 # define CLOSE CloseHandle
 
   if (unlikely (fd == INVALID_HANDLE_VALUE)) goto fail_without_close;
