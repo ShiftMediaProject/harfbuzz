@@ -59,8 +59,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\hb-aat-fmtx-table.hh" />
-    <ClInclude Include="..\src\hb-aat-gcid-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-ankr-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-bsln-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout-common-private.hh" />
@@ -85,6 +83,8 @@
     <ClInclude Include="..\src\hb-ft.h" />
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-icu.h" />
+    <ClInclude Include="..\src\hb-iter-private.hh" />
+    <ClInclude Include="..\src\hb-machinery-private.hh" />
     <ClInclude Include="..\src\hb-map-private.hh" />
     <ClInclude Include="..\src\hb-map.h" />
     <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh" />

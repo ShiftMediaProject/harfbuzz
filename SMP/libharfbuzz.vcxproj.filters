@@ -210,12 +210,6 @@
     <ClInclude Include="..\src\hb-version.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-aat-fmtx-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-aat-gcid-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-aat-layout-bsln-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -238,6 +232,12 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-map.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-iter-private.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-machinery-private.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
