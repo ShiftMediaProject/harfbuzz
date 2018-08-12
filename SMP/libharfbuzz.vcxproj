@@ -87,6 +87,7 @@
     <ClInclude Include="..\src\hb-machinery-private.hh" />
     <ClInclude Include="..\src\hb-map-private.hh" />
     <ClInclude Include="..\src\hb-map.h" />
+    <ClInclude Include="..\src\hb-null.hh" />
     <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-colr-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-cpal-table.hh" />
@@ -129,6 +130,7 @@
     <ClInclude Include="..\src\hb-ucdn\ucdn_db.h" />
     <ClInclude Include="..\src\hb-unicode.h" />
     <ClInclude Include="..\src\hb-uniscribe.h" />
+    <ClInclude Include="..\src\hb-vector-private.hh" />
     <ClInclude Include="..\src\hb-version.h" />
     <ClInclude Include="..\src\hb.h" />
     <ClInclude Include="config.h" />
