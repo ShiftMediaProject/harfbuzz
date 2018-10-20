@@ -262,6 +262,7 @@ test_set_algebra (void)
 
   hb_set_destroy (s);
   hb_set_destroy (o);
+  hb_set_destroy (o2);
 }
 
 static void
@@ -377,10 +378,6 @@ test_set_empty (void)
   test_empty (b);
 
   hb_set_add (b, 13);
-
-  test_empty (b);
-
-  hb_set_invert (b);
 
   test_empty (b);
 

@@ -25,11 +25,6 @@
  * Red Hat Author(s): Behdad Esfahbod
  */
 
-/* http://www.oracle.com/technetwork/articles/servers-storage-dev/standardheaderfiles-453865.html */
-#ifndef _POSIX_C_SOURCE
-#define _POSIX_C_SOURCE 200809L
-#endif
-
 #include "hb.hh"
 #include "hb-blob.hh"
 
@@ -293,6 +288,8 @@ hb_blob_make_immutable (hb_blob_t *blob)
 {
   if (hb_object_is_inert (blob))
     return;
+  if (blob->immutable)
+    return;
 
   blob->immutable = true;
 }
@@ -510,8 +507,9 @@ struct hb_mapped_file_t
 
 #if (defined(HAVE_MMAP) || defined(_WIN32) || defined(__CYGWIN__)) && !defined(HB_NO_MMAP)
 static void
-_hb_mapped_file_destroy (hb_mapped_file_t *file)
+_hb_mapped_file_destroy (void *file_)
 {
+  hb_mapped_file_t *file = (hb_mapped_file_t *) file_;
 #ifdef HAVE_MMAP
   munmap (file->contents, file->length);
 #elif defined(_WIN32) || defined(__CYGWIN__)
