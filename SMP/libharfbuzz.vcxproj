@@ -92,6 +92,7 @@
     <ClInclude Include="..\src\hb-aat-layout-trak-table.hh" />
     <ClInclude Include="..\src\hb-aat-layout.hh" />
     <ClInclude Include="..\src\hb-aat-ltag-table.hh" />
+    <ClInclude Include="..\src\hb-aat-map.hh" />
     <ClInclude Include="..\src\hb-atomic.hh" />
     <ClInclude Include="..\src\hb-blob.hh" />
     <ClInclude Include="..\src\hb-buffer-deserialize-json.hh" />
@@ -117,6 +118,7 @@
     <ClInclude Include="..\src\hb-ot-color-cpal-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-sbix-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-svg-table.hh" />
+    <ClInclude Include="..\src\hb-ot-color.h" />
     <ClInclude Include="..\src\hb-ot-face.hh" />
     <ClInclude Include="..\src\hb-ot-glyf-table.hh" />
     <ClInclude Include="..\src\hb-ot-hdmx-table.hh" />
@@ -135,6 +137,7 @@
     <ClInclude Include="..\src\hb-ot-map.hh" />
     <ClInclude Include="..\src\hb-ot-math-table.hh" />
     <ClInclude Include="..\src\hb-ot-maxp-table.hh" />
+    <ClInclude Include="..\src\hb-ot-name-language.hh" />
     <ClInclude Include="..\src\hb-ot-name-table.hh" />
     <ClInclude Include="..\src\hb-ot-name.h" />
     <ClInclude Include="..\src\hb-ot-os2-table.hh" />
@@ -153,6 +156,7 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-use.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-vowel-constraints.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex.hh" />
     <ClInclude Include="..\src\hb-ot-shape-fallback.hh" />
     <ClInclude Include="..\src\hb-ot-shape-normalize.hh" />
@@ -162,6 +166,7 @@
     <ClInclude Include="..\src\hb-ot-var-fvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-hvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-mvar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-vorg-table.hh" />
     <ClInclude Include="..\src\hb-set-digest.hh" />
     <ClInclude Include="..\src\hb-set.hh" />
     <ClInclude Include="..\src\hb-shape-plan.hh" />
@@ -184,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-aat-layout.cc" />
+    <ClCompile Include="..\src\hb-aat-map.cc" />
     <ClCompile Include="..\src\hb-blob.cc" />
     <ClCompile Include="..\src\hb-buffer-serialize.cc" />
     <ClCompile Include="..\src\hb-buffer.cc" />
@@ -199,6 +205,8 @@
     <ClCompile Include="..\src\hb-ot-layout.cc" />
     <ClCompile Include="..\src\hb-ot-map.cc" />
     <ClCompile Include="..\src\hb-ot-math.cc" />
+    <ClCompile Include="..\src\hb-ot-name-language.cc" />
+    <ClCompile Include="..\src\hb-ot-name.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-arabic.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-default.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc" />
@@ -210,6 +218,7 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-thai.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc" />
     <ClCompile Include="..\src\hb-ot-shape-complex-use.cc" />
+    <ClCompile Include="..\src\hb-ot-shape-complex-vowel-constraints.cc" />
     <ClCompile Include="..\src\hb-ot-shape-fallback.cc" />
     <ClCompile Include="..\src\hb-ot-shape-normalize.cc" />
     <ClCompile Include="..\src\hb-ot-shape.cc" />
