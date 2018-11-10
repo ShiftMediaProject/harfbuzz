@@ -1,5 +1,5 @@
 /*
- * Copyright © 2011  Google, Inc.
+ * Copyright © 2018  Ebrahim Byagowi
  *
  *  This is part of HarfBuzz, a text shaping library.
  *
@@ -20,47 +20,39 @@
  * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
  * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
  * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
  */
 
-#ifndef HB_H_IN
-#error "Include <hb.h> instead."
+#include "hb-test.h"
+
+#include <hb-ot.h>
+
+/* Unit tests for hb-ot-layout.h baseline */
+
+static void
+test_ot_layout_base (void)
+{
+  hb_face_t *face = hb_test_open_font_file ("fonts/base.ttf");
+  hb_font_t *font = hb_font_create (face);
+
+#if 0
+  hb_position_t position;
+  g_assert (hb_ot_layout_get_baseline (font, HB_OT_LAYOUT_BASELINE_ICFB, HB_DIRECTION_TTB,
+				       HB_TAG ('h','a','n','i'),
+				       HB_TAG ('E','N','G',' '),
+				       &position));
+  g_assert_cmpint (46, ==, position);
 #endif
 
-#ifndef HB_VERSION_H
-#define HB_VERSION_H
+  hb_font_destroy (font);
+  hb_face_destroy (face);
+}
 
-#include "hb-common.h"
+int
+main (int argc, char **argv)
+{
+  hb_test_init (&argc, &argv);
 
-HB_BEGIN_DECLS
+  hb_test_add (test_ot_layout_base);
 
-
-#define HB_VERSION_MAJOR 2
-#define HB_VERSION_MINOR 1
-#define HB_VERSION_MICRO 1
-
-#define HB_VERSION_STRING "2.1.1"
-
-#define HB_VERSION_ATLEAST(major,minor,micro) \
-	((major)*10000+(minor)*100+(micro) <= \
-	 HB_VERSION_MAJOR*10000+HB_VERSION_MINOR*100+HB_VERSION_MICRO)
-
-
-HB_EXTERN void
-hb_version (unsigned int *major,
-	    unsigned int *minor,
-	    unsigned int *micro);
-
-HB_EXTERN const char *
-hb_version_string (void);
-
-HB_EXTERN hb_bool_t
-hb_version_atleast (unsigned int major,
-		    unsigned int minor,
-		    unsigned int micro);
-
-
-HB_END_DECLS
-
-#endif /* HB_VERSION_H */
+  return hb_test_run();
+}
