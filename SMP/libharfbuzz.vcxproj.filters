@@ -330,6 +330,18 @@
     <ClInclude Include="..\src\hb-ot-name-language.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-just-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-aat-layout-lcar-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-kern.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-stat-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
