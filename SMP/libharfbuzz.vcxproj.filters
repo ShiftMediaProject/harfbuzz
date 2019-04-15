@@ -87,9 +87,6 @@
     <ClInclude Include="..\src\hb-font.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-iter.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-machinery.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -348,6 +345,48 @@
     <ClInclude Include="..\src\hb-aat-layout.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-array.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cff1-interp-cs.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cff2-interp-cs.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cff-interp-common.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cff-interp-cs-common.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cff-interp-dict-common.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-cff1-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-cff2-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-cff-common.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-gasp-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-cff1.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-cff2.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-cff-common.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-deprecated.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -483,6 +522,21 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-name-language.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-cff1-table.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-cff2-table.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-cff1.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-cff2.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-cff-common.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
