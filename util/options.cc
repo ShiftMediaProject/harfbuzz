@@ -31,6 +31,8 @@
 #endif
 #include <hb-ot.h>
 
+#define DELIMITERS "<+>{},;&#\\xXuUnNiI\n\t\v\f\r "
+
 static struct supported_font_funcs_t {
 	char name[4];
 	void (*func) (hb_font_t *);
@@ -352,7 +354,7 @@ parse_unicodes (const char *name G_GNUC_UNUSED,
 
   while (s && *s)
   {
-    while (*s && strchr ("<+>{},;&#\\xXuUnNiI\n\t\v\f\r ", *s))
+    while (*s && strchr (DELIMITERS, *s))
       s++;
     if (!*s)
       break;
@@ -969,23 +971,4 @@ format_options_t::serialize_buffer_of_glyphs (hb_buffer_t  *buffer,
   serialize_line_no (line_no, gs);
   serialize_glyphs (buffer, font, output_format, format_flags, gs);
   g_string_append_c (gs, '\n');
-}
-
-void
-subset_options_t::add_options (option_parser_t *parser)
-{
-  GOptionEntry entries[] =
-  {
-    {"layout", 0, 0, G_OPTION_ARG_NONE,  &this->keep_layout,   "Keep OpenType Layout tables",   nullptr},
-    {"no-hinting", 0, 0, G_OPTION_ARG_NONE,  &this->drop_hints,   "Whether to drop hints",   nullptr},
-    {"retain-gids", 0, 0, G_OPTION_ARG_NONE,  &this->retain_gids,   "If set don't renumber glyph ids in the subset.",   nullptr},
-    {"desubroutinize", 0, 0, G_OPTION_ARG_NONE,  &this->desubroutinize,   "Remove CFF/CFF2 use of subroutines",   nullptr},
-
-    {nullptr}
-  };
-  parser->add_group (entries,
-         "subset",
-         "Subset options:",
-         "Options subsetting",
-         this);
 }
