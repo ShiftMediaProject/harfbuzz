@@ -13,22 +13,10 @@
     <Filter Include="Source Files\src">
       <UniqueIdentifier>{d9a519c1-e1ea-4497-8426-3c89ea58f7c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\src\hb-ucdn">
-      <UniqueIdentifier>{47ceef1d-093c-4360-a816-d47286740118}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\src\hb-ucdn">
-      <UniqueIdentifier>{dcebeb96-a8ec-4980-a7e2-fda722a48ce6}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ucdn\ucdn.h">
-      <Filter>Header Files\src\hb-ucdn</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ucdn\ucdn_db.h">
-      <Filter>Header Files\src\hb-ucdn</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb.hh">
       <Filter>Header Files\src</Filter>
@@ -76,9 +64,6 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-debug.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-dsalgs.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-face.hh">
@@ -279,9 +264,6 @@
     <ClInclude Include="..\src\hb-subset.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-subset-glyf.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-subset-input.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -390,6 +372,33 @@
     <ClInclude Include="..\src\hb-iter.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-algs.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-config.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-dispatch.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-meta.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-name-language-static.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-pool.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-sanitize.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-serialize.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ucd-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -464,17 +473,11 @@
     <ClCompile Include="..\src\hb-shaper.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ucdn.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-unicode.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-warning.cc">
       <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ucdn\ucdn.c">
-      <Filter>Source Files\src\hb-ucdn</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc">
       <Filter>Source Files\src</Filter>
@@ -524,9 +527,6 @@
     <ClCompile Include="..\src\hb-ot-name.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-name-language.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-ot-cff1-table.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -540,6 +540,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-subset-cff-common.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ucd.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

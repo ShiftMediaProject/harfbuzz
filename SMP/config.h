@@ -116,9 +116,6 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
 
-/* Have UCDN Unicode functions */
-#define HAVE_UCDN 1
-
 /* Have Uniscribe library */
 /* #undef HAVE_UNISCRIBE */
 
