@@ -100,6 +100,7 @@
     <ClInclude Include="..\src\hb-algs.hh" />
     <ClInclude Include="..\src\hb-array.hh" />
     <ClInclude Include="..\src\hb-atomic.hh" />
+    <ClInclude Include="..\src\hb-bimap.hh" />
     <ClInclude Include="..\src\hb-blob.hh" />
     <ClInclude Include="..\src\hb-buffer-deserialize-json.hh" />
     <ClInclude Include="..\src\hb-buffer-deserialize-text.hh" />
