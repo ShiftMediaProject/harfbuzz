@@ -417,6 +417,9 @@
     <ClInclude Include="..\src\hb-number.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-gvar-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -492,9 +495,6 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-unicode.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-warning.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc">

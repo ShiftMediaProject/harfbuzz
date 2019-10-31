@@ -191,6 +191,7 @@
     <ClInclude Include="..\src\hb-ot-tag-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-avar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-fvar-table.hh" />
+    <ClInclude Include="..\src\hb-ot-var-gvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-hvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-mvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-vorg-table.hh" />
@@ -269,7 +270,6 @@
     <ClCompile Include="..\src\hb-subset-cff2.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
-    <ClCompile Include="..\src\hb-warning.cc" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
