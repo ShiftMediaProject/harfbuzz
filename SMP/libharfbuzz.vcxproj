@@ -125,6 +125,7 @@
     <ClInclude Include="..\src\hb-meta.hh" />
     <ClInclude Include="..\src\hb-mutex.hh" />
     <ClInclude Include="..\src\hb-null.hh" />
+    <ClInclude Include="..\src\hb-number.hh" />
     <ClInclude Include="..\src\hb-object.hh" />
     <ClInclude Include="..\src\hb-open-file.hh" />
     <ClInclude Include="..\src\hb-open-type.hh" />
@@ -229,6 +230,7 @@
     <ClCompile Include="..\src\hb-font.cc" />
     <ClCompile Include="..\src\hb-ft.cc" />
     <ClCompile Include="..\src\hb-map.cc" />
+    <ClCompile Include="..\src\hb-number.cc" />
     <ClCompile Include="..\src\hb-ot-cff1-table.cc" />
     <ClCompile Include="..\src\hb-ot-cff2-table.cc" />
     <ClCompile Include="..\src\hb-ot-color.cc" />
