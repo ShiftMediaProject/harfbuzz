@@ -1,7 +1,7 @@
 project('harfbuzz', 'c', 'cpp',
   meson_version: '>= 0.47.0',
   default_options : ['cpp_std=c++11'],
-  version: '2.6.5')
+  version: '2.6.6')
 
 warning('Meson is not our main build system yet, don\'t use it for packaging HarfBuzz for *nix distros for now')
 
@@ -59,7 +59,6 @@ python3 = import('python').find_installation('python3')
 check_headers = [
   ['unistd.h'],
   ['sys/mman.h'],
-  ['xlocale.h'],
   ['stdbool.h'],
 ]
 
@@ -70,8 +69,6 @@ check_funcs = [
   ['getpagesize'],
   ['mmap'],
   ['isatty'],
-  ['newlocale'],
-  ['strtod_l'],
   ['roundf'],
 ]
 
@@ -95,8 +92,12 @@ cairo_dep = dependency('cairo', required: false)
 fontconfig_dep = dependency('fontconfig', required: get_option('fontconfig'),
                             fallback: ['fontconfig', 'fontconfig_dep'])
 graphite2_dep = dependency('graphite2', required: get_option('graphite'))
-icu_dep = dependency('icu-uc', required: get_option('icu').enabled() and cpp.get_id() != 'msvc')
+icu_dep = dependency('icu-uc', required: false)
 m_dep = cpp.find_library('m', required: false)
+
+if not icu_dep.found() and get_option('icu').enabled()
+  icu_dep = dependency('icu-uc', required: cpp.get_id() != 'msvc')
+endif
 
 if not icu_dep.found() and cpp.get_id() == 'msvc'
   if cpp.has_header('unicode/uchar.h') and \
@@ -186,8 +187,14 @@ endif
 
 if icu_dep.found()
   conf.set('HAVE_ICU', 1)
+endif
+
+if get_option('icu-builtin')
   conf.set('HAVE_ICU_BUILTIN', 1)
-  deps += [icu_dep]
+endif
+
+if get_option('experimental-api')
+  conf.set('HB_EXPERIMENTAL_API', 1)
 endif
 
 if freetype_dep.found()
