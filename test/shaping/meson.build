@@ -183,127 +183,46 @@ aots_tests = [
   'lookupflag_ignore_marks.tests',
 ]
 
-text_rendering_tests = [
-  'AVAR-1.tests',
-  'CFF-1.tests',
-  'CFF2-1.tests',
-  'CFF-2.tests',
-  'CMAP-1.tests',
-  'CMAP-2.tests',
-  'CVAR-1.tests',
-  'CVAR-2.tests',
-  'GLYF-1.tests',
-  'GPOS-1.tests',
-  'GPOS-2.tests',
-  'GPOS-3.tests',
-  'GPOS-4.tests',
-  'GPOS-5.tests',
-  'GSUB-1.tests',
-  'GSUB-2.tests',
-  'GSUB-3.tests',
-  'GVAR-1.tests',
-  'GVAR-2.tests',
-  'GVAR-3.tests',
-  'GVAR-4.tests',
-  'GVAR-5.tests',
-  'GVAR-6.tests',
-  'GVAR-7.tests',
-  'GVAR-8.tests',
-  'GVAR-9.tests',
-  'HVAR-1.tests',
-  'HVAR-2.tests',
-  'KERN-1.tests',
-  'KERN-2.tests',
-  'MORX-10.tests',
-  'MORX-11.tests',
-  'MORX-12.tests',
-  'MORX-13.tests',
-  'MORX-14.tests',
-  'MORX-16.tests',
-  'MORX-17.tests',
-  'MORX-18.tests',
-  'MORX-19.tests',
-  'MORX-1.tests',
-  'MORX-20.tests',
-  'MORX-21.tests',
-  'MORX-22.tests',
-  'MORX-23.tests',
-  'MORX-24.tests',
-  'MORX-25.tests',
-  'MORX-26.tests',
-  'MORX-27.tests',
-  'MORX-28.tests',
-  'MORX-29.tests',
-  'MORX-2.tests',
-  'MORX-30.tests',
-  'MORX-31.tests',
-  'MORX-32.tests',
-  'MORX-33.tests',
-  'MORX-34.tests',
-  'MORX-35.tests',
-  'MORX-36.tests',
-  'MORX-37.tests',
-  'MORX-38.tests',
-  'MORX-39.tests',
-  'MORX-3.tests',
-  'MORX-40.tests',
-  'MORX-41.tests',
-  'MORX-4.tests',
-  'MORX-5.tests',
-  'MORX-6.tests',
-  'MORX-7.tests',
-  'MORX-8.tests',
-  'MORX-9.tests',
-  'SHBALI-3.tests',
-  'SHKNDA-1.tests',
-]
+# to import text_rendering_tests from data/text-rendering-tests/meson.build
+subdir('data/text-rendering-tests')
 
-disabled_text_rendering_tests = [
-  'CMAP-3.tests',
-  'MORX-31.tests',
-  'MORX-41.tests',
-  'SHARAN-1.tests',
-  'SHBALI-1.tests',
-  'SHBALI-2.tests',
-  'SHKNDA-2.tests',
-  'SHKNDA-3.tests',
-]
+shaping_run_tests_py = find_program('run-tests.py')
 
 foreach file_name : in_house_tests
   test_name = file_name.split('.')[0].underscorify()
 
-  test(test_name, python3,
+  test(test_name, shaping_run_tests_py,
     args: [
-      files('run-tests.py')[0],
       hb_shape,
-      join_paths(meson.current_source_dir(), 'data/in-house/tests', file_name),
+      meson.current_source_dir() / 'data' / 'in-house' / 'tests' / file_name,
     ],
-    workdir: join_paths(meson.current_build_dir(), '..', '..'),
+    workdir: meson.current_build_dir() / '..' / '..',
+    suite: ['shaping', 'in-house'],
   )
 endforeach
 
 foreach file_name : aots_tests
   test_name = file_name.split('.')[0].underscorify()
 
-  test(test_name, python3,
+  test(test_name, shaping_run_tests_py,
     args: [
-      files('run-tests.py')[0],
       hb_shape,
-      join_paths(meson.current_source_dir(), 'data/aots/tests', file_name),
+      meson.current_source_dir() / 'data' / 'aots' / 'tests' / file_name,
     ],
-    workdir: join_paths(meson.current_build_dir(), '..', '..'),
+    workdir: meson.current_build_dir() / '..' / '..',
+    suite: ['shaping', 'aots'],
   )
 endforeach
 
 foreach file_name : text_rendering_tests
   test_name = file_name.split('.')[0].underscorify()
 
-  test(test_name, python3,
+  test(test_name, shaping_run_tests_py,
     args: [
-      files('run-tests.py')[0],
       hb_shape,
-      join_paths(meson.current_source_dir(), 'data/text-rendering-tests/tests', file_name),
+      meson.current_source_dir() / 'data' / 'text-rendering-tests' / 'tests' / file_name,
     ],
-    workdir: join_paths(meson.current_build_dir(), '..', '..'),
+    workdir: meson.current_build_dir() / '..' / '..',
+    suite: ['shaping', 'text-rendering-tests'],
   )
 endforeach

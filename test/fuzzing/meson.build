@@ -20,14 +20,17 @@ endforeach
 
 env = environment()
 env.set('srcdir', meson.current_source_dir())
+env.set('HB_TEST_SUBSET_FUZZER_TIMEOUT', '36')
 
 test('shape_fuzzer', find_program('run-shape-fuzzer-tests.py'),
   args: [
     hb_shape_fuzzer_exe,
   ],
   depends: [hb_shape_fuzzer_exe, libharfbuzz, libharfbuzz_subset],
-  workdir: join_paths(meson.current_build_dir(), '..', '..'),
-  env: env)
+  workdir: meson.current_build_dir() / '..' / '..',
+  env: env,
+  suite: ['fuzzing'],
+)
 
 test('subset_fuzzer', find_program('run-subset-fuzzer-tests.py'),
   args: [
@@ -35,13 +38,17 @@ test('subset_fuzzer', find_program('run-subset-fuzzer-tests.py'),
   ],
   # as the tests are ran concurrently let's raise acceptable time here
   # ideally better to break and let meson handles them in parallel
-  timeout: 120,
-  workdir: join_paths(meson.current_build_dir(), '..', '..'),
-  env: env)
+  timeout: 300,
+  workdir: meson.current_build_dir() / '..' / '..',
+  env: env,
+  suite: ['fuzzing'],
+)
 
 test('draw_fuzzer', find_program('run-draw-fuzzer-tests.py'),
   args: [
     hb_draw_fuzzer_exe,
   ],
-  workdir: join_paths(meson.current_build_dir(), '..', '..'),
-  env: env)
+  workdir: meson.current_build_dir() / '..' / '..',
+  env: env,
+  suite: ['fuzzing'],
+)
