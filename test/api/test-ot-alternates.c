@@ -1,5 +1,5 @@
 /*
- * Copyright © 2009  Red Hat, Inc.
+ * Copyright © 2020  Ebrahim Byagowi
  *
  *  This is part of HarfBuzz, a text shaping library.
  *
@@ -20,31 +20,34 @@
  * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
  * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
  * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
  */
 
-#ifndef HB_H
-#define HB_H
-#define HB_H_IN
+#include "hb-test.h"
 
-#include "hb-blob.h"
-#include "hb-buffer.h"
-#include "hb-common.h"
-#include "hb-deprecated.h"
-#include "hb-draw.h"
-#include "hb-face.h"
-#include "hb-font.h"
-#include "hb-map.h"
-#include "hb-set.h"
-#include "hb-shape.h"
-#include "hb-shape-plan.h"
-#include "hb-style.h"
-#include "hb-unicode.h"
-#include "hb-version.h"
+#include <hb.h>
+#include <hb-ot.h>
 
-HB_BEGIN_DECLS
-HB_END_DECLS
+static void
+test_ot_layout_lookup_get_glyph_alternates (void)
+{
+  hb_face_t *face = hb_test_open_font_file ("fonts/SourceSansPro-Regular.otf");
 
-#undef HB_H_IN
-#endif /* HB_H */
+  hb_codepoint_t alternates[3];
+  unsigned alternates_count = 3;
+  g_assert_cmpuint (7, ==, hb_ot_layout_lookup_get_glyph_alternates (face, 1, 1091, 2, &alternates_count, alternates));
+
+  g_assert_cmpuint (3, ==, alternates_count);
+  g_assert_cmpuint (1606, ==, alternates[0]);
+  g_assert_cmpuint (1578, ==, alternates[1]);
+  g_assert_cmpuint (1592, ==, alternates[2]);
+
+  hb_face_destroy (face);
+}
+
+int
+main (int argc, char **argv)
+{
+  hb_test_init (&argc, &argv);
+  hb_test_add (test_ot_layout_lookup_get_glyph_alternates);
+  return hb_test_run ();
+}
