@@ -6,11 +6,21 @@ tests = [
 ]
 
 foreach file_name : tests
-  test_name = file_name.split('.')[0].underscorify()
+  test_name = file_name.split('.')[0]
 
-  exe = executable(test_name, [file_name, 'main.cc'],
+  sources = [file_name]
+  fuzzer_ldflags = []
+
+  if get_option('fuzzer_ldflags') == ''
+    sources += 'main.cc'
+  else
+    fuzzer_ldflags += get_option('fuzzer_ldflags').split()
+  endif
+
+  exe = executable(test_name, sources,
     cpp_args: cpp_args,
     include_directories: [incconfig, incsrc],
+    link_args: fuzzer_ldflags,
     link_with: [libharfbuzz, libharfbuzz_subset],
     install: false,
   )
@@ -19,12 +29,13 @@ endforeach
 
 env = environment()
 env.set('srcdir', meson.current_source_dir())
-env.set('HB_TEST_SUBSET_FUZZER_TIMEOUT', '36')
+env.set('HB_TEST_SUBSET_FUZZER_TIMEOUT', '50')
 
 test('shape_fuzzer', find_program('run-shape-fuzzer-tests.py'),
   args: [
     hb_shape_fuzzer_exe,
   ],
+  timeout: 60,
   depends: [hb_shape_fuzzer_exe, libharfbuzz, libharfbuzz_subset],
   workdir: meson.current_build_dir() / '..' / '..',
   env: env,
