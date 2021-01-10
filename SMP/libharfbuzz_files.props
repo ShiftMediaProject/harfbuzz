@@ -120,6 +120,7 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-indic.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-khmer-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-khmer.hh" />
+    <ClInclude Include="..\src\hb-ot-shape-complex-machine-index.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-machine.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh" />
