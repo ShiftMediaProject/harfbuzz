@@ -1,19 +1,16 @@
-version: 2
+version: 2.1
+
+executors:
+  win32-executor:
+    docker:
+      - image: cimg/base:edge-20.04
+  autotools-executor:
+    docker:
+      - image: cimg/base:edge-20.04
 
 jobs:
 
-  macos-10.12.6-aat-fonts:
-    macos:
-      xcode: "9.0.1"
-    steps:
-      - checkout
-      - run: HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config ragel freetype glib cairo python3 ninja
-      - run: pip3 install meson --upgrade
-      - run: meson build
-      - run: meson compile -Cbuild # or ninja -Cbuild
-      - run: meson test -Cbuild --print-errorlogs
-
-  macos-10.13.6-aat-fonts:
+  macos-10_13_6-aat-fonts:
     macos:
       xcode: "10.1.0"
     steps:
@@ -23,8 +20,10 @@ jobs:
       - run: meson build
       - run: meson compile -Cbuild
       - run: meson test -Cbuild --print-errorlogs
+      - store_artifacts:
+          path: build/meson-logs/
 
-  macos-10.14.4-aat-fonts:
+  macos-10_14_4-aat-fonts:
     macos:
       xcode: "11.1.0"
     steps:
@@ -34,8 +33,10 @@ jobs:
       - run: PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig" meson build -Dcoretext=enabled
       - run: meson compile -Cbuild
       - run: meson test -Cbuild --print-errorlogs
+      - store_artifacts:
+          path: build/meson-logs/
 
-  macos-10.15.3-aat-fonts:
+  macos-10_15_3-aat-fonts:
     macos:
       xcode: "11.4.0"
     steps:
@@ -45,14 +46,15 @@ jobs:
       - run: PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig" meson build -Dcoretext=enabled -Dgraphite=enabled -Dauto_features=enabled
       - run: meson compile -Cbuild
       - run: meson test -Cbuild --print-errorlogs
+      - store_artifacts:
+          path: build/meson-logs/
 
   # will be dropped with autotools removal
   distcheck:
-    docker:
-      - image: ubuntu:20.04
+    executor: autotools-executor
     steps:
       - checkout
-      - run: apt update && DEBIAN_FRONTEND=noninteractive apt install -y git ninja-build binutils libtool autoconf automake make gcc g++ pkg-config ragel gtk-doc-tools libfontconfig1-dev libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python3 python3-pip cmake
+      - run: sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -y git ninja-build binutils libtool autoconf automake make gcc g++ pkg-config ragel gtk-doc-tools libfontconfig1-dev libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python3 python3-pip cmake
       - run: pip3 install fonttools meson --upgrade
       - run: ./autogen.sh
       - run: make -j32
@@ -60,6 +62,19 @@ jobs:
       - run: rm harfbuzz-* && make distdir
       - run: cd harfbuzz-* && meson build && ninja -Cbuild test
       - run: cd harfbuzz-* && cmake -Bcmakebuild -H. && cmake --build cmakebuild
+      - run: make dist
+      - persist_to_workspace:
+          root: .
+          paths: harfbuzz-*.tar.xz
+
+  publish-dist:
+    executor: autotools-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: |
+          .ci/publish_release_artifact.sh harfbuzz-$CIRCLE_TAG.tar.xz
 
   fedora-valgrind:
     docker:
@@ -70,7 +85,7 @@ jobs:
       - run: meson build --buildtype=debugoptimized
       - run: ninja -Cbuild -j9
       # TOOD: increase timeouts and remove --no-suite=slow
-      - run: RUN_VALGRIND=1 HB_TEST_SHAPE_FUZZER_TIMEOUT=5 meson test -Cbuild --no-suite=slow --wrap='valgrind --leak-check=full --error-exitcode=1' --print-errorlogs
+      - run: RUN_VALGRIND=1 meson test -Cbuild --no-suite=slow --wrap='valgrind --leak-check=full --error-exitcode=1' --print-errorlogs
 
   alpine:
     docker:
@@ -124,26 +139,61 @@ jobs:
       - run: clang -c src/hb-*.cc -DHB_NO_MT -Werror -Weverything -Wno-old-style-cast -Wno-documentation -Wno-documentation-unknown-command -Wno-c++98-compat -Wno-cast-qual -Wno-c++98-compat-pedantic -Wno-sign-conversion -Wno-padded -Wno-shorten-64-to-32 -Wno-reserved-id-macro -Wno-float-conversion -Wno-format-pedantic -Wno-shadow -Wno-conversion -Wno-zero-as-null-pointer-constant -Wno-missing-field-initializers -Wno-used-but-marked-unused -Wno-unused-macros -Wno-comma -Wno-float-equal -Wno-disabled-macro-expansion -Wno-weak-vtables -Wno-unused-parameter -Wno-covered-switch-default -Wno-unreachable-code -Wno-unused-template -DHB_WITH_WIN1256
 
   crossbuild-win32:
-    docker:
-      - image: ubuntu:20.04
+    executor: win32-executor
     steps:
       - checkout
-      - run: apt update && DEBIAN_FRONTEND=noninteractive apt install -y ninja-build binutils meson gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python3 python3-pip git g++-mingw-w64-i686 zip
+      - run: sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -y ninja-build binutils gcc g++ pkg-config ragel gtk-doc-tools libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev python3 python3-pip git g++-mingw-w64-i686 zip
+      - run: pip3 install meson==0.56.0 --upgrade
       - run: .ci/build-win32.sh
       - store_artifacts:
           path: harfbuzz-win32.zip
+      - persist_to_workspace:
+          root: .
+          paths: harfbuzz-win32.zip
+
+  publish-win32:
+    executor: win32-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: |
+          mv harfbuzz-win32{,-$CIRCLE_TAG}.zip
+          .ci/publish_release_artifact.sh harfbuzz-win32-$CIRCLE_TAG.zip
 
 workflows:
   version: 2
+
   build:
     jobs:
-      - macos-10.12.6-aat-fonts
-      - macos-10.13.6-aat-fonts
-      - macos-10.14.4-aat-fonts
-      - macos-10.15.3-aat-fonts
-      - distcheck # will be dropped with autotools removal
+      - macos-10_13_6-aat-fonts
+      - macos-10_14_4-aat-fonts
+      - macos-10_15_3-aat-fonts
+      - distcheck: # will be dropped with autotools removal
+          filters:
+            tags:
+              only: /^\d+.\d+.\d+$/
+      - publish-dist:
+          requires:
+            - distcheck
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
       - fedora-valgrind
       - alpine
       - archlinux
       - sanitizers
-      - crossbuild-win32
+      - crossbuild-win32:
+          filters:
+            tags:
+              only: /^\d+.\d+.\d+$/
+      - publish-win32:
+          requires:
+            - crossbuild-win32
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
