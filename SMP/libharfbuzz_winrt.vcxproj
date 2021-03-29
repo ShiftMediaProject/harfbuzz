@@ -63,7 +63,7 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <Command>mkdir "$(OutDir)"\include
 mkdir "$(OutDir)"\include\harfbuzz
 copy ..\src\*.h "$(OutDir)"\include\harfbuzz
-copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
+copy ..\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -145,7 +145,7 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <Command>mkdir "$(OutDir)"\include
 mkdir "$(OutDir)"\include\harfbuzz
 copy ..\src\*.h "$(OutDir)"\include\harfbuzz
-copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
+copy ..\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -227,7 +227,7 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <Command>mkdir "$(OutDir)"\include
 mkdir "$(OutDir)"\include\harfbuzz
 copy ..\src\*.h "$(OutDir)"\include\harfbuzz
-copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
+copy ..\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -350,7 +350,7 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <Command>mkdir "$(OutDir)"\include
 mkdir "$(OutDir)"\include\harfbuzz
 copy ..\src\*.h "$(OutDir)"\include\harfbuzz
-copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
+copy ..\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>
@@ -391,7 +391,7 @@ del /f /q $(OutDir)\licenses\harfbuzz.txt
       <Command>mkdir "$(OutDir)"\include
 mkdir "$(OutDir)"\include\harfbuzz
 copy ..\src\*.h "$(OutDir)"\include\harfbuzz
-copy .\src\hb-version.h "$(OutDir)"\include\harfbuzz
+copy ..\src\hb-version.h "$(OutDir)"\include\harfbuzz
 mkdir $(OutDir)\licenses
 copy ..\COPYING $(OutDir)\licenses\harfbuzz.txt</Command>
     </PostBuildEvent>

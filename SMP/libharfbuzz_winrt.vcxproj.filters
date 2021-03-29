@@ -216,9 +216,6 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-machine.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-use.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -525,6 +522,12 @@
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-joining-list.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-syllabic.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shape-complex-use-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -611,9 +614,6 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-use.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-use-table.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-ot-math.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -678,6 +678,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-draw.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shape-complex-syllabic.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
