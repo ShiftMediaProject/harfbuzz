@@ -142,6 +142,8 @@
     <ClInclude Include="..\src\hb-ot-vorg-table.hh" />
     <ClInclude Include="..\src\hb-ot.h" />
     <ClInclude Include="..\src\hb-pool.hh" />
+    <ClInclude Include="..\src\hb-priority-queue.hh" />
+    <ClInclude Include="..\src\hb-repacker.hh" />
     <ClInclude Include="..\src\hb-sanitize.hh" />
     <ClInclude Include="..\src\hb-serialize.hh" />
     <ClInclude Include="..\src\hb-set-digest.hh" />
