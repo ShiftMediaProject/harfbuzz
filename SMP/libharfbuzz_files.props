@@ -71,6 +71,7 @@
     <ClInclude Include="..\src\hb-ot-cmap-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-colr-table.hh" />
+    <ClInclude Include="..\src\hb-ot-color-colrv1-closure.hh" />
     <ClInclude Include="..\src\hb-ot-color-cpal-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-sbix-table.hh" />
     <ClInclude Include="..\src\hb-ot-color-svg-table.hh" />
