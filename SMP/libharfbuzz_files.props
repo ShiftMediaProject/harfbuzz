@@ -57,6 +57,7 @@
     <ClInclude Include="..\src\hb-map.h" />
     <ClInclude Include="..\src\hb-map.hh" />
     <ClInclude Include="..\src\hb-meta.hh" />
+    <ClInclude Include="..\src\hb-ms-feature-ranges.hh" />
     <ClInclude Include="..\src\hb-mutex.hh" />
     <ClInclude Include="..\src\hb-null.hh" />
     <ClInclude Include="..\src\hb-number-parser.hh" />
@@ -112,6 +113,7 @@
     <ClInclude Include="..\src\hb-ot-os2-unicode-ranges.hh" />
     <ClInclude Include="..\src\hb-ot-post-macroman.hh" />
     <ClInclude Include="..\src\hb-ot-post-table.hh" />
+    <ClInclude Include="..\src\hb-ot-post-table-vs2subset.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-fallback.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-joining-list.hh" />
     <ClInclude Include="..\src\hb-ot-shape-complex-arabic-table.hh" />
@@ -189,6 +191,7 @@
     <ClCompile Include="..\src\hb-font.cc" />
     <ClCompile Include="..\src\hb-ft.cc" />
     <ClCompile Include="..\src\hb-map.cc" />
+    <ClCompile Include="..\src\hb-ms-feature-ranges.cc" />
     <ClCompile Include="..\src\hb-number.cc" />
     <ClCompile Include="..\src\hb-ot-cff1-table.cc" />
     <ClCompile Include="..\src\hb-ot-cff2-table.cc" />
