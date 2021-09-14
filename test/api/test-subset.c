@@ -42,7 +42,7 @@ test_subset_32_tables (void)
   hb_set_add (codepoints, 'b');
   hb_set_add (codepoints, 'c');
 
-  subset = hb_subset (face, input);
+  subset = hb_subset_or_fail (face, input);
   g_assert (subset);
   g_assert (subset != hb_face_get_empty ());
 
@@ -64,9 +64,8 @@ test_subset_no_inf_loop (void)
   hb_set_add (codepoints, 'b');
   hb_set_add (codepoints, 'c');
 
-  subset = hb_subset (face, input);
-  g_assert (subset);
-  g_assert (subset == hb_face_get_empty ());
+  subset = hb_subset_or_fail (face, input);
+  g_assert (!subset);
 
   hb_subset_input_destroy (input);
   hb_face_destroy (subset);
@@ -86,13 +85,95 @@ test_subset_crash (void)
   hb_set_add (codepoints, 'b');
   hb_set_add (codepoints, 'c');
 
-  subset = hb_subset (face, input);
-  g_assert (subset);
-  g_assert (subset == hb_face_get_empty ());
+  subset = hb_subset_or_fail (face, input);
+  g_assert (!subset);
 
   hb_subset_input_destroy (input);
   hb_face_destroy (subset);
   hb_face_destroy (face);
+}
+
+static void
+test_subset_set_flags (void)
+{
+  hb_subset_input_t *input = hb_subset_input_create_or_fail ();
+
+  g_assert (hb_subset_input_get_flags (input) == HB_SUBSET_FLAGS_DEFAULT);
+
+  hb_subset_input_set_flags (input,
+                             HB_SUBSET_FLAGS_NAME_LEGACY |
+                             HB_SUBSET_FLAGS_NOTDEF_OUTLINE |
+                             HB_SUBSET_FLAGS_GLYPH_NAMES);
+
+  g_assert (hb_subset_input_get_flags (input) ==
+            (hb_subset_flags_t) (
+            HB_SUBSET_FLAGS_NAME_LEGACY |
+            HB_SUBSET_FLAGS_NOTDEF_OUTLINE |
+            HB_SUBSET_FLAGS_GLYPH_NAMES));
+
+  hb_subset_input_set_flags (input,
+                             HB_SUBSET_FLAGS_NAME_LEGACY |
+                             HB_SUBSET_FLAGS_NOTDEF_OUTLINE |
+                             HB_SUBSET_FLAGS_RETAIN_ALL_FEATURES);
+
+  g_assert (hb_subset_input_get_flags (input) ==
+            (hb_subset_flags_t) (
+            HB_SUBSET_FLAGS_NAME_LEGACY |
+            HB_SUBSET_FLAGS_NOTDEF_OUTLINE |
+            HB_SUBSET_FLAGS_RETAIN_ALL_FEATURES));
+
+
+  hb_subset_input_destroy (input);
+}
+
+
+static void
+test_subset_legacy_api (void)
+{
+  hb_subset_input_t *input = hb_subset_input_create_or_fail ();
+
+  g_assert (hb_subset_input_get_flags (input) == HB_SUBSET_FLAGS_DEFAULT);
+
+  hb_subset_input_set_flags (input,
+                             HB_SUBSET_FLAGS_NAME_LEGACY |
+                             HB_SUBSET_FLAGS_NOTDEF_OUTLINE);
+
+  g_assert (hb_subset_input_get_name_legacy (input));
+  g_assert (hb_subset_input_get_notdef_outline (input));
+  g_assert (!hb_subset_input_get_desubroutinize (input));
+  g_assert (!hb_subset_input_get_drop_hints (input));
+
+  hb_subset_input_set_drop_hints (input, true);
+  hb_subset_input_set_name_legacy (input, false);
+  g_assert (!hb_subset_input_get_name_legacy (input));
+  g_assert (hb_subset_input_get_notdef_outline (input));
+  g_assert (!hb_subset_input_get_desubroutinize (input));
+  g_assert (hb_subset_input_get_drop_hints (input));
+
+
+  hb_face_t *face_abc = hb_test_open_font_file ("fonts/Roboto-Regular.abc.ttf");
+
+  hb_set_t *codepoints = hb_set_create();
+  hb_set_add (codepoints, 97);
+  hb_set_add (codepoints, 99);
+  hb_set_union (hb_subset_input_unicode_set (input), codepoints);
+  hb_set_destroy (codepoints);
+
+  hb_face_t *face_abc_subset_new = hb_subset (face_abc, input);
+  hb_face_t *face_abc_subset_legacy = hb_subset_or_fail (face_abc, input);
+
+
+  hb_blob_t* a = hb_face_reference_blob (face_abc_subset_new);
+  hb_blob_t* b = hb_face_reference_blob (face_abc_subset_new);
+  hb_test_assert_blobs_equal (a, b);
+
+  hb_blob_destroy (a);
+  hb_blob_destroy (b);
+  hb_face_destroy (face_abc_subset_new);
+  hb_face_destroy (face_abc_subset_legacy);
+  hb_face_destroy (face_abc);
+
+  hb_subset_input_destroy (input);
 }
 
 int
@@ -103,6 +184,8 @@ main (int argc, char **argv)
   hb_test_add (test_subset_32_tables);
   hb_test_add (test_subset_no_inf_loop);
   hb_test_add (test_subset_crash);
+  hb_test_add (test_subset_set_flags);
+  hb_test_add (test_subset_legacy_api);
 
   return hb_test_run();
 }

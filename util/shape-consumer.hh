@@ -27,55 +27,57 @@
 #ifndef HB_SHAPE_CONSUMER_HH
 #define HB_SHAPE_CONSUMER_HH
 
-#include "hb.hh"
-#include "options.hh"
+#include "font-options.hh"
+#include "shape-options.hh"
+#include "text-options.hh"
 
 
 template <typename output_t>
-struct shape_consumer_t
+struct shape_consumer_t : shape_options_t
 {
-  shape_consumer_t (option_parser_t *parser)
-		  : failed (false),
-		    shaper (parser),
-		    output (parser),
-		    font (nullptr),
-		    buffer (nullptr) {}
-
-  void init (hb_buffer_t  *buffer_,
-	     const font_options_t *font_opts)
+  void add_options (option_parser_t *parser)
   {
-    font = hb_font_reference (font_opts->get_font ());
+    shape_options_t::add_options (parser);
+    output.add_options (parser);
+  }
+
+  void init (const font_options_t *font_opts)
+  {
+    font = hb_font_reference (font_opts->font);
     failed = false;
-    buffer = hb_buffer_reference (buffer_);
+    buffer = hb_buffer_create ();
 
     output.init (buffer, font_opts);
   }
-  void consume_line (const char   *text,
-		     unsigned int  text_len,
-		     const char   *text_before,
-		     const char   *text_after)
+  bool consume_line (shape_text_options_t &text_opts)
   {
+    unsigned int text_len;
+    const char *text;
+    if (!(text = text_opts.get_line (&text_len)))
+      return false;
+
     output.new_line ();
 
-    for (unsigned int n = shaper.num_iterations; n; n--)
+    for (unsigned int n = num_iterations; n; n--)
     {
       const char *error = nullptr;
 
-      shaper.populate_buffer (buffer, text, text_len, text_before, text_after);
+      populate_buffer (buffer, text, text_len, text_opts.text_before, text_opts.text_after);
       if (n == 1)
-	output.consume_text (buffer, text, text_len, shaper.utf8_clusters);
-      if (!shaper.shape (font, buffer, &error))
+	output.consume_text (buffer, text, text_len, utf8_clusters);
+      if (!shape (font, buffer, &error))
       {
 	failed = true;
 	output.error (error);
 	if (hb_buffer_get_content_type (buffer) == HB_BUFFER_CONTENT_TYPE_GLYPHS)
 	  break;
 	else
-	  return;
+	  return true;
       }
     }
 
-    output.consume_glyphs (buffer, text, text_len, shaper.utf8_clusters);
+    output.consume_glyphs (buffer, text, text_len, utf8_clusters);
+    return true;
   }
   void finish (const font_options_t *font_opts)
   {
@@ -87,14 +89,13 @@ struct shape_consumer_t
   }
 
   public:
-  bool failed;
+  bool failed = false;
 
   protected:
-  shape_options_t shaper;
   output_t output;
 
-  hb_font_t *font;
-  hb_buffer_t *buffer;
+  hb_font_t *font = nullptr;
+  hb_buffer_t *buffer = nullptr;
 };
 
 
