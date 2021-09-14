@@ -19,6 +19,9 @@
     <ClInclude Include="..\src\hb-array.hh" />
     <ClInclude Include="..\src\hb-atomic.hh" />
     <ClInclude Include="..\src\hb-bimap.hh" />
+    <ClInclude Include="..\src\hb-bit-page.hh" />
+    <ClInclude Include="..\src\hb-bit-set.hh" />
+    <ClInclude Include="..\src\hb-bit-set-invertible.hh" />
     <ClInclude Include="..\src\hb-blob.h" />
     <ClInclude Include="..\src\hb-blob.hh" />
     <ClInclude Include="..\src\hb-buffer-deserialize-json.hh" />
