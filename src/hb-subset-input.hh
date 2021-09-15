@@ -43,7 +43,7 @@ struct hb_subset_input_t
   hb_object_header_t header;
 
   union {
-    struct {
+    struct sets_t {
       hb_set_t *glyphs;
       hb_set_t *unicodes;
       hb_set_t *no_subset_tables;
@@ -52,7 +52,7 @@ struct hb_subset_input_t
       hb_set_t *name_languages;
       hb_set_t *layout_features;
     } sets;
-    hb_set_t* set_ptrs[sizeof (sets) / sizeof (hb_set_t*)];
+    hb_set_t* set_ptrs[sizeof (sets_t) / sizeof (hb_set_t*)];
   };
 
   unsigned flags;
