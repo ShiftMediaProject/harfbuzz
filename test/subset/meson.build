@@ -38,7 +38,9 @@ tests = [
   'cmap14',
   'sbix',
   'colr',
+  'colr_glyphs',
   'math',
+  'math_coverage_offset',
 # TODO: re-enable once colrv1 subsetting is stabilized.
 # 'colrv1.notoemoji',
   'colrv1',

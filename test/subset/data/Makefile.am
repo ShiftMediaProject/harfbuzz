@@ -46,12 +46,14 @@ EXTRA_DIST += \
 	expected/cmap14 \
 	expected/sbix \
 	expected/colr \
+	expected/colr_glyphs \
 	expected/colrv1 \
 	expected/colr_with_components \
 	expected/cbdt \
 	expected/variable \
 	expected/glyph_names \
 	expected/math \
+	expected/math_coverage_offset \
 	expected/post \
 	fonts \
 	profiles \
