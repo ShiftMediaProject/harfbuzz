@@ -1,6 +1,6 @@
 project('harfbuzz', 'c', 'cpp',
   meson_version: '>= 0.55.0',
-  version: '3.3.1',
+  version: '3.4.0',
   default_options: [
     'cpp_rtti=false',       # Just to support msvc, we are passing -fno-exceptions also anyway
     'cpp_std=c++11',
@@ -129,7 +129,7 @@ if not get_option('icu').disabled()
   endif
 endif
 
-if icu_dep.found()
+if icu_dep.found() and icu_dep.type_name() == 'pkgconfig'
   icu_defs = icu_dep.get_variable(pkgconfig: 'DEFS', default_value: '')
   if icu_defs != ''
     add_project_arguments(icu_defs, language: ['c', 'cpp'])
