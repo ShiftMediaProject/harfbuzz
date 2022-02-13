@@ -710,7 +710,7 @@
     <ClCompile Include="..\src\hb-ot-shape-complex-syllabic.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ms-feature-ranges.cc">
+    <ClCompile Include="..\src\hb-buffer-verify.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

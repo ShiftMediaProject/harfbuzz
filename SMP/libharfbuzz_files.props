@@ -187,6 +187,7 @@
     <ClCompile Include="..\src\hb-aat-map.cc" />
     <ClCompile Include="..\src\hb-blob.cc" />
     <ClCompile Include="..\src\hb-buffer-serialize.cc" />
+    <ClCompile Include="..\src\hb-buffer-verify.cc" />
     <ClCompile Include="..\src\hb-buffer.cc" />
     <ClCompile Include="..\src\hb-common.cc" />
     <ClCompile Include="..\src\hb-draw.cc" />
