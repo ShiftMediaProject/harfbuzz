@@ -555,6 +555,9 @@
     <ClInclude Include="..\src\hb-ot-var-common.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-subset-repacker.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -711,6 +714,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-buffer-verify.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-repacker.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

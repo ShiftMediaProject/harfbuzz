@@ -168,6 +168,7 @@
     <ClInclude Include="..\src\hb-subset-cff2.hh" />
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
+    <ClInclude Include="..\src\hb-subset-repacker.h" />
     <ClInclude Include="..\src\hb-subset.h" />
     <ClInclude Include="..\src\hb-subset.hh" />
     <ClInclude Include="..\src\hb-ucd-table.hh" />
@@ -233,6 +234,7 @@
     <ClCompile Include="..\src\hb-subset-cff-common.cc" />
     <ClCompile Include="..\src\hb-subset-cff1.cc" />
     <ClCompile Include="..\src\hb-subset-cff2.cc" />
+    <ClCompile Include="..\src\hb-subset-repacker.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
   </ItemGroup>
