@@ -13,6 +13,15 @@
     <Filter Include="Source Files\src">
       <UniqueIdentifier>{d9a519c1-e1ea-4497-8426-3c89ea58f7c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT">
+      <UniqueIdentifier>{bcb38de7-506c-488a-895d-e3b9e119284f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Layout">
+      <UniqueIdentifier>{4ea6f427-9655-4593-a529-8b4aee116bfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Layout\GSUB">
+      <UniqueIdentifier>{811e5d85-e750-471e-9e55-58793eb8a678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -557,6 +566,72 @@
     </ClInclude>
     <ClInclude Include="..\src\hb-subset-repacker.h">
       <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\AlternateSet.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\AlternateSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\AlternateSubstFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\ChainContextSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\Common.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\ContextSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\ExtensionSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\GSUB.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\Ligature.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\LigatureSet.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\LigatureSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\LigatureSubstFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\MultipleSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\MultipleSubstFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\ReverseChainSingleSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\ReverseChainSingleSubstFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\Sequence.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\SingleSubst.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\SingleSubstFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\SingleSubstFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookup.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookupSubTable.hh">
+      <Filter>Header Files\src\OT\Layout\GSUB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
