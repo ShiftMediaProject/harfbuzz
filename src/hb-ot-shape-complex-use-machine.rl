@@ -73,6 +73,7 @@ export H	= 12; # HALANT
 
 export HN	= 13; # HALANT_NUM
 export ZWNJ	= 14; # Zero width non-joiner
+export WJ	= 16; # Word joiner
 export R	= 18; # REPHA
 export CS	= 43; # CONS_WITH_STACKER
 export HVM	= 44; # HALANT_OR_VOWEL_MODIFIER
@@ -152,14 +153,15 @@ standard_cluster =
 	complex_syllable_start
 	complex_syllable_tail
 ;
+tail = complex_syllable_tail | sakot_terminated_cluster_tail | symbol_cluster_tail | virama_terminated_cluster_tail;
 broken_cluster =
 	R?
-	(complex_syllable_tail | number_joiner_terminated_cluster_tail | numeral_cluster_tail | symbol_cluster_tail | virama_terminated_cluster_tail | sakot_terminated_cluster_tail)
+	(tail | number_joiner_terminated_cluster_tail | numeral_cluster_tail)
 ;
 
 number_joiner_terminated_cluster = N number_joiner_terminated_cluster_tail;
 numeral_cluster = N numeral_cluster_tail?;
-symbol_cluster = (O | GB) symbol_cluster_tail?;
+symbol_cluster = (O | GB) tail?;
 hieroglyph_cluster = SB+ | SB* G SE* (J SE* (G SE*)?)*;
 other = any;
 
@@ -231,7 +233,7 @@ HB_FUNCOBJ (machine_index);
 
 static bool
 not_ccs_default_ignorable (const hb_glyph_info_t &i)
-{ return !(i.use_category() == USE(CGJ) && _hb_glyph_info_is_default_ignorable (&i)); }
+{ return i.use_category() != USE(CGJ); }
 
 static inline void
 find_syllables_use (hb_buffer_t *buffer)
