@@ -28,6 +28,9 @@
     <Filter Include="Header Files\src\OT\glyf">
       <UniqueIdentifier>{45670071-3735-4d67-ae78-4b1f8eb65898}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT\Layout\GPOS">
+      <UniqueIdentifier>{c0921d50-4f3d-48a6-bc2f-8d6892820153}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -672,41 +675,92 @@
     <ClInclude Include="..\src\OT\glyf\SubsetGlyph.hh">
       <Filter>Header Files\src\OT\glyf</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-arabic.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\Anchor.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-default.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\AnchorFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-hangul.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\AnchorFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-hebrew.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\AnchorFormat3.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-indic.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\AnchorMatrix.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-indic-table.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\ChainContextPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-khmer.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\Common.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-myanmar.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\ContextPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-syllabic.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\CursivePos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-thai.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\CursivePosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-use.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS\ExtensionPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shaper-vowel-constraints.cc">
-      <Filter>Source Files\src</Filter>
+    <ClInclude Include="..\src\OT\Layout\GPOS.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkArray.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkBasePos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkBasePosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkLigPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkLigPosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkMarkPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkMarkPosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\MarkRecord.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairPos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairPosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairPosFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PosLookup.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PosLookupSubTable.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\SinglePos.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\SinglePosFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\SinglePosFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\ValueFormat.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -740,24 +794,6 @@
     <ClCompile Include="..\src\hb-ot-map.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-arabic.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-default.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-indic-table.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-indic.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-myanmar.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-thai.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-ot-shape-fallback.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -785,15 +821,6 @@
     <ClCompile Include="..\src\hb-unicode.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-hangul.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-hebrew.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-use.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-ot-math.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
@@ -801,9 +828,6 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-aat-layout.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-khmer.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-color.cc">
@@ -822,9 +846,6 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-aat-map.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-vowel-constraints.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-name.cc">
@@ -860,13 +881,46 @@
     <ClCompile Include="..\src\hb-draw.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shape-complex-syllabic.cc">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\hb-buffer-verify.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-subset-repacker.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-arabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-default.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-hangul.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-hebrew.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-indic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-indic-table.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-khmer.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-myanmar.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-syllabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-thai.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-use.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-vowel-constraints.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
