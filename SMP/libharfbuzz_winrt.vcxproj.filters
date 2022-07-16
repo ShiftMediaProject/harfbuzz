@@ -22,6 +22,12 @@
     <Filter Include="Header Files\src\OT\Layout\GSUB">
       <UniqueIdentifier>{811e5d85-e750-471e-9e55-58793eb8a678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\graph">
+      <UniqueIdentifier>{2babac6a-17f5-40eb-b9d1-ca374cd71057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\glyf">
+      <UniqueIdentifier>{45670071-3735-4d67-ae78-4b1f8eb65898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -192,42 +198,6 @@
     <ClInclude Include="..\src\hb-ot-shape.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-arabic.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-fallback.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-win1256.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-indic.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-indic-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-khmer.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-khmer-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-myanmar.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-myanmar-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-use-machine.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-shape-fallback.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -301,9 +271,6 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-aat-map.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-vowel-constraints.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-vorg-table.hh">
@@ -528,15 +495,6 @@
     <ClInclude Include="..\src\hb-version.h">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-arabic-joining-list.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-syllabic.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-shape-complex-use-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ms-feature-ranges.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -632,6 +590,123 @@
     </ClInclude>
     <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookupSubTable.hh">
       <Filter>Header Files\src\OT\Layout\GSUB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-cplusplus.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\serialize.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\CompositeGlyph.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\glyf.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\glyf-helpers.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\Glyph.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\GlyphHeader.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic-fallback.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic-joining-list.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic-pua.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic-table.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic-win1256.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-indic.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-indic-machine.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-khmer-machine.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-myanmar-machine.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-syllabic.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-use-machine.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-use-table.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-vowel-constraints.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\loca.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\path-builder.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\SimpleGlyph.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\SubsetGlyph.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-arabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-default.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-hangul.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-hebrew.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-indic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-indic-table.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-khmer.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-myanmar.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-syllabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-thai.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-use.cc">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-shaper-vowel-constraints.cc">
+      <Filter>Source Files\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
