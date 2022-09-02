@@ -182,6 +182,10 @@
     <ClInclude Include="..\src\hb.h" />
     <ClInclude Include="..\src\hb.hh" />
     <ClInclude Include="..\src\graph\graph.hh" />
+    <ClInclude Include="..\src\graph\gsubgpos-graph.hh" />
+    <ClInclude Include="..\src\graph\gsubgpos-context.hh" />
+    <ClInclude Include="..\src\graph\pairpos-graph.hh" />
+    <ClInclude Include="..\src\graph\coverage-graph.hh" />
     <ClInclude Include="..\src\graph\serialize.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf-helpers.hh" />
@@ -307,6 +311,7 @@
     <ClCompile Include="..\src\hb-subset-repacker.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
+    <ClCompile Include="..\src\graph\gsubgpos-context.cc" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

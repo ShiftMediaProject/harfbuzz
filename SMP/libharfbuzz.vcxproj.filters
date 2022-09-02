@@ -34,6 +34,9 @@
     <Filter Include="Header Files\src\OT\Layout\Common">
       <UniqueIdentifier>{cd087374-13a3-45ff-be88-078f6c516ea0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\src\graph">
+      <UniqueIdentifier>{addf51c7-5266-469d-bcf5-1596ba2dbbb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -789,6 +792,18 @@
     <ClInclude Include="..\src\OT\Layout\types.hh">
       <Filter>Header Files\src\OT\Layout</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\graph\coverage-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\gsubgpos-context.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\gsubgpos-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\pairpos-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -949,6 +964,9 @@
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shaper-use.cc">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\graph\gsubgpos-context.cc">
+      <Filter>Source Files\src\graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

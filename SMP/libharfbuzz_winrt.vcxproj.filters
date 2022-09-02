@@ -34,6 +34,9 @@
     <Filter Include="Header Files\src\OT\Layout\Common">
       <UniqueIdentifier>{36f3999c-88ba-4d8a-b858-001ae69463b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\src\graph">
+      <UniqueIdentifier>{4d612a66-062f-4a2d-9cd3-3e6426efb527}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -789,6 +792,18 @@
     <ClInclude Include="..\src\OT\Layout\Common\RangeRecord.hh">
       <Filter>Header Files\src\OT\Layout\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\graph\coverage-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\gsubgpos-context.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\gsubgpos-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\pairpos-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -949,6 +964,9 @@
     </ClCompile>
     <ClCompile Include="..\src\hb-ot-shaper-vowel-constraints.cc">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\graph\gsubgpos-context.cc">
+      <Filter>Source Files\src\graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
