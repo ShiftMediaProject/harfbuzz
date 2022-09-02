@@ -31,6 +31,9 @@
     <Filter Include="Header Files\src\OT\Layout\GPOS">
       <UniqueIdentifier>{86f40c7c-88b8-4129-b9ba-7d62b5260d2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT\Layout\Common">
+      <UniqueIdentifier>{cd087374-13a3-45ff-be88-078f6c516ea0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -708,9 +711,6 @@
     <ClInclude Include="..\src\OT\Layout\GPOS\ExtensionPos.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OT\Layout\GPOS.hh">
-      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkArray.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
@@ -761,6 +761,33 @@
     </ClInclude>
     <ClInclude Include="..\src\OT\Layout\GPOS\ValueFormat.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\CGPOS.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairSet.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairValueRecord.hh ">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\LigatureArray.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\Coverage.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\RangeRecord.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\types.hh">
+      <Filter>Header Files\src\OT\Layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -887,18 +914,42 @@
     <ClCompile Include="..\src\hb-subset-repacker.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\hb-ot-shaper-arabic.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-default.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-hangul.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-hebrew.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-indic-table.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-indic.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-khmer.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-myanmar.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-syllabic.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-thai.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-use.cc" />
-    <ClCompile Include="..\src\hb-ot-shaper-vowel-constraints.cc" />
+    <ClCompile Include="..\src\hb-ot-shaper-vowel-constraints.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-arabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-default.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-hangul.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-hebrew.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-indic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-indic-table.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-khmer.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-myanmar.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-syllabic.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-thai.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-ot-shaper-use.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

@@ -31,6 +31,9 @@
     <Filter Include="Header Files\src\OT\Layout\GPOS">
       <UniqueIdentifier>{c0921d50-4f3d-48a6-bc2f-8d6892820153}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT\Layout\Common">
+      <UniqueIdentifier>{36f3999c-88ba-4d8a-b858-001ae69463b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -708,9 +711,6 @@
     <ClInclude Include="..\src\OT\Layout\GPOS\ExtensionPos.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OT\Layout\GPOS.hh">
-      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkArray.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
     </ClInclude>
@@ -761,6 +761,33 @@
     </ClInclude>
     <ClInclude Include="..\src\OT\Layout\GPOS\ValueFormat.hh">
       <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\types.hh">
+      <Filter>Header Files\src\OT\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\CGPOS.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\LigatureArray.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairSet.hh">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairValueRecord.hh ">
+      <Filter>Header Files\src\OT\Layout\GPOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\Coverage.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat1.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat2.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\Common\RangeRecord.hh">
+      <Filter>Header Files\src\OT\Layout\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

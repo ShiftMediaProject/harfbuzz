@@ -192,10 +192,17 @@
     <ClInclude Include="..\src\OT\glyf\SimpleGlyph.hh" />
     <ClInclude Include="..\src\OT\glyf\CompositeGlyph.hh" />
     <ClInclude Include="..\src\OT\glyf\SubsetGlyph.hh" />
-    <ClInclude Include="..\src\OT\Layout\GPOS.hh" />
+    <ClInclude Include="..\src\OT\Layout\types.hh" />
+    <ClInclude Include="..\src\OT\Layout\Common\Coverage.hh" />
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat1.hh" />
+    <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat2.hh" />
+    <ClInclude Include="..\src\OT\Layout\Common\RangeRecord.hh" />
+    <ClInclude Include="..\src\OT\Layout\GPOS\CGPOS.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\CursivePosFormat1.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkLigPos.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\PairPos.hh" />
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairSet.hh" />
+    <ClInclude Include="..\src\OT\Layout\GPOS\PairValueRecord.hh " />
     <ClInclude Include="..\src\OT\Layout\GPOS\Anchor.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\AnchorFormat1.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkLigPosFormat1.hh" />
@@ -213,6 +220,7 @@
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkBasePos.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkMarkPosFormat1.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\SinglePos.hh" />
+    <ClInclude Include="..\src\OT\Layout\GPOS\LigatureArray.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkArray.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\CursivePos.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\PosLookupSubTable.hh" />
