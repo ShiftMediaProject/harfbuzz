@@ -804,6 +804,15 @@
     <ClInclude Include="..\src\graph\pairpos-graph.hh">
       <Filter>Header Files\src\graph</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\graph\split-helpers.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\markbasepos-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\graph\classdef-graph.hh">
+      <Filter>Header Files\src\graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">

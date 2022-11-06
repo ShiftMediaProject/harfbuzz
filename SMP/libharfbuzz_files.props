@@ -186,6 +186,9 @@
     <ClInclude Include="..\src\graph\gsubgpos-context.hh" />
     <ClInclude Include="..\src\graph\pairpos-graph.hh" />
     <ClInclude Include="..\src\graph\coverage-graph.hh" />
+    <ClInclude Include="..\src\graph\classdef-graph.hh" />
+    <ClInclude Include="..\src\graph\markbasepos-graph.hh" />
+    <ClInclude Include="..\src\graph\split-helpers.hh" />
     <ClInclude Include="..\src\graph\serialize.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf-helpers.hh" />
