@@ -813,6 +813,9 @@
     <ClInclude Include="..\src\graph\classdef-graph.hh">
       <Filter>Header Files\src\graph</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-subset-accelerator.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">

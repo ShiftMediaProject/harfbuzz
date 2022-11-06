@@ -163,6 +163,7 @@
     <ClInclude Include="..\src\hb-shaper-list.hh" />
     <ClInclude Include="..\src\hb-shaper.hh" />
     <ClInclude Include="..\src\hb-string-array.hh" />
+    <ClInclude Include="..\src\hb-subset-accelerator.hh" />
     <ClInclude Include="..\src\hb-subset-cff-common.hh" />
     <ClInclude Include="..\src\hb-subset-cff1.hh" />
     <ClInclude Include="..\src\hb-subset-cff2.hh" />
