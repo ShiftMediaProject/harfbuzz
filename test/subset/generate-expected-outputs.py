@@ -45,6 +45,7 @@ def generate_expected_output(input_file, unicodes, profile_flags, instance_flags
 	args = ["fonttools", "subset", input_path]
 	args.extend(["--drop-tables+=DSIG",
 		     "--drop-tables-=sbix",
+		     "--no-harfbuzz-repacker", # disable harfbuzz repacker so we aren't comparing to ourself.
 		     "--unicodes=%s" % unicodes,
 		     "--output-file=%s" % fonttools_path])
 	args.extend(profile_flags)
