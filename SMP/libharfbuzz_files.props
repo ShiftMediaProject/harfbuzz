@@ -62,6 +62,7 @@
     <ClInclude Include="..\src\hb-map.hh" />
     <ClInclude Include="..\src\hb-meta.hh" />
     <ClInclude Include="..\src\hb-ms-feature-ranges.hh" />
+    <ClInclude Include="..\src\hb-multimap.hh" />
     <ClInclude Include="..\src\hb-mutex.hh" />
     <ClInclude Include="..\src\hb-null.hh" />
     <ClInclude Include="..\src\hb-number-parser.hh" />
@@ -191,6 +192,8 @@
     <ClInclude Include="..\src\graph\markbasepos-graph.hh" />
     <ClInclude Include="..\src\graph\split-helpers.hh" />
     <ClInclude Include="..\src\graph\serialize.hh" />
+    <ClInclude Include="..\src\OT\glyf\coord-setter.hh" />
+    <ClInclude Include="..\src\OT\glyf\composite-iter.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf-helpers.hh" />
     <ClInclude Include="..\src\OT\glyf\loca.hh" />
@@ -200,6 +203,7 @@
     <ClInclude Include="..\src\OT\glyf\SimpleGlyph.hh" />
     <ClInclude Include="..\src\OT\glyf\CompositeGlyph.hh" />
     <ClInclude Include="..\src\OT\glyf\SubsetGlyph.hh" />
+    <ClInclude Include="..\src\OT\glyf\VarCompositeGlyph.hh" />
     <ClInclude Include="..\src\OT\Layout\types.hh" />
     <ClInclude Include="..\src\OT\Layout\Common\Coverage.hh" />
     <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat1.hh" />
@@ -260,6 +264,7 @@
     <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookup.hh" />
     <ClInclude Include="..\src\OT\Layout\GSUB\GSUB.hh" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="src\hb-features.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-aat-layout.cc" />

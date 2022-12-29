@@ -816,6 +816,21 @@
     <ClInclude Include="..\src\hb-subset-accelerator.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-multimap.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\VarCompositeGlyph.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\coord-setter.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\glyf\composite-iter.hh">
+      <Filter>Header Files\src\OT\glyf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hb-features.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
