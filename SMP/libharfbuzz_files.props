@@ -138,6 +138,7 @@
     <ClInclude Include="..\src\hb-ot-tag-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-avar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-common.hh" />
+    <ClInclude Include="..\src\hb-ot-var-cvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-fvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-gvar-table.hh" />
     <ClInclude Include="..\src\hb-ot-var-hvar-table.hh" />
