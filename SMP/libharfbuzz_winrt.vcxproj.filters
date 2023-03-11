@@ -37,6 +37,33 @@
     <Filter Include="Source Files\src\graph">
       <UniqueIdentifier>{4d612a66-062f-4a2d-9cd3-3e6426efb527}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT\Layout\GDEF">
+      <UniqueIdentifier>{aa745a29-fcd5-4ab6-80af-f2efa3acaf12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color">
+      <UniqueIdentifier>{6fd53376-da6b-4a57-a29c-6ca5734b4c8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color\CBDT">
+      <UniqueIdentifier>{f942eabf-1afd-4b73-9d07-7118f3acc354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color\COLR">
+      <UniqueIdentifier>{e599ad9c-dca5-4cf2-b06f-a136da28286f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color\svg">
+      <UniqueIdentifier>{d2380581-df70-414d-90d8-81f95c6b672a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color\CPAL">
+      <UniqueIdentifier>{9cf6c24e-02ae-47db-a2c2-00d3f86084ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Color\sbix">
+      <UniqueIdentifier>{8938e239-0fa1-4203-b0f9-4951017d6f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\CBDT">
+      <UniqueIdentifier>{bfb747ed-696e-4757-87b9-bfcce2868ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\name">
+      <UniqueIdentifier>{e50e24c8-ece2-414b-a64e-6bd008991ddd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -118,21 +145,6 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-cmap-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-colr-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-cpal-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-sbix-table.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-svg-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-ot-face.hh">
@@ -507,9 +519,6 @@
     <ClInclude Include="..\src\hb-ms-feature-ranges.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-ot-color-colrv1-closure.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-ot-post-table-vs2subset.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -831,6 +840,45 @@
     <ClInclude Include="src\hb-features.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-limits.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-outline.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-paint.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-paint-extents.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Layout\GDEF\GDEF.hh">
+      <Filter>Header Files\src\OT\Layout\GDEF</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\CBDT\CBDT.hh">
+      <Filter>Header Files\src\OT\Color\CBDT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\COLR\COLR.hh">
+      <Filter>Header Files\src\OT\Color\COLR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\COLR\colrv1-closure.hh">
+      <Filter>Header Files\src\OT\Color\COLR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\CPAL\CPAL.hh">
+      <Filter>Header Files\src\OT\Color\CPAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\sbix\sbix.hh">
+      <Filter>Header Files\src\OT\Color\sbix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Color\svg\svg.hh">
+      <Filter>Header Files\src\OT\Color\svg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\name\name.hh">
+      <Filter>Header Files\src\OT\name</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ft-colr.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -994,6 +1042,21 @@
     </ClCompile>
     <ClCompile Include="..\src\graph\gsubgpos-context.cc">
       <Filter>Source Files\src\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-instancer-solver.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-face-builder.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-outline.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-paint.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-paint-extents.cc">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

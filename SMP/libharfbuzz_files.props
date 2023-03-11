@@ -49,6 +49,7 @@
     <ClInclude Include="..\src\hb-font.h" />
     <ClInclude Include="..\src\hb-font.hh" />
     <ClInclude Include="..\src\hb-ft.h" />
+    <ClInclude Include="..\src\hb-ft-colr.hh" />
     <ClInclude Include="..\src\hb-gdi.h" />
     <ClInclude Include="..\src\hb-glib.h" />
     <ClInclude Include="..\src\hb-gobject-structs.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="..\src\hb-icu.h" />
     <ClInclude Include="..\src\hb-iter.hh" />
     <ClInclude Include="..\src\hb-kern.hh" />
+    <ClInclude Include="..\src\hb-limits.hh" />
     <ClInclude Include="..\src\hb-machinery.hh" />
     <ClInclude Include="..\src\hb-map.h" />
     <ClInclude Include="..\src\hb-map.hh" />
@@ -75,12 +77,6 @@
     <ClInclude Include="..\src\hb-ot-cff1-table.hh" />
     <ClInclude Include="..\src\hb-ot-cff2-table.hh" />
     <ClInclude Include="..\src\hb-ot-cmap-table.hh" />
-    <ClInclude Include="..\src\hb-ot-color-cbdt-table.hh" />
-    <ClInclude Include="..\src\hb-ot-color-colr-table.hh" />
-    <ClInclude Include="..\src\hb-ot-color-colrv1-closure.hh" />
-    <ClInclude Include="..\src\hb-ot-color-cpal-table.hh" />
-    <ClInclude Include="..\src\hb-ot-color-sbix-table.hh" />
-    <ClInclude Include="..\src\hb-ot-color-svg-table.hh" />
     <ClInclude Include="..\src\hb-ot-color.h" />
     <ClInclude Include="..\src\hb-ot-deprecated.h" />
     <ClInclude Include="..\src\hb-ot-face-table-list.hh" />
@@ -149,6 +145,9 @@
     <ClInclude Include="..\src\hb-ot-var.h" />
     <ClInclude Include="..\src\hb-ot-vorg-table.hh" />
     <ClInclude Include="..\src\hb-ot.h" />
+    <ClInclude Include="..\src\hb-outline.hh" />
+    <ClInclude Include="..\src\hb-paint.hh" />
+    <ClInclude Include="..\src\hb-paint-extents.hh" />
     <ClInclude Include="..\src\hb-pool.hh" />
     <ClInclude Include="..\src\hb-priority-queue.hh" />
     <ClInclude Include="..\src\hb-repacker.hh" />
@@ -192,6 +191,12 @@
     <ClInclude Include="..\src\graph\markbasepos-graph.hh" />
     <ClInclude Include="..\src\graph\split-helpers.hh" />
     <ClInclude Include="..\src\graph\serialize.hh" />
+    <ClInclude Include="..\src\OT\Color\CBDT\CBDT.hh" />
+    <ClInclude Include="..\src\OT\Color\COLR\COLR.hh" />
+    <ClInclude Include="..\src\OT\Color\COLR\colrv1-closure.hh" />
+    <ClInclude Include="..\src\OT\Color\CPAL\CPAL.hh" />
+    <ClInclude Include="..\src\OT\Color\sbix\sbix.hh" />
+    <ClInclude Include="..\src\OT\Color\svg\svg.hh" />
     <ClInclude Include="..\src\OT\glyf\coord-setter.hh" />
     <ClInclude Include="..\src\OT\glyf\composite-iter.hh" />
     <ClInclude Include="..\src\OT\glyf\glyf.hh" />
@@ -209,6 +214,7 @@
     <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat1.hh" />
     <ClInclude Include="..\src\OT\Layout\Common\CoverageFormat2.hh" />
     <ClInclude Include="..\src\OT\Layout\Common\RangeRecord.hh" />
+    <ClInclude Include="..\src\OT\Layout\GDEF\GDEF.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\CGPOS.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\CursivePosFormat1.hh" />
     <ClInclude Include="..\src\OT\Layout\GPOS\MarkLigPos.hh" />
@@ -263,6 +269,7 @@
     <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookupSubTable.hh" />
     <ClInclude Include="..\src\OT\Layout\GSUB\SubstLookup.hh" />
     <ClInclude Include="..\src\OT\Layout\GSUB\GSUB.hh" />
+    <ClInclude Include="..\src\OT\name\name.hh" />
     <ClInclude Include="config.h" />
     <ClInclude Include="src\hb-features.h" />
   </ItemGroup>
@@ -276,6 +283,7 @@
     <ClCompile Include="..\src\hb-common.cc" />
     <ClCompile Include="..\src\hb-draw.cc" />
     <ClCompile Include="..\src\hb-face.cc" />
+    <ClCompile Include="..\src\hb-face-builder.cc" />
     <ClCompile Include="..\src\hb-fallback-shape.cc" />
     <ClCompile Include="..\src\hb-font.cc" />
     <ClCompile Include="..\src\hb-ft.cc" />
@@ -309,6 +317,9 @@
     <ClCompile Include="..\src\hb-ot-shaper-vowel-constraints.cc" />
     <ClCompile Include="..\src\hb-ot-tag.cc" />
     <ClCompile Include="..\src\hb-ot-var.cc" />
+    <ClCompile Include="..\src\hb-outline.cc" />
+    <ClCompile Include="..\src\hb-paint.cc" />
+    <ClCompile Include="..\src\hb-paint-extents.cc" />
     <ClCompile Include="..\src\hb-set.cc" />
     <ClCompile Include="..\src\hb-shape-plan.cc" />
     <ClCompile Include="..\src\hb-shape.cc" />
@@ -317,6 +328,7 @@
     <ClCompile Include="..\src\hb-subset-cff-common.cc" />
     <ClCompile Include="..\src\hb-subset-cff1.cc" />
     <ClCompile Include="..\src\hb-subset-cff2.cc" />
+    <ClCompile Include="..\src\hb-subset-instancer-solver.cc" />
     <ClCompile Include="..\src\hb-subset-repacker.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
