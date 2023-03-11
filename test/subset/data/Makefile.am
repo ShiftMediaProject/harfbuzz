@@ -60,10 +60,13 @@ EXTRA_DIST += \
 	expected/full_instance \
 	expected/instance_feature_variations \
 	expected/instantiate_glyf \
+	expected/instantiate_cff2 \
 	expected/pin_all_at_default \
 	expected/instance_no_double_free \
 	expected/mvar_full_instance \
 	expected/instance_comp_glyph_empty_child \
+	expected/post_apply_mvar_delta \
+	expected/apply_cvar_delta \
 	fonts \
 	profiles \
 	$(NULL)
