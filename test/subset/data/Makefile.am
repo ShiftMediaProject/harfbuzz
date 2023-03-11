@@ -49,6 +49,7 @@ EXTRA_DIST += \
 	expected/colr \
 	expected/colr_glyphs \
 	expected/colrv1 \
+	expected/colrv1_copy_varstore \
 	expected/colr_with_components \
 	expected/cbdt \
 	expected/variable \
@@ -60,6 +61,9 @@ EXTRA_DIST += \
 	expected/instance_feature_variations \
 	expected/instantiate_glyf \
 	expected/pin_all_at_default \
+	expected/instance_no_double_free \
+	expected/mvar_full_instance \
+	expected/instance_comp_glyph_empty_child \
 	fonts \
 	profiles \
 	$(NULL)
