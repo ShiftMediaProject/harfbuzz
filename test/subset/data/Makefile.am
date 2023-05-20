@@ -10,6 +10,7 @@ EXTRA_DIST += \
 	$(DISABLED_TESTS) \
 	expected/32bit_var_store \
 	expected/basics \
+	expected/preprocess \
 	expected/full-font \
 	expected/glyf_bug_3131 \
 	expected/cff-full-font \
@@ -43,6 +44,7 @@ EXTRA_DIST += \
 	expected/layout.duplicate_features \
 	expected/layout.unsorted_featurelist \
 	expected/layout.drop_feature \
+	expected/no_layout_closure \
 	expected/cmap \
 	expected/cmap14 \
 	expected/sbix \
@@ -67,6 +69,9 @@ EXTRA_DIST += \
 	expected/instance_comp_glyph_empty_child \
 	expected/post_apply_mvar_delta \
 	expected/apply_cvar_delta \
+	expected/collect_name_ids \
+	expected/instantiate_colrv1 \
+	expected/instantiate_cff2_update_metrics \
 	fonts \
 	profiles \
 	$(NULL)

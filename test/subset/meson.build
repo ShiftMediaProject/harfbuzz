@@ -1,5 +1,6 @@
 tests = [
   'basics',
+  'preprocess',
   'full-font',
   'cff-full-font',
   'japanese',
@@ -33,6 +34,7 @@ tests = [
   'layout.duplicate_features',
   'layout.unsorted_featurelist',
   'layout.drop_feature',
+  'no_layout_closure',
   'cmap',
   'cmap14',
   'sbix',
@@ -60,6 +62,9 @@ tests = [
   'instance_comp_glyph_empty_child',
   'post_apply_mvar_delta',
   'apply_cvar_delta',
+  'collect_name_ids',
+  'instantiate_colrv1',
+  'instantiate_cff2_update_metrics',
 ]
 
 repack_tests = [
