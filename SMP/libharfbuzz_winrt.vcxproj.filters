@@ -882,6 +882,9 @@
     <ClInclude Include="..\src\hb-ot-var-cvar-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">

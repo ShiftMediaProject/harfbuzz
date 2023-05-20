@@ -170,6 +170,7 @@
     <ClInclude Include="..\src\hb-subset-cff2.hh" />
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
+    <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh" />
     <ClInclude Include="..\src\hb-subset-repacker.h" />
     <ClInclude Include="..\src\hb-subset.h" />
     <ClInclude Include="..\src\hb-subset.hh" />
