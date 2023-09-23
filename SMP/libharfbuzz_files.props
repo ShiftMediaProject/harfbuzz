@@ -168,6 +168,7 @@
     <ClInclude Include="..\src\hb-subset-cff-common.hh" />
     <ClInclude Include="..\src\hb-subset-cff1.hh" />
     <ClInclude Include="..\src\hb-subset-cff2.hh" />
+    <ClInclude Include="..\src\hb-subset-instace-solver.hh" />
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
     <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh" />
