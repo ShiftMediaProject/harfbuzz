@@ -707,34 +707,88 @@ parse_instance (const char *name,
       return false;
     }
 
-    if (strcmp (s, "drop") == 0)
-    {
-      if (!hb_subset_input_pin_axis_to_default (subset_main->input, subset_main->face, axis_tag))
-      {
-        g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
-                     "Cannot pin axis: '%c%c%c%c', not present in fvar", HB_UNTAG (axis_tag));
-        return false;
-      }
-    }
-    else
+#ifdef HB_EXPERIMENTAL_API
+    char *pp = s;
+    pp = strpbrk (pp, ":");
+    if (pp) // partial instancing
     {
       errno = 0;
-      char *p;
-      float axis_value = strtof (s, &p);
-      if (errno || s == p)
+      char *pend;
+      float min_val = strtof (s, &pend);
+      if (errno || s == pend || pend != pp)
       {
         g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
                      "Failed parsing axis value at: '%s'", s);
         return false;
       }
-
-      if (!hb_subset_input_pin_axis_location (subset_main->input, subset_main->face, axis_tag, axis_value))
+      pp++;
+      float max_val = strtof (pp, &pend);
+      /* we need to specify 2 values or 3 values for partial instancing:
+       * at least new min and max values, new default is optional */
+      if (errno || pp == pend || (*pend != ':' && *pend != '\0'))
       {
         g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
-                     "Cannot pin axis: '%c%c%c%c', not present in fvar", HB_UNTAG (axis_tag));
+                     "Failed parsing axis value at: '%s'", s);
         return false;
       }
+      /* 3 values are specified */
+      float *def_val_p = nullptr;
+      float def_val;
+      if (*pend == ':')
+      {
+        def_val = max_val;
+        def_val_p = &def_val;
+        pp = pend + 1;
+        max_val = strtof (pp, &pend);
+        if (errno || pp == pend || *pend != '\0')
+        {
+          g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                     "Failed parsing axis value at: '%s'", s);
+          return false;
+        }
+      }
+      if (!hb_subset_input_set_axis_range (subset_main->input, subset_main->face, axis_tag, min_val, max_val, def_val_p))
+        {
+          g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                       "Error: axis: '%c%c%c%c', not present in fvar or invalid range with min:%.6f max:%.6f",
+                       HB_UNTAG (axis_tag), (double) min_val, (double) max_val);
+          return false;
+        }
     }
+    else
+    {
+#endif
+      if (strcmp (s, "drop") == 0)
+      {
+        if (!hb_subset_input_pin_axis_to_default (subset_main->input, subset_main->face, axis_tag))
+        {
+          g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                       "Cannot pin axis: '%c%c%c%c', not present in fvar", HB_UNTAG (axis_tag));
+          return false;
+        }
+      }
+      else
+      {
+        errno = 0;
+        char *p;
+        float axis_value = strtof (s, &p);
+        if (errno || s == p)
+        {
+          g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                       "Failed parsing axis value at: '%s'", s);
+          return false;
+        }
+
+        if (!hb_subset_input_pin_axis_location (subset_main->input, subset_main->face, axis_tag, axis_value))
+        {
+          g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                       "Cannot pin axis: '%c%c%c%c', not present in fvar", HB_UNTAG (axis_tag));
+          return false;
+        }
+      }
+#ifdef HB_EXPERIMENTAL_API
+    }
+#endif
     s = strtok(nullptr, "=");
   }
 
@@ -971,14 +1025,18 @@ subset_main_t::add_options ()
     {"drop-tables+",	0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_CALLBACK, (gpointer) &parse_drop_tables,	"Drop the specified tables.", "list of string table tags or *"},
     {"drop-tables-",	0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_CALLBACK, (gpointer) &parse_drop_tables,	"Drop the specified tables.", "list of string table tags or *"},
 #ifndef HB_NO_VAR
-    {"instance",	0, 0, G_OPTION_ARG_CALLBACK, (gpointer) &parse_instance,
-     "(Partially|Fully) Instantiate a variable font. A location consists of the tag of a variation axis, followed by '=', followed by a\n"
-     "number or the literal string 'drop'\n"
-     "                                                        "
-     "For example: --instance=\"wdth=100 wght=200\" or --instance=\"wdth=drop\"\n"
-     "                                                        "
-     "Note: currently only fully instancing is supported\n",
-     "list of comma separated axis-locations"},
+     {"variations",	0, 0, G_OPTION_ARG_CALLBACK, (gpointer) &parse_instance,
+     "(Partially|Fully) Instantiate a variable font. A location consists of the tag "
+     "of a variation axis, followed by '=', followed by a number or the literal "
+     "string 'drop'. For example: --variations=\"wdth=100 wght=200\" or --instance=\"wdth=drop\""
+#ifndef HB_EXPERIMENTAL_API
+     "\n\nNote: currently only full instancing is supported unless this util has been compiled with experimental api enabled."
+#endif
+     ,
+     "list of comma separated axis-locations."
+     },
+     {"instance",	0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_CALLBACK, (gpointer) &parse_instance,
+     "Alias for --variations.", "list of comma separated axis-locations"},
 #endif
     {nullptr}
   };
@@ -1006,6 +1064,9 @@ subset_main_t::add_options ()
      "Alternative name for --preprocess.", nullptr},
     {"preprocess",		0, 0, G_OPTION_ARG_NONE, &this->preprocess,
      "If set preprocesses the face with the add accelerator option before actually subsetting.", nullptr},
+#ifdef HB_EXPERIMENTAL_API
+    {"iftb-requirements",	0, G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, (gpointer) &set_flag<HB_SUBSET_FLAGS_IFTB_REQUIREMENTS>,	"Enforce requirements needed to use the subset with incremental font transfer IFTB patches.", nullptr},
+#endif
     {nullptr}
   };
   add_group (flag_entries,

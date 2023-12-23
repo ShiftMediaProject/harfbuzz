@@ -187,6 +187,11 @@ struct graph_t
 
     unsigned incoming_edges () const
     {
+      if (HB_DEBUG_SUBSET_REPACK)
+       {
+	assert (incoming_edges_ == (single_parent != (unsigned) -1) +
+		(parents.values_ref () | hb_reduce (hb_add, 0)));
+       }
       return incoming_edges_;
     }
 
@@ -199,6 +204,7 @@ struct graph_t
 
     void add_parent (unsigned parent_index)
     {
+      assert (parent_index != (unsigned) -1);
       if (incoming_edges_ == 0)
       {
 	single_parent = parent_index;
@@ -207,12 +213,19 @@ struct graph_t
       }
       else if (single_parent != (unsigned) -1)
       {
+        assert (incoming_edges_ == 1);
 	if (!parents.set (single_parent, 1))
 	  return;
 	single_parent = (unsigned) -1;
       }
 
-      if (parents.set (parent_index, parents[parent_index] + 1))
+      unsigned *v;
+      if (parents.has (parent_index, &v))
+      {
+        (*v)++;
+	incoming_edges_++;
+      }
+      else if (parents.set (parent_index, 1))
 	incoming_edges_++;
     }
 
@@ -230,7 +243,7 @@ struct graph_t
       {
 	incoming_edges_--;
 	if (*v > 1)
-	  *v -= 1;
+	  (*v)--;
 	else
 	  parents.del (parent_index);
 
@@ -259,20 +272,29 @@ struct graph_t
       }
     }
 
-    void remap_parents (const hb_vector_t<unsigned>& id_map)
+    bool remap_parents (const hb_vector_t<unsigned>& id_map)
     {
       if (single_parent != (unsigned) -1)
       {
+        assert (single_parent < id_map.length);
 	single_parent = id_map[single_parent];
-	return;
+	return true;
       }
 
       hb_hashmap_t<unsigned, unsigned> new_parents;
       new_parents.alloc (parents.get_population ());
       for (auto _ : parents)
-        new_parents.set (id_map[_.first], _.second);
+      {
+	assert (_.first < id_map.length);
+	assert (!new_parents.has (id_map[_.first]));
+	new_parents.set (id_map[_.first], _.second);
+      }
+
+      if (parents.in_error() || new_parents.in_error ())
+        return false;
 
       parents = std::move (new_parents);
+      return true;
     }
 
     void remap_parent (unsigned old_index, unsigned new_index)
@@ -284,10 +306,19 @@ struct graph_t
         return;
       }
 
-      if (parents.has (old_index))
+      const unsigned *pv;
+      if (parents.has (old_index, &pv))
       {
-	remove_parent (old_index);
-	add_parent (new_index);
+        unsigned v = *pv;
+	if (!parents.set (new_index, v))
+          incoming_edges_ -= v;
+	parents.del (old_index);
+
+        if (incoming_edges_ == 1)
+	{
+	  single_parent = *parents.keys ();
+	  parents.reset ();
+	}
       }
     }
 
@@ -443,6 +474,18 @@ struct graph_t
     return root ().equals (other.root (), *this, other, 0);
   }
 
+  void print () const {
+    for (int i = vertices_.length - 1; i >= 0; i--)
+    {
+      const auto& v = vertices_[i];
+      printf("%d: %u [", i, (unsigned int)v.table_size());
+      for (const auto &l : v.obj.real_links) {
+        printf("%u, ", l.objidx);
+      }
+      printf("]\n");
+    }
+  }
+
   // Sorts links of all objects in a consistent manner and zeroes all offsets.
   void normalize ()
   {
@@ -523,7 +566,8 @@ struct graph_t
 
     update_distances ();
 
-    hb_priority_queue_t queue;
+    hb_priority_queue_t<int64_t> queue;
+    queue.alloc (vertices_.length);
     hb_vector_t<vertex_t> &sorted_graph = vertices_scratch_;
     if (unlikely (!check_success (sorted_graph.resize (vertices_.length)))) return;
     hb_vector_t<unsigned> id_map;
@@ -568,7 +612,7 @@ struct graph_t
     check_success (!queue.in_error ());
     check_success (!sorted_graph.in_error ());
 
-    remap_all_obj_indices (id_map, &sorted_graph);
+    check_success (remap_all_obj_indices (id_map, &sorted_graph));
     vertices_ = std::move (sorted_graph);
 
     if (!check_success (new_id == -1))
@@ -763,12 +807,15 @@ struct graph_t
       subgraph.set (root_idx, wide_parents (root_idx, parents));
       find_subgraph (root_idx, subgraph);
     }
+    if (subgraph.in_error ())
+      return false;
 
     unsigned original_root_idx = root_idx ();
     hb_map_t index_map;
     bool made_changes = false;
     for (auto entry : subgraph.iter ())
     {
+      assert (entry.first < vertices_.length);
       const auto& node = vertices_[entry.first];
       unsigned subgraph_incoming_edges = entry.second;
 
@@ -1192,6 +1239,8 @@ struct graph_t
 
   unsigned space_for (unsigned index, unsigned* root = nullptr) const
   {
+  loop:
+    assert (index < vertices_.length);
     const auto& node = vertices_[index];
     if (node.space)
     {
@@ -1207,7 +1256,8 @@ struct graph_t
       return 0;
     }
 
-    return space_for (*node.parents_iter (), root);
+    index = *node.parents_iter ();
+    goto loop;
   }
 
   void err_other_error () { this->successful = false; }
@@ -1267,9 +1317,7 @@ struct graph_t
     for (unsigned p = 0; p < count; p++)
     {
       for (auto& l : vertices_.arrayZ[p].obj.all_links ())
-      {
         vertices_[l.objidx].add_parent (p);
-      }
     }
 
     for (unsigned i = 0; i < count; i++)
@@ -1322,7 +1370,8 @@ struct graph_t
       vertices_.arrayZ[i].distance = hb_int_max (int64_t);
     vertices_.tail ().distance = 0;
 
-    hb_priority_queue_t queue;
+    hb_priority_queue_t<int64_t> queue;
+    queue.alloc (count);
     queue.insert (0, vertices_.length - 1);
 
     hb_vector_t<bool> visited;
@@ -1404,18 +1453,20 @@ struct graph_t
   /*
    * Updates all objidx's in all links using the provided mapping.
    */
-  void remap_all_obj_indices (const hb_vector_t<unsigned>& id_map,
+  bool remap_all_obj_indices (const hb_vector_t<unsigned>& id_map,
                               hb_vector_t<vertex_t>* sorted_graph) const
   {
     unsigned count = sorted_graph->length;
     for (unsigned i = 0; i < count; i++)
     {
-      (*sorted_graph)[i].remap_parents (id_map);
+      if (!(*sorted_graph)[i].remap_parents (id_map))
+        return false;
       for (auto& link : sorted_graph->arrayZ[i].obj.all_links_writer ())
       {
         link.objidx = id_map[link.objidx];
       }
     }
+    return true;
   }
 
   /*

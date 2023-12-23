@@ -518,11 +518,9 @@ struct hb_ot_apply_context_t :
 #ifndef HB_OPTIMIZE_SIZE
     HB_ALWAYS_INLINE
 #endif
-    void reset (unsigned int start_index_,
-		unsigned int num_items_)
+    void reset (unsigned int start_index_)
     {
       idx = start_index_;
-      num_items = num_items_;
       end = c->buffer->len;
       matcher.set_syllable (start_index_ == c->buffer->idx ? c->buffer->cur().syllable () : 0);
     }
@@ -530,17 +528,14 @@ struct hb_ot_apply_context_t :
 #ifndef HB_OPTIMIZE_SIZE
     HB_ALWAYS_INLINE
 #endif
-    void reset_fast (unsigned int start_index_,
-		     unsigned int num_items_)
+    void reset_fast (unsigned int start_index_)
     {
       // Doesn't set end or syllable. Used by GPOS which doesn't care / change.
       idx = start_index_;
-      num_items = num_items_;
     }
 
     void reject ()
     {
-      num_items++;
       backup_glyph_data ();
     }
 
@@ -583,12 +578,7 @@ struct hb_ot_apply_context_t :
 #endif
     bool next (unsigned *unsafe_to = nullptr)
     {
-      assert (num_items > 0);
-      /* The alternate condition below is faster at string boundaries,
-       * but produces subpar "unsafe-to-concat" values. */
-      signed stop = (signed) end - (signed) num_items;
-      if (c->buffer->flags & HB_BUFFER_FLAG_PRODUCE_UNSAFE_TO_CONCAT)
-        stop = (signed) end - 1;
+      const signed stop = (signed) end - 1;
       while ((signed) idx < stop)
       {
 	idx++;
@@ -596,7 +586,6 @@ struct hb_ot_apply_context_t :
 	{
 	  case MATCH:
 	  {
-	    num_items--;
 	    advance_glyph_data ();
 	    return true;
 	  }
@@ -619,12 +608,7 @@ struct hb_ot_apply_context_t :
 #endif
     bool prev (unsigned *unsafe_from = nullptr)
     {
-      assert (num_items > 0);
-      /* The alternate condition below is faster at string boundaries,
-       * but produces subpar "unsafe-to-concat" values. */
-      unsigned stop = num_items - 1;
-      if (c->buffer->flags & HB_BUFFER_FLAG_PRODUCE_UNSAFE_TO_CONCAT)
-        stop = 1 - 1;
+      const unsigned stop = 0;
       while (idx > stop)
       {
 	idx--;
@@ -632,7 +616,6 @@ struct hb_ot_apply_context_t :
 	{
 	  case MATCH:
 	  {
-	    num_items--;
 	    advance_glyph_data ();
 	    return true;
 	  }
@@ -691,7 +674,6 @@ struct hb_ot_apply_context_t :
     const HBUINT24 *match_glyph_data24;
 #endif
 
-    unsigned int num_items;
     unsigned int end;
   };
 
@@ -1283,7 +1265,7 @@ static bool match_input (hb_ot_apply_context_t *c,
   hb_buffer_t *buffer = c->buffer;
 
   hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
-  skippy_iter.reset (buffer->idx, count - 1);
+  skippy_iter.reset (buffer->idx);
   skippy_iter.set_match_func (match_func, match_data);
   skippy_iter.set_glyph_data (input);
 
@@ -1523,7 +1505,7 @@ static bool match_backtrack (hb_ot_apply_context_t *c,
   TRACE_APPLY (nullptr);
 
   hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_context;
-  skippy_iter.reset (c->buffer->backtrack_len (), count);
+  skippy_iter.reset (c->buffer->backtrack_len ());
   skippy_iter.set_match_func (match_func, match_data);
   skippy_iter.set_glyph_data (backtrack);
 
@@ -1556,7 +1538,7 @@ static bool match_lookahead (hb_ot_apply_context_t *c,
   TRACE_APPLY (nullptr);
 
   hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_context;
-  skippy_iter.reset (start_index - 1, count);
+  skippy_iter.reset (start_index - 1);
   skippy_iter.set_match_func (match_func, match_data);
   skippy_iter.set_glyph_data (lookahead);
 
@@ -2069,6 +2051,7 @@ struct Rule
   {
     TRACE_SANITIZE (this);
     return_trace (c->check_struct (this) &&
+		  hb_barrier () &&
 		  c->check_range (inputZ.arrayZ,
 				  inputZ.item_size * (inputCount ? inputCount - 1 : 0) +
 				  LookupRecord::static_size * lookupCount));
@@ -2175,7 +2158,7 @@ struct RuleSet
      * Replicated from LigatureSet::apply(). */
 
     hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
-    skippy_iter.reset (c->buffer->idx, 2);
+    skippy_iter.reset (c->buffer->idx);
     skippy_iter.set_match_func (match_always, nullptr);
     skippy_iter.set_glyph_data ((HBUINT16 *) nullptr);
     unsigned unsafe_to = (unsigned) -1, unsafe_to1 = 0, unsafe_to2 = 0;
@@ -2844,6 +2827,7 @@ struct ContextFormat3
   {
     TRACE_SANITIZE (this);
     if (unlikely (!c->check_struct (this))) return_trace (false);
+    hb_barrier ();
     unsigned int count = glyphCount;
     if (unlikely (!count)) return_trace (false); /* We want to access coverageZ[0] freely. */
     if (unlikely (!c->check_array (coverageZ.arrayZ, count))) return_trace (false);
@@ -3237,10 +3221,13 @@ struct ChainRule
     TRACE_SANITIZE (this);
     /* Hyper-optimized sanitized because this is really hot. */
     if (unlikely (!backtrack.len.sanitize (c))) return_trace (false);
+    hb_barrier ();
     const auto &input = StructAfter<decltype (inputX)> (backtrack);
     if (unlikely (!input.lenP1.sanitize (c))) return_trace (false);
+    hb_barrier ();
     const auto &lookahead = StructAfter<decltype (lookaheadX)> (input);
     if (unlikely (!lookahead.len.sanitize (c))) return_trace (false);
+    hb_barrier ();
     const auto &lookup = StructAfter<decltype (lookupX)> (lookahead);
     return_trace (likely (lookup.sanitize (c)));
   }
@@ -3346,7 +3333,7 @@ struct ChainRuleSet
      * Replicated from LigatureSet::apply(). */
 
     hb_ot_apply_context_t::skipping_iterator_t &skippy_iter = c->iter_input;
-    skippy_iter.reset (c->buffer->idx, 2);
+    skippy_iter.reset (c->buffer->idx);
     skippy_iter.set_match_func (match_always, nullptr);
     skippy_iter.set_glyph_data ((HBUINT16 *) nullptr);
     unsigned unsafe_to = (unsigned) -1, unsafe_to1 = 0, unsafe_to2 = 0;
@@ -4139,11 +4126,14 @@ struct ChainContextFormat3
   {
     TRACE_SANITIZE (this);
     if (unlikely (!backtrack.sanitize (c, this))) return_trace (false);
+    hb_barrier ();
     const auto &input = StructAfter<decltype (inputX)> (backtrack);
     if (unlikely (!input.sanitize (c, this))) return_trace (false);
+    hb_barrier ();
     if (unlikely (!input.len)) return_trace (false); /* To be consistent with Context. */
     const auto &lookahead = StructAfter<decltype (lookaheadX)> (input);
     if (unlikely (!lookahead.sanitize (c, this))) return_trace (false);
+    hb_barrier ();
     const auto &lookup = StructAfter<decltype (lookupX)> (lookahead);
     return_trace (likely (lookup.sanitize (c)));
   }
@@ -4227,6 +4217,7 @@ struct ExtensionFormat1
   {
     TRACE_SANITIZE (this);
     return_trace (c->check_struct (this) &&
+		  hb_barrier () &&
 		  extensionLookupType != T::SubTable::Extension);
   }
 
@@ -4353,6 +4344,9 @@ struct hb_ot_layout_lookup_accelerator_t
   bool may_have (hb_codepoint_t g) const
   { return digest.may_have (g); }
 
+#ifndef HB_OPTIMIZE_SIZE
+  HB_ALWAYS_INLINE
+#endif
   bool apply (hb_ot_apply_context_t *c, unsigned subtables_count, bool use_cache) const
   {
 #ifndef HB_NO_OT_LAYOUT_LOOKUP_CACHE
@@ -4487,13 +4481,6 @@ struct GSUBGPOSVersion1_2
       if (!c->subset_context->serializer->extend_min (&out->featureVars))
         return_trace (false);
 
-      // TODO(qxliu76): the current implementation doesn't correctly handle feature variations
-      //                that are dropped by instancing when the associated conditions don't trigger.
-      //                Since partial instancing isn't yet supported this isn't an issue yet but will
-      //                need to be fixed for partial instancing.
-
-
-
       // if all axes are pinned all feature vars are dropped.
       bool ret = !c->subset_context->plan->all_axes_pinned
                  && out->featureVars.serialize_subset (c->subset_context, featureVars, this, c);
@@ -4528,6 +4515,7 @@ struct GSUBGPOS
   {
     TRACE_SANITIZE (this);
     if (unlikely (!u.version.sanitize (c))) return_trace (false);
+    hb_barrier ();
     switch (u.version.major) {
     case 1: return_trace (u.version1.sanitize<TLookup> (c));
 #ifndef HB_NO_BEYOND_64K
@@ -4653,11 +4641,11 @@ struct GSUBGPOS
   }
 
   void feature_variation_collect_lookups (const hb_set_t *feature_indexes,
-					  const hb_hashmap_t<unsigned, const Feature*> *feature_substitutes_map,
+					  const hb_hashmap_t<unsigned, hb::shared_ptr<hb_set_t>> *feature_record_cond_idx_map,
 					  hb_set_t       *lookup_indexes /* OUT */) const
   {
 #ifndef HB_NO_VAR
-    get_feature_variations ().collect_lookups (feature_indexes, feature_substitutes_map, lookup_indexes);
+    get_feature_variations ().collect_lookups (feature_indexes, feature_record_cond_idx_map, lookup_indexes);
 #endif
   }
 
