@@ -885,6 +885,12 @@
     <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-subset-instace-solver.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-instancer-iup.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -1062,6 +1068,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-paint-extents.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-subset-instancer-iup.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

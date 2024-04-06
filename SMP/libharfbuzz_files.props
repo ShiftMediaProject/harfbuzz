@@ -169,6 +169,7 @@
     <ClInclude Include="..\src\hb-subset-cff1.hh" />
     <ClInclude Include="..\src\hb-subset-cff2.hh" />
     <ClInclude Include="..\src\hb-subset-instace-solver.hh" />
+    <ClInclude Include="..\src\hb-subset-instancer-iup.hh" />
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
     <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh" />
@@ -332,6 +333,7 @@
     <ClCompile Include="..\src\hb-subset-cff1.cc" />
     <ClCompile Include="..\src\hb-subset-cff2.cc" />
     <ClCompile Include="..\src\hb-subset-instancer-solver.cc" />
+    <ClCompile Include="..\src\hb-subset-instancer-iup.cc" />
     <ClCompile Include="..\src\hb-subset-repacker.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
