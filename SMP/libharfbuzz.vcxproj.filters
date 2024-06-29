@@ -61,6 +61,21 @@
     <Filter Include="Header Files\src\OT\name">
       <UniqueIdentifier>{2b33ca94-80f2-4cda-8f8b-9980549ed51b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src\OT\Var">
+      <UniqueIdentifier>{72d64367-e96f-4c9f-a77c-688e2615bc21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Var\VARC">
+      <UniqueIdentifier>{ffe6fb56-16f2-4376-823f-e8703dc928ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT">
+      <UniqueIdentifier>{6ac97856-9824-4bd2-a332-4b69e8f58834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT\Var">
+      <UniqueIdentifier>{2a697f6d-54a2-4a8c-a235-45ffe9e4920b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT\Var\VARC">
+      <UniqueIdentifier>{edeaaaf4-2e39-441e-83d5-9cd2bf4a2379}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h">
@@ -825,12 +840,6 @@
     <ClInclude Include="..\src\hb-multimap.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OT\glyf\VarCompositeGlyph.hh">
-      <Filter>Header Files\src\OT\glyf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\OT\glyf\coord-setter.hh">
-      <Filter>Header Files\src\OT\glyf</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\OT\glyf\composite-iter.hh">
       <Filter>Header Files\src\OT\glyf</Filter>
     </ClInclude>
@@ -887,6 +896,18 @@
     </ClInclude>
     <ClInclude Include="..\src\hb-subset-instancer-iup.hh">
       <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-geometry.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-varc-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Var\Varc\coord-setter.hh">
+      <Filter>Header Files\src\OT\Var\VARC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Var\Varc\Varc.hh">
+      <Filter>Header Files\src\OT\Var\VARC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1069,6 +1090,9 @@
     </ClCompile>
     <ClCompile Include="..\src\hb-subset-instancer-iup.cc">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OT\Var\VARC\VARC.cc">
+      <Filter>Source Files\src\OT\Var\VARC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

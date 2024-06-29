@@ -58,11 +58,23 @@
     <Filter Include="Header Files\src\OT\Color\sbix">
       <UniqueIdentifier>{8938e239-0fa1-4203-b0f9-4951017d6f77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\src\OT\CBDT">
-      <UniqueIdentifier>{bfb747ed-696e-4757-87b9-bfcce2868ffd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\src\OT\name">
       <UniqueIdentifier>{e50e24c8-ece2-414b-a64e-6bd008991ddd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Var">
+      <UniqueIdentifier>{277fcb05-8135-4cff-ac2f-5d103e44e599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\OT\Var\VARC">
+      <UniqueIdentifier>{ee1ec8ec-fa5f-4611-8e13-f96330c0abd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT">
+      <UniqueIdentifier>{438218a0-dcb7-44c2-9ce8-d73245106981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT\Var">
+      <UniqueIdentifier>{472a1aa2-da74-4da0-b97c-0dbe33287d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\OT\Var\VARC">
+      <UniqueIdentifier>{d870d330-8b1b-4794-8568-9dd1591e2afa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -828,12 +840,6 @@
     <ClInclude Include="..\src\hb-multimap.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OT\glyf\VarCompositeGlyph.hh">
-      <Filter>Header Files\src\OT\glyf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\OT\glyf\coord-setter.hh">
-      <Filter>Header Files\src\OT\glyf</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\OT\glyf\composite-iter.hh">
       <Filter>Header Files\src\OT\glyf</Filter>
     </ClInclude>
@@ -890,6 +896,18 @@
     </ClInclude>
     <ClInclude Include="..\src\hb-subset-instancer-iup.hh">
       <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-ot-var-varc-table.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-geometry.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Var\Varc\coord-setter.hh">
+      <Filter>Header Files\src\OT\Var\VARC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OT\Var\Varc\Varc.hh">
+      <Filter>Header Files\src\OT\Var\VARC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1072,6 +1090,9 @@
     </ClCompile>
     <ClCompile Include="..\src\hb-subset-instancer-iup.cc">
       <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OT\Var\VARC\VARC.cc">
+      <Filter>Source Files\src\OT\Var\VARC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
