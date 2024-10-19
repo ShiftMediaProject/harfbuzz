@@ -81,6 +81,8 @@ hb_buffer_set_invisible_glyph
 hb_buffer_get_invisible_glyph
 hb_buffer_set_not_found_glyph
 hb_buffer_get_not_found_glyph
+hb_buffer_set_not_found_variation_selector_glyph
+hb_buffer_get_not_found_variation_selector_glyph
 hb_buffer_set_replacement_codepoint
 hb_buffer_get_replacement_codepoint
 hb_buffer_set_random_state
@@ -354,6 +356,7 @@ hb_directwrite_face_get_font_face
 hb_face_count
 hb_face_t
 hb_face_create
+hb_reference_table_func_t
 hb_face_create_for_tables
 hb_face_get_empty
 hb_face_reference
@@ -362,6 +365,8 @@ hb_face_set_user_data
 hb_face_get_user_data
 hb_face_make_immutable
 hb_face_is_immutable
+hb_get_table_tags_func_t
+hb_face_set_get_table_tags_func
 hb_face_get_table_tags
 hb_face_set_glyph_count
 hb_face_get_glyph_count
@@ -491,7 +496,6 @@ hb_font_get_variation_glyph_func_t
 hb_font_funcs_set_variation_glyph_func
 hb_font_funcs_t
 hb_font_t
-hb_reference_table_func_t
 hb_font_get_font_extents_func_t
 hb_font_get_font_h_extents_func_t
 hb_font_funcs_set_font_h_extents_func
