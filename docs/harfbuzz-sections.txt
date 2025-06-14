@@ -801,8 +801,10 @@ hb_set_t
 <FILE>hb-shape</FILE>
 hb_shape
 hb_shape_full
-hb_shape_justify
 hb_shape_list_shapers
+<SUBSECTION Private>
+hb_shape_justify
+</SUBSECTION>
 </SECTION>
 
 <SECTION>
@@ -900,6 +902,8 @@ hb_subset_input_pin_axis_location
 hb_subset_input_pin_axis_to_default
 hb_subset_input_get_axis_range
 hb_subset_input_set_axis_range
+hb_subset_axis_range_from_string
+hb_subset_axis_range_to_string
 hb_subset_or_fail
 hb_subset_plan_create_or_fail
 hb_subset_plan_reference
@@ -915,10 +919,10 @@ hb_subset_flags_t
 hb_subset_input_t
 hb_subset_sets_t
 hb_subset_plan_t
+hb_subset_serialize_link_t
+hb_subset_serialize_object_t
+hb_subset_serialize_or_fail
 <SUBSECTION Private>
-hb_link_t
-hb_object_t
-hb_subset_repack_or_fail
 hb_subset_input_override_name_table
 </SECTION>
 
