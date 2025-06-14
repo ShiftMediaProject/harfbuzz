@@ -41,7 +41,7 @@ HB_BEGIN_DECLS
  *
  * Defined if Harfbuzz has been built with cairo support.
  */
-#mesondefine HB_HAS_CAIRO
+#undef HB_HAS_CAIRO
 
 /**
  * HB_HAS_CORETEXT:
@@ -55,7 +55,7 @@ HB_BEGIN_DECLS
  *
  * Defined if Harfbuzz has been built with DirectWrite support.
  */
-#undef HB_HAS_DIRECTWRITE
+#define HB_HAS_DIRECTWRITE 1
 
 /**
  * HB_HAS_FREETYPE:
@@ -69,7 +69,7 @@ HB_BEGIN_DECLS
  *
  * Defined if Harfbuzz has been built with GDI support.
  */
-#undef HB_HAS_GDI
+#define HB_HAS_GDI 1
 
 /**
  * HB_HAS_GLIB:

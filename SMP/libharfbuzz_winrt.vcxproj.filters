@@ -912,6 +912,12 @@
     <ClInclude Include="..\src\hb-decycler.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-directwrite.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-bit-vector.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -1095,6 +1101,18 @@
       <Filter>Source Files\src\OT\Var\VARC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-subset-serialize.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-directwrite-shape.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-directwrite.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-directwrite-font.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-gdi.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>

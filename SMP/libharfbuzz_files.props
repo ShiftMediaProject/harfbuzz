@@ -22,6 +22,7 @@
     <ClInclude Include="..\src\hb-bit-page.hh" />
     <ClInclude Include="..\src\hb-bit-set.hh" />
     <ClInclude Include="..\src\hb-bit-set-invertible.hh" />
+    <ClInclude Include="..\src\hb-bit-vector.hh" />
     <ClInclude Include="..\src\hb-blob.h" />
     <ClInclude Include="..\src\hb-blob.hh" />
     <ClInclude Include="..\src\hb-buffer-deserialize-json.hh" />
@@ -42,6 +43,7 @@
     <ClInclude Include="..\src\hb-decycler.hh" />
     <ClInclude Include="..\src\hb-deprecated.h" />
     <ClInclude Include="..\src\hb-directwrite.h" />
+    <ClInclude Include="..\src\hb-directwrite.hh" />
     <ClInclude Include="..\src\hb-dispatch.hh" />
     <ClInclude Include="..\src\hb-draw.h" />
     <ClInclude Include="..\src\hb-draw.hh" />
@@ -288,12 +290,16 @@
     <ClCompile Include="..\src\hb-buffer-verify.cc" />
     <ClCompile Include="..\src\hb-buffer.cc" />
     <ClCompile Include="..\src\hb-common.cc" />
+    <ClCompile Include="..\src\hb-directwrite.cc" />
+    <ClCompile Include="..\src\hb-directwrite-font.cc" />
+    <ClCompile Include="..\src\hb-directwrite-shape.cc" />
     <ClCompile Include="..\src\hb-draw.cc" />
     <ClCompile Include="..\src\hb-face.cc" />
     <ClCompile Include="..\src\hb-face-builder.cc" />
     <ClCompile Include="..\src\hb-fallback-shape.cc" />
     <ClCompile Include="..\src\hb-font.cc" />
     <ClCompile Include="..\src\hb-ft.cc" />
+    <ClCompile Include="..\src\hb-gdi.cc" />
     <ClCompile Include="..\src\hb-map.cc" />
     <ClCompile Include="..\src\hb-number.cc" />
     <ClCompile Include="..\src\hb-ot-cff1-table.cc" />
