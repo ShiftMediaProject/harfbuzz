@@ -39,6 +39,7 @@
     <ClInclude Include="..\src\hb-coretext.h" />
     <ClInclude Include="..\src\hb-cplusplus.hh" />
     <ClInclude Include="..\src\hb-debug.hh" />
+    <ClInclude Include="..\src\hb-decycler.hh" />
     <ClInclude Include="..\src\hb-deprecated.h" />
     <ClInclude Include="..\src\hb-directwrite.h" />
     <ClInclude Include="..\src\hb-dispatch.hh" />
