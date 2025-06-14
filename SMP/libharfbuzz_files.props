@@ -175,7 +175,7 @@
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
     <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh" />
-    <ClInclude Include="..\src\hb-subset-repacker.h" />
+    <ClInclude Include="..\src\hb-subset-serialize.h" />
     <ClInclude Include="..\src\hb-subset.h" />
     <ClInclude Include="..\src\hb-subset.hh" />
     <ClInclude Include="..\src\hb-ucd-table.hh" />
@@ -336,7 +336,7 @@
     <ClCompile Include="..\src\hb-subset-cff2.cc" />
     <ClCompile Include="..\src\hb-subset-instancer-solver.cc" />
     <ClCompile Include="..\src\hb-subset-instancer-iup.cc" />
-    <ClCompile Include="..\src\hb-subset-repacker.cc" />
+    <ClCompile Include="..\src\hb-subset-serialize.cc" />
     <ClCompile Include="..\src\hb-ucd.cc" />
     <ClCompile Include="..\src\hb-unicode.cc" />
     <ClCompile Include="..\src\graph\gsubgpos-context.cc" />
