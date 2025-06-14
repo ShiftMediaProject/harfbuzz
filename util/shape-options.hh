@@ -145,18 +145,21 @@ struct shape_options_t
       /* Scale positions. */
       int x_scale, y_scale;
       hb_font_get_scale (font, &x_scale, &y_scale);
-      unsigned upem = hb_face_get_upem (hb_font_get_face (font));
+      signed upem = (int) hb_face_get_upem (hb_font_get_face (font));
       unsigned count;
-      auto *positions = hb_buffer_get_glyph_positions (buffer, &count);
-      for (unsigned i = 0; i < count; i++)
+      if (x_scale != upem || y_scale != upem)
       {
-	auto &pos = positions[i];
-	pos.x_offset = pos.x_offset * x_scale / upem;
-	pos.y_offset = pos.y_offset * y_scale / upem;
-	if (scale_advances)
+	auto *positions = hb_buffer_get_glyph_positions (buffer, &count);
+	for (unsigned i = 0; i < count; i++)
 	{
-	  pos.x_advance = pos.x_advance * x_scale / upem;
-	  pos.y_advance = pos.y_advance * y_scale / upem;
+	  auto &pos = positions[i];
+	  pos.x_offset = pos.x_offset * x_scale / upem;
+	  pos.y_offset = pos.y_offset * y_scale / upem;
+	  if (scale_advances)
+	  {
+	    pos.x_advance = pos.x_advance * x_scale / upem;
+	    pos.y_advance = pos.y_advance * y_scale / upem;
+	  }
 	}
       }
     }
@@ -359,13 +362,31 @@ parse_features (const char *name G_GNUC_UNUSED,
 void
 shape_options_t::add_options (option_parser_t *parser)
 {
+  char *shapers_text = nullptr;
+  {
+    const char **supported_shapers = hb_shape_list_shapers ();
+    GString *s = g_string_new (nullptr);
+    if (unlikely (!supported_shapers))
+      g_string_printf (s, "Set shapers to use (default: none)\n    No supported shapers found");
+    else
+    {
+      char *supported_str = g_strjoinv ("/", (char **) supported_shapers);
+      g_string_printf (s, "Set shapers to use (default: %s)\n    Supported shapers are: %s",
+		       supported_shapers[0],
+		       supported_str);
+      g_free (supported_str);
+    }
+    shapers_text = g_string_free (s, FALSE);
+    parser->free_later (shapers_text);
+  }
+
   GOptionEntry entries[] =
   {
-    {"list-shapers",	0, G_OPTION_FLAG_NO_ARG,
-			      G_OPTION_ARG_CALLBACK,	(gpointer) &list_shapers,	"List available shapers and quit",	nullptr},
     {"shaper",		0, G_OPTION_FLAG_HIDDEN,
 			      G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	"Hidden duplicate of --shapers",	nullptr},
-    {"shapers",		0, 0, G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	"Set comma-separated list of shapers to try","list"},
+    {"shapers",		0, 0, G_OPTION_ARG_CALLBACK,	(gpointer) &parse_shapers,	shapers_text,"comma-separated list"},
+    {"list-shapers",	0, G_OPTION_FLAG_NO_ARG,
+			      G_OPTION_ARG_CALLBACK,	(gpointer) &list_shapers,	"List available shapers and quit",	nullptr},
     {"direction",	0, 0, G_OPTION_ARG_STRING,	&this->direction,		"Set text direction (default: auto)",	"ltr/rtl/ttb/btt"},
     {"language",	0, 0, G_OPTION_ARG_STRING,	&this->language,		"Set text language (default: $LANG)",	"BCP 47 tag"},
     {"script",		0, 0, G_OPTION_ARG_STRING,	&this->script,			"Set text script (default: auto)",	"ISO-15924 tag"},
@@ -446,6 +467,8 @@ shape_options_t::add_options (option_parser_t *parser)
 		     "Features options:",
 		     "Options for font features used",
 		     this);
+
+  parser->add_environ("HB_SHAPER_LIST=shaper-list; Overrides the default shaper list.");
 }
 
 #endif
