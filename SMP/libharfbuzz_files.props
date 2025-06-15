@@ -158,6 +158,7 @@
     <ClInclude Include="..\src\hb-priority-queue.hh" />
     <ClInclude Include="..\src\hb-repacker.hh" />
     <ClInclude Include="..\src\hb-sanitize.hh" />
+    <ClInclude Include="..\src\hb-script-list.h" />
     <ClInclude Include="..\src\hb-serialize.hh" />
     <ClInclude Include="..\src\hb-set-digest.hh" />
     <ClInclude Include="..\src\hb-set.h" />
@@ -177,7 +178,9 @@
     <ClInclude Include="..\src\hb-subset-instancer-iup.hh" />
     <ClInclude Include="..\src\hb-subset-input.hh" />
     <ClInclude Include="..\src\hb-subset-plan.hh" />
-    <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh" />
+    <ClInclude Include="..\src\hb-subset-plan-layout.hh" />
+    <ClInclude Include="..\src\hb-subset-plan-member-list.hh" />
+    <ClInclude Include="..\src\hb-subset-plan-var.hh" />
     <ClInclude Include="..\src\hb-subset-serialize.h" />
     <ClInclude Include="..\src\hb-subset.h" />
     <ClInclude Include="..\src\hb-subset.hh" />

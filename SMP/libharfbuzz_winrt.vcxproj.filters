@@ -885,9 +885,6 @@
     <ClInclude Include="..\src\hb-ot-var-cvar-table.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\hb-subset-plan-member-list.hh.hh">
-      <Filter>Header Files\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\hb-subset-instace-solver.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
@@ -916,6 +913,18 @@
       <Filter>Header Files\src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\hb-bit-vector.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-script-list.h">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-plan-layout.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-plan-member-list.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hb-subset-plan-var.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
   </ItemGroup>
