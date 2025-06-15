@@ -153,6 +153,7 @@
     <ClInclude Include="..\src\hb-ot.h" />
     <ClInclude Include="..\src\hb-outline.hh" />
     <ClInclude Include="..\src\hb-paint.hh" />
+    <ClInclude Include="..\src\hb-paint-bounded.hh" />
     <ClInclude Include="..\src\hb-paint-extents.hh" />
     <ClInclude Include="..\src\hb-pool.hh" />
     <ClInclude Include="..\src\hb-priority-queue.hh" />
@@ -335,6 +336,7 @@
     <ClCompile Include="..\src\hb-ot-var.cc" />
     <ClCompile Include="..\src\hb-outline.cc" />
     <ClCompile Include="..\src\hb-paint.cc" />
+    <ClCompile Include="..\src\hb-paint-bounded.cc" />
     <ClCompile Include="..\src\hb-paint-extents.cc" />
     <ClCompile Include="..\src\hb-set.cc" />
     <ClCompile Include="..\src\hb-shape-plan.cc" />

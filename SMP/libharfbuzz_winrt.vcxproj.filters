@@ -927,6 +927,9 @@
     <ClInclude Include="..\src\hb-subset-plan-var.hh">
       <Filter>Header Files\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\hb-paint-bounded.hh">
+      <Filter>Header Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\hb-blob.cc">
@@ -1122,6 +1125,9 @@
       <Filter>Source Files\src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\hb-gdi.cc">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hb-paint-bounded.cc">
       <Filter>Source Files\src</Filter>
     </ClCompile>
   </ItemGroup>
