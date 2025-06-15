@@ -66,9 +66,11 @@ jobs:
       - run: apt update || true
       - run: DEBIAN_FRONTEND=noninteractive apt install -y python3 python3-pip python3-venv ninja-build clang lld git binutils pkg-config ragel libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev
       - run: |
+          export ASAN_OPTIONS=log_path=stderr:halt_on_error=1:abort_on_error=1
+          export UBSAN_OPTIONS=log_path=stderr:halt_on_error=1:abort_on_error=1:print_stacktrace=1
           python3 -m venv venv
           source venv/bin/activate
-          pip3 install meson==0.56.0
+          pip3 install meson==0.60.0
           CC=clang CXX=clang++ meson setup build --default-library=static -Db_sanitize=address,undefined --buildtype=debugoptimized --wrap-mode=nodownload -Dexperimental_api=true
           meson compile -Cbuild -j9
           meson test -Cbuild -t 10 --print-errorlogs | asan_symbolize | c++filt
@@ -81,9 +83,10 @@ jobs:
       - run: apt update || true
       - run: DEBIAN_FRONTEND=noninteractive apt install -y python3 python3-pip python3-venv ninja-build clang lld git binutils pkg-config ragel libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev
       - run: |
+          export TSAN_OPTIONS=log_path=stderr:halt_on_error=1:abort_on_error=1
           python3 -m venv venv
           source venv/bin/activate
-          pip3 install meson==0.56.0
+          pip3 install meson==0.60.0
           CC=clang CXX=clang++ meson setup build --default-library=static -Db_sanitize=thread --buildtype=debugoptimized --wrap-mode=nodownload -Dexperimental_api=true
           meson compile -Cbuild -j9
           meson test -Cbuild -t 10 --print-errorlogs | asan_symbolize | c++filt
@@ -96,9 +99,10 @@ jobs:
       - run: apt update || true
       - run: DEBIAN_FRONTEND=noninteractive apt install -y python3 python3-pip python3-venv ninja-build clang lld git binutils pkg-config ragel libfreetype6-dev libglib2.0-dev libcairo2-dev libicu-dev libgraphite2-dev
       - run: |
+          export MSAN_OPTIONS=log_path=stderr:halt_on_error=1:abort_on_error=1:print_stacktrace=1
           python3 -m venv venv
           source venv/bin/activate
-          pip3 install meson==0.56.0
+          pip3 install meson==0.60.0
           # msan, needs --force-fallback-for=glib,freetype2 also which doesn't work yet but runs fuzzer cases at least
           CC=clang CXX=clang++ meson setup build --default-library=static -Db_sanitize=memory --buildtype=debugoptimized --wrap-mode=nodownload -Dauto_features=disabled -Dtests=enabled -Dexperimental_api=true
           meson compile -Cbuild -j9
@@ -149,8 +153,9 @@ jobs:
     executor: win64-executor
     steps:
       - checkout
+      - run: dpkg --add-architecture i386
       - run: apt update
-      - run: DEBIAN_FRONTEND=noninteractive apt install -y ninja-build python3 python3-pip python3-venv git g++-mingw-w64-x86-64 zip wine wine64
+      - run: DEBIAN_FRONTEND=noninteractive apt install -y ninja-build python3 python3-pip python3-venv git g++-mingw-w64-x86-64 zip wine wine64 wine32:i386
       - run: |
           export LANG=en_US.UTF-8
           python3 -m venv venv
